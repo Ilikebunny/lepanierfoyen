@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome! Test{% endblock %}</title>
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    <div id="banniere">
+        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a>
+        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a>
+        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a>
+        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a>
+    </div>
+    <div id="menu_haut">
+
+    </div>
+    <div id="bradcrumbs">
+    </div>
+    <div id="main_content">{% block body %}{% endblock %}</div>
+    <div id="footer">
+        <span>Copyright 2016</span>
+        <span id="espaceAdmin">Espace administrateur</span>
+    </div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
+
