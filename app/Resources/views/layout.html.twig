@@ -9,10 +9,19 @@
 </head>
 <body>
     <div id="banniere">
-        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a>
-        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a>
-        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a>
-        <a href="{{ path('_welcome') }}"><img src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a>
+        <span id ="banniere_gauche">
+            <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a>
+            <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a>
+        </span>
+        <img id ="logo" src="{{ asset('images/logo_white_bg.png') }}" alt="Contact" />
+        <span id ="banniere_droite">
+            <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a>
+            <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a> 
+        </span>
+    </div>
+    <div id="banniere_bande">
+        <span>Bio et</span>
+        <span>Local</span>
     </div>
     <div id="menu_haut">
 

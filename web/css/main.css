@@ -13,15 +13,33 @@ body{
     margin-right: auto;
     width: 800px;   
 }
-#banniere img{
-    width: 180px;
+.banniere_img{
+    width: 120px;
+    position: relative;
 }
-#banniere{
-    display: inline-block;
+
+#banniere_droite{
+    float: right;
+}
+#logo{
+    width: 180px;
+    position: absolute;
+    margin-left: 70px;
+    z-index: 2;
+}
+
+#banniere_bande{
+    height: 60px;
+    background-color: #549e33;
 }
 #main_content{
     background-color: #ffe5bd;
+    min-height: 500px;
 }    
+
+#footer{
+    background-color: #915e36;
+}
 
 #espaceAdmin{
     float: right;
