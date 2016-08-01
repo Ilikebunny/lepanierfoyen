@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome! Test{% endblock %}</title>
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" />
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -24,16 +26,19 @@
         <span>Local</span>
     </div>
     <div id="menu_haut">
-
+         {{ include('main_navbar.html.twig') }}
     </div>
     <div id="bradcrumbs">
     </div>
+        
     <div id="main_content">{% block body %}{% endblock %}</div>
     <div id="footer">
         <span>Copyright 2016</span>
         <span id="espaceAdmin">Espace administrateur</span>
     </div>
-{% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    {% endblock %}
 </body>
 </html>
 
