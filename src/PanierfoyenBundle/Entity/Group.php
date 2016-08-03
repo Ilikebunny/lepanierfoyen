@@ -9,12 +9,21 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="fos_group")
  */
-class Group extends BaseGroup
-{
+class Group extends BaseGroup {
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-     protected $id;
+    protected $id;
+
+    /**
+     * toString
+     * @return string
+     */
+    public function __toString() {
+        return $this->getName();
+    }
+
 }
