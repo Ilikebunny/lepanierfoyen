@@ -12,4 +12,5 @@ php bin/console triton:generate:crud --entity=PanierfoyenBundle:ContratsPayement
 php bin/console triton:generate:crud --entity=PanierfoyenBundle:Lieus --format=annotation --with-write --template=layout.html.twig --overwrite --no-interaction
 php bin/console triton:generate:crud --entity=PanierfoyenBundle:Disponibilites --format=annotation --with-write --template=layout.html.twig --overwrite --no-interaction
 php bin/console triton:generate:crud --entity=PanierfoyenBundle:Distributions --format=annotation --with-write --template=layout.html.twig --overwrite --no-interaction
+php bin/console triton:generate:crud --entity=PanierfoyenBundle:Users --format=annotation --with-write --template=layout.html.twig --overwrite --no-interaction
 pause
