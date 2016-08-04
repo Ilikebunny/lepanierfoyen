@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - disponibilite
+{% endblock %}
+
+{% block body %}
+
+<header class="panel-heading">
+    <h2> Disponibilites</h2>
+</header>
+<div class="panel-body">
+
+    <form class="form form-vertical">
+        <fieldset>            <div class="control-group">
+                <label class="col-sm-2 control-label">Id</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ disponibilite.id }}</span>
+                </div>
+            </div>        </fieldset>
+    </form>
+        <hr>
+        <div class="form-group">
+    <a class="btn btn-default" href="{{ path('disponibilites') }}">
+        <i class="fa fa-list" aria-hidden="true"></i>
+        Back to list
+    </a>
+            <a class="btn btn-success" href="{{ path('disponibilites_edit', { 'id':  disponibilite.id }) }}">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Edit
+        </a>
+                <a class="btn btn-primary" href="{{ path('disponibilites_new') }}">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            New
+        </a>
+                <form action="{{ path('disponibilites_delete', { 'id': disponibilite.id }) }}" method="post" style="display: inline-block">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                <i class="fa fa-trash-o"></i> 
+                Delete</button>
+        </form>
+    </div>
+
+</div>
+<hr>
+
+{% endblock %}
+

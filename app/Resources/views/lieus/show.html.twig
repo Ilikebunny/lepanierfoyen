@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - lieus
+{% endblock %}
+
+{% block body %}
+
+<header class="panel-heading">
+    <h2> Lieus</h2>
+</header>
+<div class="panel-body">
+
+    <form class="form form-vertical">
+        <fieldset>            <div class="control-group">
+                <label class="col-sm-2 control-label">Id</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.id }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Libelle</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.libelle }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Adr1</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.adr1 }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Adr2</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.adr2 }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Adr3</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.adr3 }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Codepostal</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.codepostal }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Ville</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ lieus.ville }}</span>
+                </div>
+            </div>        </fieldset>
+    </form>
+        <hr>
+        <div class="form-group">
+    <a class="btn btn-default" href="{{ path('lieus') }}">
+        <i class="fa fa-list" aria-hidden="true"></i>
+        Back to list
+    </a>
+            <a class="btn btn-success" href="{{ path('lieus_edit', { 'id':  lieus.id }) }}">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Edit
+        </a>
+                <a class="btn btn-primary" href="{{ path('lieus_new') }}">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            New
+        </a>
+                <form action="{{ path('lieus_delete', { 'id': lieus.id }) }}" method="post" style="display: inline-block">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                <i class="fa fa-trash-o"></i> 
+                Delete</button>
+        </form>
+    </div>
+
+</div>
+<hr>
+
+{% endblock %}
+
