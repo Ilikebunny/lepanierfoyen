@@ -36,23 +36,29 @@
     <div id="bradcrumbs">
     </div>
 
-    <div id="main_content">
-        <!-- Triton Crud-->
-        <div class="container">
-        {% block menu %}{% endblock %}
+    <div id="main">
+        {% block menu_gauche %}
+            {{ include('admin_menu.html.twig') }}
+        {% endblock %}
+        <div id="main_content">
+            <!-- Triton Crud-->
+            <div class="container">
+            {% block menu %}{% endblock %}
 
-        {% for type, flashMessages in app.session.flashbag.all() %}
-            {% for flashMessage in flashMessages %}
-                <div class="alert alert-{{ type }}">
-                    {{ flashMessage|trans({}, 'TritonCrudBundle') }}
-                </div>
+            {% for type, flashMessages in app.session.flashbag.all() %}
+                {% for flashMessage in flashMessages %}
+                    <div class="alert alert-{{ type }}">
+                        {{ flashMessage|trans({}, 'TritonCrudBundle') }}
+                    </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
 
-    </div>
-    <!-- Triton Crud-->
-{% block body %}{% endblock %}
+        </div>
+        <!-- Triton Crud-->
 
+    {% block body %}{% endblock %}
+
+</div>
 </div>
 <div id="footer">
     <span>Copyright 2016</span>

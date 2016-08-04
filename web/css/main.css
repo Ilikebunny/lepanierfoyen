@@ -32,8 +32,16 @@ body{
     height: 70px;
     background-color: #549e33;
 }
-#main_content{
+
+#admin_menu{
+
+}
+
+#main{
     background-color: #ffe5bd;
+    
+}
+#main_content{
     min-height: 500px;
 }    
 
