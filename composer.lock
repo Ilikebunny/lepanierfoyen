@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3cee6dfc042cfda3da980018f4c4dae5",
-    "content-hash": "19e9f6ed38e4761c6c5c87092bded839",
+    "hash": "886dc73e2edf1e8d1b25c812599777ae",
+    "content-hash": "f662b61b3deb7c1fbbd77084f5428ba9",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -966,6 +966,55 @@
             "time": "2016-07-30 15:51:52"
         },
         {
+            "name": "ikadoc/kcfinder-bundle",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Bilbous/KCFinderBundle.git",
+                "reference": "058483d78a6e409eb64e22307ec623a019e0288a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Bilbous/KCFinderBundle/zipball/058483d78a6e409eb64e22307ec623a019e0288a",
+                "reference": "058483d78a6e409eb64e22307ec623a019e0288a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/dependency-injection": "~2.2|~3.0",
+                "symfony/framework-bundle": "~2.2|~3.0"
+            },
+            "require-dev": {
+                "symfony/yaml": "^2.0.5|~3.0",
+                "twig/twig": "~1.12"
+            },
+            "suggest": {
+                "twig/twig": "Allows to use Twig templates"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Ikadoc\\KCFinderBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yannick Cenatiempo",
+                    "email": "ycenatiempo@gmail.com"
+                }
+            ],
+            "description": "Provides a KCFinder integration for CKEditor for your Symfony Project.",
+            "keywords": [
+                "CKEditor",
+                "kcfinder"
+            ],
+            "time": "2016-03-17 15:15:52"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.2",
             "source": {
@@ -1673,6 +1722,61 @@
                 "tree"
             ],
             "time": "2016-01-26 23:58:32"
+        },
+        {
+            "name": "sunhater/kcfinder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sunhater/kcfinder.git",
+                "reference": "b645d2a81e647d63780c238b130593e32b4d95a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sunhater/kcfinder/zipball/b645d2a81e647d63780c238b130593e32b4d95a9",
+                "reference": "b645d2a81e647d63780c238b130593e32b4d95a9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-curl": "*",
+                "ext-exif": "*",
+                "ext-fileinfo": "*",
+                "ext-gmagick": "*",
+                "ext-http": "*",
+                "ext-imagick": "*",
+                "ext-sockets": "*",
+                "ext-zip": "*"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+",
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Tzonkov",
+                    "email": "sunhater@sunhater.com",
+                    "homepage": "http://sunhater.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "KCFinder web file manager",
+            "homepage": "http://kcfinder.sunhater.com",
+            "keywords": [
+                "explorer",
+                "file",
+                "file explorer",
+                "file manager",
+                "finder",
+                "kcfinder",
+                "manager"
+            ],
+            "time": "2014-09-27 18:47:34"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2544,7 +2648,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "sunhater/kcfinder": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

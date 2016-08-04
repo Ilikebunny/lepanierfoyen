@@ -130,3 +130,10 @@ fos_user:
 twig:
     form_themes:
     - 'bootstrap_3_layout.html.twig'   
+    
+ikadoc_kc_finder:
+    base_path : "%kernel.root_dir%/../vendor/sunhater/kcfinder"
+    config:
+        disabled : false
+        uploadURL: "/uploads/"
+        uploadDir: "%kernel.root_dir%/../web/uploads/"

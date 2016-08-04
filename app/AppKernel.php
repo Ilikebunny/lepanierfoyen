@@ -19,6 +19,7 @@ class AppKernel extends Kernel {
             new FOS\UserBundle\FOSUserBundle(),
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new Triton\Bundle\CrudBundle\TritonCrudBundle(),
+            new Ikadoc\KCFinderBundle\IkadocKCFinderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

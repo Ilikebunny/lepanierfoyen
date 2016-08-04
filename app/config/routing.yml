@@ -8,3 +8,7 @@ fos_user:
 fos_user_group:
     resource: "@FOSUserBundle/Resources/config/routing/group.xml"
     prefix: /group    
+    
+kcfinder:
+    resource: "@IkadocKCFinderBundle/Resources/config/routing.yml"
+    prefix: /
