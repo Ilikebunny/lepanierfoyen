@@ -12,3 +12,7 @@ fos_user_group:
 kcfinder:
     resource: "@IkadocKCFinderBundle/Resources/config/routing.yml"
     prefix: /
+    
+kcfinder_browse:
+    path:      /kcfinder/browse.php
+    defaults:  { _controller: IkadocKCFinderBundle:Proxy:proxy }
