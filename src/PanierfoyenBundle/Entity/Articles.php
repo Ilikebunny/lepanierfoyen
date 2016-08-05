@@ -3,6 +3,7 @@
 namespace PanierfoyenBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Articles
@@ -10,8 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="articles", indexes={@ORM\Index(name="fk_articles_users1_idx", columns={"user_id"})})
  * @ORM\Entity
  */
-class Articles
-{
+class Articles {
+
     /**
      * @var integer
      *
@@ -59,7 +60,8 @@ class Articles
     /**
      * @var string
      *
-     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
+     * @Gedmo\Slug(fields={"titre"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
 
@@ -91,19 +93,16 @@ class Articles
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -114,8 +113,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setTitre($titre)
-    {
+    public function setTitre($titre) {
         $this->titre = $titre;
 
         return $this;
@@ -126,8 +124,7 @@ class Articles
      *
      * @return string
      */
-    public function getTitre()
-    {
+    public function getTitre() {
         return $this->titre;
     }
 
@@ -138,8 +135,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setContenue($contenue)
-    {
+    public function setContenue($contenue) {
         $this->contenue = $contenue;
 
         return $this;
@@ -150,8 +146,7 @@ class Articles
      *
      * @return string
      */
-    public function getContenue()
-    {
+    public function getContenue() {
         return $this->contenue;
     }
 
@@ -162,8 +157,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setPublicationDate($publicationDate)
-    {
+    public function setPublicationDate($publicationDate) {
         $this->publicationDate = $publicationDate;
 
         return $this;
@@ -174,8 +168,7 @@ class Articles
      *
      * @return \DateTime
      */
-    public function getPublicationDate()
-    {
+    public function getPublicationDate() {
         return $this->publicationDate;
     }
 
@@ -186,8 +179,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setModified($modified)
-    {
+    public function setModified($modified) {
         $this->modified = $modified;
 
         return $this;
@@ -198,8 +190,7 @@ class Articles
      *
      * @return \DateTime
      */
-    public function getModified()
-    {
+    public function getModified() {
         return $this->modified;
     }
 
@@ -210,8 +201,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
 
         return $this;
@@ -222,8 +212,7 @@ class Articles
      *
      * @return \DateTime
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
@@ -234,8 +223,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setSlug($slug)
-    {
+    public function setSlug($slug) {
         $this->slug = $slug;
 
         return $this;
@@ -246,8 +234,7 @@ class Articles
      *
      * @return string
      */
-    public function getSlug()
-    {
+    public function getSlug() {
         return $this->slug;
     }
 
@@ -258,8 +245,7 @@ class Articles
      *
      * @return Articles
      */
-    public function setUser(\PanierfoyenBundle\Entity\Users $user = null)
-    {
+    public function setUser(\PanierfoyenBundle\Entity\Users $user = null) {
         $this->user = $user;
 
         return $this;
@@ -270,8 +256,7 @@ class Articles
      *
      * @return \PanierfoyenBundle\Entity\Users
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
 
@@ -282,8 +267,7 @@ class Articles
      *
      * @return Articles
      */
-    public function addTag(\PanierfoyenBundle\Entity\Tags $tag)
-    {
+    public function addTag(\PanierfoyenBundle\Entity\Tags $tag) {
         $this->tag[] = $tag;
 
         return $this;
@@ -294,8 +278,7 @@ class Articles
      *
      * @param \PanierfoyenBundle\Entity\Tags $tag
      */
-    public function removeTag(\PanierfoyenBundle\Entity\Tags $tag)
-    {
+    public function removeTag(\PanierfoyenBundle\Entity\Tags $tag) {
         $this->tag->removeElement($tag);
     }
 
@@ -304,8 +287,8 @@ class Articles
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTag()
-    {
+    public function getTag() {
         return $this->tag;
     }
+
 }

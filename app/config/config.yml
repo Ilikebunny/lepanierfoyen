@@ -121,6 +121,7 @@ stof_doctrine_extensions:
         default:
             tree: true
             timestampable: true # not needed: listeners are not enabled by default
+            sluggable: true
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
