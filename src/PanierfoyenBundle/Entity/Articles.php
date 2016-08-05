@@ -45,7 +45,7 @@ class Articles {
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Timestampable(on="change", field={"titre", "contenue", "tag"})
      * @ORM\Column(name="modified", type="datetime", nullable=true)
      */
     private $modified;
