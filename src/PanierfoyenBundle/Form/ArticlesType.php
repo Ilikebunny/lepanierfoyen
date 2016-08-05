@@ -15,7 +15,7 @@ class ArticlesType extends AbstractType
             ->add('contenue')
             ->add('publicationDate')
             ->add('modified')
-            ->add('created')
+//            ->add('created')
 //            ->add('slug')
             ->add('user')
             ->add('tag')
