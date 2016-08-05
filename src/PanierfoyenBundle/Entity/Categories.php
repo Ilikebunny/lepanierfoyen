@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="categories", uniqueConstraints={@ORM\UniqueConstraint(name="libelle_UNIQUE", columns={"libelle"})})
  * @ORM\Entity
  */
-class Categories
-{
+class Categories {
+
     /**
      * @var integer
      *
@@ -45,19 +45,23 @@ class Categories
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->producteur = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->libelle;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -68,8 +72,7 @@ class Categories
      *
      * @return Categories
      */
-    public function setLibelle($libelle)
-    {
+    public function setLibelle($libelle) {
         $this->libelle = $libelle;
 
         return $this;
@@ -80,8 +83,7 @@ class Categories
      *
      * @return string
      */
-    public function getLibelle()
-    {
+    public function getLibelle() {
         return $this->libelle;
     }
 
@@ -92,8 +94,7 @@ class Categories
      *
      * @return Categories
      */
-    public function setLogo($logo)
-    {
+    public function setLogo($logo) {
         $this->logo = $logo;
 
         return $this;
@@ -104,8 +105,7 @@ class Categories
      *
      * @return string
      */
-    public function getLogo()
-    {
+    public function getLogo() {
         return $this->logo;
     }
 
@@ -116,8 +116,7 @@ class Categories
      *
      * @return Categories
      */
-    public function addProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur)
-    {
+    public function addProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur) {
         $this->producteur[] = $producteur;
 
         return $this;
@@ -128,8 +127,7 @@ class Categories
      *
      * @param \PanierfoyenBundle\Entity\Producteurs $producteur
      */
-    public function removeProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur)
-    {
+    public function removeProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur) {
         $this->producteur->removeElement($producteur);
     }
 
@@ -138,8 +136,8 @@ class Categories
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProducteur()
-    {
+    public function getProducteur() {
         return $this->producteur;
     }
+
 }

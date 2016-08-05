@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="tags")
  * @ORM\Entity
  */
-class Tags
-{
+class Tags {
+
     /**
      * @var integer
      *
@@ -52,19 +52,23 @@ class Tags
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->article = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->title;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -75,8 +79,7 @@ class Tags
      *
      * @return Tags
      */
-    public function setTitle($title)
-    {
+    public function setTitle($title) {
         $this->title = $title;
 
         return $this;
@@ -87,8 +90,7 @@ class Tags
      *
      * @return string
      */
-    public function getTitle()
-    {
+    public function getTitle() {
         return $this->title;
     }
 
@@ -99,8 +101,7 @@ class Tags
      *
      * @return Tags
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
 
         return $this;
@@ -111,8 +112,7 @@ class Tags
      *
      * @return \DateTime
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
     }
 
@@ -123,8 +123,7 @@ class Tags
      *
      * @return Tags
      */
-    public function setModified($modified)
-    {
+    public function setModified($modified) {
         $this->modified = $modified;
 
         return $this;
@@ -135,8 +134,7 @@ class Tags
      *
      * @return \DateTime
      */
-    public function getModified()
-    {
+    public function getModified() {
         return $this->modified;
     }
 
@@ -147,8 +145,7 @@ class Tags
      *
      * @return Tags
      */
-    public function addArticle(\PanierfoyenBundle\Entity\Articles $article)
-    {
+    public function addArticle(\PanierfoyenBundle\Entity\Articles $article) {
         $this->article[] = $article;
 
         return $this;
@@ -159,8 +156,7 @@ class Tags
      *
      * @param \PanierfoyenBundle\Entity\Articles $article
      */
-    public function removeArticle(\PanierfoyenBundle\Entity\Articles $article)
-    {
+    public function removeArticle(\PanierfoyenBundle\Entity\Articles $article) {
         $this->article->removeElement($article);
     }
 
@@ -169,8 +165,8 @@ class Tags
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getArticle()
-    {
+    public function getArticle() {
         return $this->article;
     }
+
 }
