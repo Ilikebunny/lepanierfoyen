@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="distributions", indexes={@ORM\Index(name="fk_distributions_lieu1_idx", columns={"lieu_id"})})
  * @ORM\Entity
  */
-class Distributions
-{
+class Distributions {
+
     /**
      * @var integer
      *
@@ -38,15 +38,12 @@ class Distributions
      */
     private $lieu;
 
-
-
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -57,8 +54,7 @@ class Distributions
      *
      * @return Distributions
      */
-    public function setDateDistribution($dateDistribution)
-    {
+    public function setDateDistribution($dateDistribution) {
         $this->dateDistribution = $dateDistribution;
 
         return $this;
@@ -69,8 +65,7 @@ class Distributions
      *
      * @return \DateTime
      */
-    public function getDateDistribution()
-    {
+    public function getDateDistribution() {
         return $this->dateDistribution;
     }
 
@@ -81,8 +76,7 @@ class Distributions
      *
      * @return Distributions
      */
-    public function setLieu(\PanierfoyenBundle\Entity\Lieus $lieu = null)
-    {
+    public function setLieu(\PanierfoyenBundle\Entity\Lieus $lieu = null) {
         $this->lieu = $lieu;
 
         return $this;
@@ -93,8 +87,8 @@ class Distributions
      *
      * @return \PanierfoyenBundle\Entity\Lieus
      */
-    public function getLieu()
-    {
+    public function getLieu() {
         return $this->lieu;
     }
+
 }

@@ -39,8 +39,12 @@ body{
 
 #main{
     background-color: #ffe5bd;
-    
 }
+
+.panel-body{
+    background-color: #ffe5bd;
+}
+
 #main_content{
     min-height: 500px;
 }    
