@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="produits", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_produits_producteurs1_idx", columns={"producteur_id"}), @ORM\Index(name="fk_produits_frequences1_idx", columns={"frequence_id"}), @ORM\Index(name="fk_produits_categories_production1_idx", columns={"category_id"})})
  * @ORM\Entity
  */
-class Produits
-{
+class Produits {
+
     /**
      * @var integer
      *
@@ -65,15 +65,19 @@ class Produits
      */
     private $producteur;
 
-
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->libelle;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -84,8 +88,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setLibelle($libelle)
-    {
+    public function setLibelle($libelle) {
         $this->libelle = $libelle;
 
         return $this;
@@ -96,8 +99,7 @@ class Produits
      *
      * @return string
      */
-    public function getLibelle()
-    {
+    public function getLibelle() {
         return $this->libelle;
     }
 
@@ -108,8 +110,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setDescriptif($descriptif)
-    {
+    public function setDescriptif($descriptif) {
         $this->descriptif = $descriptif;
 
         return $this;
@@ -120,8 +121,7 @@ class Produits
      *
      * @return string
      */
-    public function getDescriptif()
-    {
+    public function getDescriptif() {
         return $this->descriptif;
     }
 
@@ -132,8 +132,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setCategory(\PanierfoyenBundle\Entity\Categories $category = null)
-    {
+    public function setCategory(\PanierfoyenBundle\Entity\Categories $category = null) {
         $this->category = $category;
 
         return $this;
@@ -144,8 +143,7 @@ class Produits
      *
      * @return \PanierfoyenBundle\Entity\Categories
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -156,8 +154,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setFrequence(\PanierfoyenBundle\Entity\Frequences $frequence = null)
-    {
+    public function setFrequence(\PanierfoyenBundle\Entity\Frequences $frequence = null) {
         $this->frequence = $frequence;
 
         return $this;
@@ -168,8 +165,7 @@ class Produits
      *
      * @return \PanierfoyenBundle\Entity\Frequences
      */
-    public function getFrequence()
-    {
+    public function getFrequence() {
         return $this->frequence;
     }
 
@@ -180,8 +176,7 @@ class Produits
      *
      * @return Produits
      */
-    public function setProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur = null)
-    {
+    public function setProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur = null) {
         $this->producteur = $producteur;
 
         return $this;
@@ -192,8 +187,8 @@ class Produits
      *
      * @return \PanierfoyenBundle\Entity\Producteurs
      */
-    public function getProducteur()
-    {
+    public function getProducteur() {
         return $this->producteur;
     }
+
 }

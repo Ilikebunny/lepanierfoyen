@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="coordinateurs", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"}), @ORM\UniqueConstraint(name="nom_UNIQUE", columns={"nom"})})
  * @ORM\Entity
  */
-class Coordinateurs
-{
+class Coordinateurs {
+
     /**
      * @var integer
      *
@@ -84,15 +84,19 @@ class Coordinateurs
      */
     private $email;
 
-
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->nom;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -103,8 +107,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -115,8 +118,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -127,8 +129,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setCodepostal($codepostal)
-    {
+    public function setCodepostal($codepostal) {
         $this->codepostal = $codepostal;
 
         return $this;
@@ -139,8 +140,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getCodepostal()
-    {
+    public function getCodepostal() {
         return $this->codepostal;
     }
 
@@ -151,8 +151,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
 
         return $this;
@@ -163,8 +162,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
 
@@ -175,8 +173,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setAdr1($adr1)
-    {
+    public function setAdr1($adr1) {
         $this->adr1 = $adr1;
 
         return $this;
@@ -187,8 +184,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getAdr1()
-    {
+    public function getAdr1() {
         return $this->adr1;
     }
 
@@ -199,8 +195,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setAdr2($adr2)
-    {
+    public function setAdr2($adr2) {
         $this->adr2 = $adr2;
 
         return $this;
@@ -211,8 +206,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getAdr2()
-    {
+    public function getAdr2() {
         return $this->adr2;
     }
 
@@ -223,8 +217,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setAdr3($adr3)
-    {
+    public function setAdr3($adr3) {
         $this->adr3 = $adr3;
 
         return $this;
@@ -235,8 +228,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getAdr3()
-    {
+    public function getAdr3() {
         return $this->adr3;
     }
 
@@ -247,8 +239,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setTel($tel)
-    {
+    public function setTel($tel) {
         $this->tel = $tel;
 
         return $this;
@@ -259,8 +250,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getTel()
-    {
+    public function getTel() {
         return $this->tel;
     }
 
@@ -271,8 +261,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setMobile($mobile)
-    {
+    public function setMobile($mobile) {
         $this->mobile = $mobile;
 
         return $this;
@@ -283,8 +272,7 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getMobile()
-    {
+    public function getMobile() {
         return $this->mobile;
     }
 
@@ -295,8 +283,7 @@ class Coordinateurs
      *
      * @return Coordinateurs
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -307,8 +294,8 @@ class Coordinateurs
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="frequences", uniqueConstraints={@ORM\UniqueConstraint(name="libelle_UNIQUE", columns={"libelle"})})
  * @ORM\Entity
  */
-class Frequences
-{
+class Frequences {
+
     /**
      * @var integer
      *
@@ -35,15 +35,19 @@ class Frequences
      */
     private $jours;
 
-
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->libelle;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -54,8 +58,7 @@ class Frequences
      *
      * @return Frequences
      */
-    public function setLibelle($libelle)
-    {
+    public function setLibelle($libelle) {
         $this->libelle = $libelle;
 
         return $this;
@@ -66,8 +69,7 @@ class Frequences
      *
      * @return string
      */
-    public function getLibelle()
-    {
+    public function getLibelle() {
         return $this->libelle;
     }
 
@@ -78,8 +80,7 @@ class Frequences
      *
      * @return Frequences
      */
-    public function setJours($jours)
-    {
+    public function setJours($jours) {
         $this->jours = $jours;
 
         return $this;
@@ -90,8 +91,8 @@ class Frequences
      *
      * @return integer
      */
-    public function getJours()
-    {
+    public function getJours() {
         return $this->jours;
     }
+
 }

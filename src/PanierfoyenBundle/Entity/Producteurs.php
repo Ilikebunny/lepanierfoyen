@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="producteurs", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"}), @ORM\UniqueConstraint(name="nom_UNIQUE", columns={"nom"})}, indexes={@ORM\Index(name="fk_producteurs_coordinateurs1_idx", columns={"coordinateur_id"})})
  * @ORM\Entity
  */
-class Producteurs
-{
+class Producteurs {
+
     /**
      * @var integer
      *
@@ -126,19 +126,23 @@ class Producteurs
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->nom;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -149,8 +153,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setNom($nom)
-    {
+    public function setNom($nom) {
         $this->nom = $nom;
 
         return $this;
@@ -161,8 +164,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getNom()
-    {
+    public function getNom() {
         return $this->nom;
     }
 
@@ -173,8 +175,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setCodepostal($codepostal)
-    {
+    public function setCodepostal($codepostal) {
         $this->codepostal = $codepostal;
 
         return $this;
@@ -185,8 +186,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getCodepostal()
-    {
+    public function getCodepostal() {
         return $this->codepostal;
     }
 
@@ -197,8 +197,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
 
         return $this;
@@ -209,8 +208,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
 
@@ -221,8 +219,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setAdr1($adr1)
-    {
+    public function setAdr1($adr1) {
         $this->adr1 = $adr1;
 
         return $this;
@@ -233,8 +230,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getAdr1()
-    {
+    public function getAdr1() {
         return $this->adr1;
     }
 
@@ -245,8 +241,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setAdr2($adr2)
-    {
+    public function setAdr2($adr2) {
         $this->adr2 = $adr2;
 
         return $this;
@@ -257,8 +252,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getAdr2()
-    {
+    public function getAdr2() {
         return $this->adr2;
     }
 
@@ -269,8 +263,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setAdr3($adr3)
-    {
+    public function setAdr3($adr3) {
         $this->adr3 = $adr3;
 
         return $this;
@@ -281,8 +274,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getAdr3()
-    {
+    public function getAdr3() {
         return $this->adr3;
     }
 
@@ -293,8 +285,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setTel($tel)
-    {
+    public function setTel($tel) {
         $this->tel = $tel;
 
         return $this;
@@ -305,8 +296,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getTel()
-    {
+    public function getTel() {
         return $this->tel;
     }
 
@@ -317,8 +307,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setMobile($mobile)
-    {
+    public function setMobile($mobile) {
         $this->mobile = $mobile;
 
         return $this;
@@ -329,8 +318,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getMobile()
-    {
+    public function getMobile() {
         return $this->mobile;
     }
 
@@ -341,8 +329,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setSiteInternet($siteInternet)
-    {
+    public function setSiteInternet($siteInternet) {
         $this->siteInternet = $siteInternet;
 
         return $this;
@@ -353,8 +340,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getSiteInternet()
-    {
+    public function getSiteInternet() {
         return $this->siteInternet;
     }
 
@@ -365,8 +351,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setChequeOrdre($chequeOrdre)
-    {
+    public function setChequeOrdre($chequeOrdre) {
         $this->chequeOrdre = $chequeOrdre;
 
         return $this;
@@ -377,8 +362,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getChequeOrdre()
-    {
+    public function getChequeOrdre() {
         return $this->chequeOrdre;
     }
 
@@ -389,8 +373,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         $this->email = $email;
 
         return $this;
@@ -401,8 +384,7 @@ class Producteurs
      *
      * @return string
      */
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
@@ -413,8 +395,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function setCoordinateur(\PanierfoyenBundle\Entity\Coordinateurs $coordinateur = null)
-    {
+    public function setCoordinateur(\PanierfoyenBundle\Entity\Coordinateurs $coordinateur = null) {
         $this->coordinateur = $coordinateur;
 
         return $this;
@@ -425,8 +406,7 @@ class Producteurs
      *
      * @return \PanierfoyenBundle\Entity\Coordinateurs
      */
-    public function getCoordinateur()
-    {
+    public function getCoordinateur() {
         return $this->coordinateur;
     }
 
@@ -437,8 +417,7 @@ class Producteurs
      *
      * @return Producteurs
      */
-    public function addCategory(\PanierfoyenBundle\Entity\Categories $category)
-    {
+    public function addCategory(\PanierfoyenBundle\Entity\Categories $category) {
         $this->category[] = $category;
 
         return $this;
@@ -449,8 +428,7 @@ class Producteurs
      *
      * @param \PanierfoyenBundle\Entity\Categories $category
      */
-    public function removeCategory(\PanierfoyenBundle\Entity\Categories $category)
-    {
+    public function removeCategory(\PanierfoyenBundle\Entity\Categories $category) {
         $this->category->removeElement($category);
     }
 
@@ -459,8 +437,8 @@ class Producteurs
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
+
 }

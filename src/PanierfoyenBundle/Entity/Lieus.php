@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="lieus")
  * @ORM\Entity
  */
-class Lieus
-{
+class Lieus {
+
     /**
      * @var integer
      *
@@ -63,15 +63,19 @@ class Lieus
      */
     private $ville;
 
-
+    /**
+     * To string
+     */
+    public function __toString() {
+        return $this->libelle;
+    }
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -82,8 +86,7 @@ class Lieus
      *
      * @return Lieus
      */
-    public function setLibelle($libelle)
-    {
+    public function setLibelle($libelle) {
         $this->libelle = $libelle;
 
         return $this;
@@ -94,8 +97,7 @@ class Lieus
      *
      * @return string
      */
-    public function getLibelle()
-    {
+    public function getLibelle() {
         return $this->libelle;
     }
 
@@ -106,8 +108,7 @@ class Lieus
      *
      * @return Lieus
      */
-    public function setAdr1($adr1)
-    {
+    public function setAdr1($adr1) {
         $this->adr1 = $adr1;
 
         return $this;
@@ -118,8 +119,7 @@ class Lieus
      *
      * @return string
      */
-    public function getAdr1()
-    {
+    public function getAdr1() {
         return $this->adr1;
     }
 
@@ -130,8 +130,7 @@ class Lieus
      *
      * @return Lieus
      */
-    public function setAdr2($adr2)
-    {
+    public function setAdr2($adr2) {
         $this->adr2 = $adr2;
 
         return $this;
@@ -142,8 +141,7 @@ class Lieus
      *
      * @return string
      */
-    public function getAdr2()
-    {
+    public function getAdr2() {
         return $this->adr2;
     }
 
@@ -154,8 +152,7 @@ class Lieus
      *
      * @return Lieus
      */
-    public function setAdr3($adr3)
-    {
+    public function setAdr3($adr3) {
         $this->adr3 = $adr3;
 
         return $this;
@@ -166,8 +163,7 @@ class Lieus
      *
      * @return string
      */
-    public function getAdr3()
-    {
+    public function getAdr3() {
         return $this->adr3;
     }
 
@@ -178,8 +174,7 @@ class Lieus
      *
      * @return Lieus
      */
-    public function setCodepostal($codepostal)
-    {
+    public function setCodepostal($codepostal) {
         $this->codepostal = $codepostal;
 
         return $this;
@@ -190,8 +185,7 @@ class Lieus
      *
      * @return string
      */
-    public function getCodepostal()
-    {
+    public function getCodepostal() {
         return $this->codepostal;
     }
 
@@ -202,8 +196,7 @@ class Lieus
      *
      * @return Lieus
      */
-    public function setVille($ville)
-    {
+    public function setVille($ville) {
         $this->ville = $ville;
 
         return $this;
@@ -214,8 +207,8 @@ class Lieus
      *
      * @return string
      */
-    public function getVille()
-    {
+    public function getVille() {
         return $this->ville;
     }
+
 }
