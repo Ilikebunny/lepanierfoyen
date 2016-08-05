@@ -10,6 +10,7 @@
         <!-- Triton Crud-->
         <link href="{{ asset('bundles/tritoncrud/css/font-awesome.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('bundles/tritoncrud/css/crud.css') }}" rel="stylesheet" />
+
         <!-- Triton Crud-->
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -35,7 +36,10 @@
     </div>
     <div id="bradcrumbs">
     </div>
-
+    <!-- Form theme -->
+    {% if form is defined %}
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
     <div id="main">
         {% block menu_gauche %}
             {{ include('admin_menu.html.twig') }}

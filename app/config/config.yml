@@ -37,7 +37,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-
+twig:
+    form:
+        resources: ['bootstrap_3_layout.html.twig']
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -126,11 +128,7 @@ fos_user:
     user_class: PanierfoyenBundle\Entity\Users
     group:
         group_class: PanierfoyenBundle\Entity\Group    
-
-twig:
-    form_themes:
-    - 'bootstrap_3_layout.html.twig'   
-    
+        
 ikadoc_kc_finder:
     base_path : "%kernel.root_dir%/../vendor/sunhater/kcfinder"
     config:
