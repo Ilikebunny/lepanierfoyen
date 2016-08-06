@@ -3,6 +3,7 @@
 namespace PanierfoyenBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Tags
@@ -30,14 +31,14 @@ class Tags {
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
     /**
      * @var \DateTime
-     *
+     * @Gedmo\Timestampable(on="change", field={"title"})
      * @ORM\Column(name="modified", type="datetime", nullable=true)
      */
     private $modified;

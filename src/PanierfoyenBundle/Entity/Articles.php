@@ -98,6 +98,13 @@ class Articles {
     }
 
     /**
+     * To string
+     */
+    public function __toString() {
+        return $this->titre;
+    }
+
+    /**
      * Get id
      *
      * @return integer
