@@ -40,6 +40,10 @@
     {% if form is defined %}
         {% form_theme form 'bootstrap_3_layout.html.twig' %}
     {% endif %}
+    {% if edit_form is defined %}
+        {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
+    <!-- Form theme END-->
     <div id="main">
         {% block menu_gauche %}
             {{ include('admin_menu.html.twig') }}

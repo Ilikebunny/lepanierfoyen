@@ -13,6 +13,10 @@ body{
     margin-right: auto;
     width: 800px;   
 }
+
+.panel-heading{
+    background-color: #915e36;
+}
 .banniere_img{
     width: 120px;
     position: relative;
