@@ -1,0 +1,22 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Le Panier Foyen{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" /> 
+    <!-- Triton Crud-->
+    <link href="{{ asset('bundles/tritoncrud/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/tritoncrud/css/crud.css') }}" rel="stylesheet" />
+    <!-- Triton Crud-->
+    <!-- Form theme -->
+    {% if form is defined %}
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
+    {% if edit_form is defined %}
+        {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    {% endif %}
+    <!-- Form theme END-->
+{% block stylesheets %}{% endblock %}
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
