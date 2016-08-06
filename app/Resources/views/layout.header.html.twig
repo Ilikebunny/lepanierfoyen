@@ -1,20 +1,24 @@
+
 <div id="banniere" class="row">
-    <span id ="banniere_gauche">
-        <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a>
-        <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a>
-    </span>
-    <img id ="logo" src="{{ asset('images/logo_white_bg.png') }}" alt="Contact" />
-    <span id ="banniere_droite">
-        <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a>
-        <a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a> 
-    </span>
+    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a></div>
+    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a></div>
+    <div class="col-xs-4"><img id ="logo" src="{{ asset('images/logo_white_bg.png') }}" alt="Contact" /></div>
+    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a></div>
+    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img" src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a> </div>
 </div>
-    
+
 <div id="banniere_bande" class="row">
-    <span>Bio et</span>
-    <span>Local</span>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-1">BIO</div>
+    <div class="col-xs-4"></div>
+    <div class="col-xs-1">LOCAL</div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-1"></div>
+    <div class="col-xs-1"></div>
 </div>
-    
+
 <div id="menu_haut" class="row">
     {{ include('main_navbar.html.twig') }}
 </div>

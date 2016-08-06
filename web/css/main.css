@@ -1,31 +1,15 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 30 juil. 2016, 11:08:41
-    Author     : admin
-*/
-
-body{
-}
 
 .panel-heading{
     background-color: #915e36;
 }
 .banniere_img{
     width: 120px;
-    position: relative;
 }
 
-#banniere_droite{
-    float: right;
-}
 #logo{
     width: 180px;
     position: absolute;
-    margin-left: 70px;
+    left: 25%;
     z-index: 2;
 }
 
