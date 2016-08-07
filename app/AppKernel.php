@@ -20,6 +20,7 @@ class AppKernel extends Kernel {
             new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new Triton\Bundle\CrudBundle\TritonCrudBundle(),
             new Ikadoc\KCFinderBundle\IkadocKCFinderBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

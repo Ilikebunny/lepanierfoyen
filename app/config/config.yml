@@ -136,3 +136,12 @@ ikadoc_kc_finder:
         disabled : false
         uploadURL: "/uploads/"
         uploadDir: "%kernel.root_dir%/../web/uploads/"
+
+ivory_ck_editor:
+    jquery: true
+    default_config: my_config
+    configs:
+        my_config:
+            toolbar: full
+            uiColor:                "#000000"
+            filebrowserBrowseRoute: "kcfinder_browse"
