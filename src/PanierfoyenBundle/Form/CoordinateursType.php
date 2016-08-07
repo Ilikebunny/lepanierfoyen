@@ -12,11 +12,11 @@ class CoordinateursType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('codepostal')
-            ->add('ville')
             ->add('adr1')
             ->add('adr2')
             ->add('adr3')
+            ->add('codepostal')
+            ->add('ville')
             ->add('tel')
             ->add('mobile')
             ->add('email')
