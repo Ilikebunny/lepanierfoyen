@@ -8,18 +8,6 @@
                 {{ include('admin_menu.html.twig') }}
             {% endblock %}
             <div id="main_content">
-                <!-- Triton Crud-->
-                {% block menu %}
-                {% endblock %}
-
-                {% for type, flashMessages in app.session.flashbag.all() %}
-                    {% for flashMessage in flashMessages %}
-                        <div class="alert alert-{{ type }}">
-                            {{ flashMessage|trans({}, 'TritonCrudBundle') }}
-                        </div>
-                    {% endfor %}
-                {% endfor %}
-                <!-- Triton Crud-->
                 {% block body %}
                 {% endblock %}
             </div>
