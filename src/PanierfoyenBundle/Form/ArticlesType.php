@@ -17,7 +17,7 @@ class ArticlesType extends AbstractType {
 //            ->add('modified')
 //            ->add('created')
 //            ->add('slug')
-                ->add('user')
+//                ->add('user')
                 ->add('tag')
         ;
     }

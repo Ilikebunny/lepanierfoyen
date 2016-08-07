@@ -67,7 +67,8 @@ class Articles {
 
     /**
      * @var \Users
-     *
+     * 
+     * @Gedmo\Blameable(on="create")
      * @ORM\ManyToOne(targetEntity="Users")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
