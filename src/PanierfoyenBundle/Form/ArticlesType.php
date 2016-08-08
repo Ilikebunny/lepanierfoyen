@@ -18,7 +18,9 @@ class ArticlesType extends AbstractType {
 //            ->add('created')
 //            ->add('slug')
 //                ->add('user')
-                ->add('tag')
+                ->add('tag', null, array('attr' => array(
+                        'class' => 'chosen-select'
+            )))
         ;
     }
 
