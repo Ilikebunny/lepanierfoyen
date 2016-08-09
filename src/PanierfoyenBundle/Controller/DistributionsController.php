@@ -18,7 +18,7 @@ use PanierfoyenBundle\Form\DistributionsType;
 /**
  * Distributions controller.
  *
- * @Route("/distributions")
+ * @Route("/admin/distributions")
  */
 class DistributionsController extends Controller
 {

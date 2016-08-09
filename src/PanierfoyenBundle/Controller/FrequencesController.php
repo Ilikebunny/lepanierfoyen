@@ -18,7 +18,7 @@ use PanierfoyenBundle\Form\FrequencesType;
 /**
  * Frequences controller.
  *
- * @Route("/frequences")
+ * @Route("/admin/frequences")
  */
 class FrequencesController extends Controller
 {

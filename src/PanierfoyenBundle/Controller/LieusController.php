@@ -18,7 +18,7 @@ use PanierfoyenBundle\Form\LieusType;
 /**
  * Lieus controller.
  *
- * @Route("/lieus")
+ * @Route("/admin/lieus")
  */
 class LieusController extends Controller
 {
