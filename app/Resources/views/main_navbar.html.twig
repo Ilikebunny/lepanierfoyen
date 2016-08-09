@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PanierFoyen</a>
+            <a class="navbar-brand" href="{{ path('_welcome') }}">PanierFoyen</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -20,26 +20,21 @@
                         <li><a href="#">Le concept</a></li>
                         <li><a href="#">Qui somme nous ?</a></li>
                         <li><a href="#">Le bureau</a></li>
+                        <li><a href="#">Les coordinateurs</a></li>
+                        <li><a href="#">Les distributions</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#">Nous contacter</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Les publications <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">Recettes</a></li>
                     </ul>
                 </li>
+                <li><a href="#">Les producteurs</a></li>
+                <li><a href="#">Les produits</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Link</a></li>
@@ -51,7 +46,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('fos_user_profile_edit') }}">Editer profil</a></li>
-                            <li><a href="{{ path('fos_user_change_password') }}">{{ 'layout.change'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
                             <li><a href="{{ path('fos_user_group_list') }}">Liste des groupes</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
@@ -63,7 +58,6 @@
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                             <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
-                            <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>
                         </ul>

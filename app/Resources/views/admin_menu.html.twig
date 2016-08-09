@@ -1,18 +1,53 @@
-<ul class="nav nav-pills " id="admin_menu">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="{{ path('categories') }}">Catégories</a></li>
-    <li role="presentation"><a href="{{ path('coordinateurs') }}">Coordinateurs</a></li>
-    <li role="presentation"><a href="{{ path('producteurs') }}">Producteurs</a></li>
-    <li role="presentation"><a href="{{ path('frequences') }}">Frequences</a></li>
-    <li role="presentation"><a href="{{ path('produits') }}">Produits</a></li>
-    <li role="presentation"><a href="{{ path('conditionnements') }}">Conditionnements</a></li>
-    <li role="presentation"><a href="{{ path('lieus') }}">Lieux</a></li>
-    <li role="presentation"><a href="{{ path('distributions') }}">Distribution</a></li>
-    <li role="presentation"><a href="{{ path('disponibilites') }}">Disponibilites</a></li>
-    <li role="presentation"><a href="{{ path('payements') }}">Payements</a></li>
-    <li role="presentation"><a href="{{ path('contrats') }}">Contrats</a></li>
-    <li role="presentation"><a href="{{ path('users') }}">Utilisateurs</a></li>
-    <li role="presentation"><a href="{{ path('tags') }}">Tags</a></li>
-    <li role="presentation"><a href="{{ path('articles') }}">Articles</a></li>
+<ul class="nav nav-pills" id="admin_menu">
+    <li role="presentation" class="active"><a href="#">Administration</a></li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Paramètres <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a href="{{ path('categories') }}">Catégories</a></li>
+            <li role="presentation"><a href="{{ path('frequences') }}">Frequences</a></li>
+            <li role="presentation"><a href="{{ path('lieus') }}">Lieux</a></li>
+            <li role="presentation"><a href="{{ path('distributions') }}">Distribution</a></li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Intervenants <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a href="{{ path('coordinateurs') }}">Coordinateurs</a></li>
+            <li role="presentation"><a href="{{ path('producteurs') }}">Producteurs</a></li>
+            <li role="presentation"><a href="{{ path('users') }}">Utilisateurs</a></li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Produits <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a href="{{ path('produits') }}">Produits</a></li>
+            <li role="presentation"><a href="{{ path('conditionnements') }}">Conditionnements</a></li>
+            <li role="presentation"><a href="{{ path('disponibilites') }}">Disponibilites</a></li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Publication <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a href="{{ path('tags') }}">Tags</a></li>
+            <li role="presentation"><a href="{{ path('articles') }}">Articles</a></li>
+        </ul>
+    </li>
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Gestion contrats <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li role="presentation"><a href="{{ path('payements') }}">Payements</a></li>
+            <li role="presentation"><a href="{{ path('contrats') }}">Contrats</a></li>
+        </ul>
+    </li>
     <li role="presentation"><a href="{{ path('kcfinder_browse') }}">KCFinder_browse</a></li>
 </ul>
