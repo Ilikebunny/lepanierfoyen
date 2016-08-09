@@ -1,104 +1,104 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - producteur
+    {{ parent() }} - producteur
 {% endblock %}
 
 {% block body %}
 
-<header class="panel-heading">
-    <h2> Producteurs</h2>
-</header>
-<div class="panel-body">
+    <header class="panel-heading">
+        <h2> Producteurs</h2>
+    </header>
+    <div class="panel-body">
 
-    <form class="form form-vertical">
-        <fieldset>            <div class="control-group">
-                <label class="col-sm-2 control-label">Id</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.id }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Nom</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.nom }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Codepostal</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.codepostal }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Ville</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.ville }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Adr1</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.adr1 }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Adr2</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.adr2 }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Adr3</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.adr3 }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Tel</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.tel }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Mobile</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.mobile }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Siteinternet</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.siteInternet }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Chequeordre</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.chequeOrdre }}</span>
-                </div>
-            </div>            <div class="control-group">
-                <label class="col-sm-2 control-label">Email</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{{ producteur.email }}</span>
-                </div>
-            </div>        </fieldset>
-    </form>
+        <form class="form form-vertical">
+            <fieldset>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Id</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.id }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Nom</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.nom }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Codepostal</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.codepostal }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Ville</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.ville }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Adr1</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.adr1 }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Adr2</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.adr2 }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Adr3</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.adr3 }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Tel</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.tel }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Mobile</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.mobile }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Siteinternet</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.siteInternet }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Chequeordre</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.chequeOrdre }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.email }}</span>
+                    </div>
+                </div>        </fieldset>
+        </form>
         <hr>
         <div class="form-group">
-    <a class="btn btn-default" href="{{ path('producteurs') }}">
-        <i class="fa fa-list" aria-hidden="true"></i>
-        Back to list
-    </a>
+            <a class="btn btn-default" href="{{ path('producteurs') }}">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Back to list
+            </a>
             <a class="btn btn-success" href="{{ path('producteurs_edit', { 'id':  producteur.id }) }}">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-            Edit
-        </a>
-                <a class="btn btn-primary" href="{{ path('producteurs_new') }}">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            New
-        </a>
-                <form action="{{ path('producteurs_delete', { 'id': producteur.id }) }}" method="post" style="display: inline-block">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
-                <i class="fa fa-trash-o"></i> 
-                Delete</button>
-        </form>
-    </div>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Edit
+            </a>
+            <a class="btn btn-primary" href="{{ path('producteurs_new') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                New
+            </a>
+            <form action="{{ path('producteurs_delete', { 'id': producteur.id }) }}" method="post" style="display: inline-block">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                    <i class="fa fa-trash-o"></i> 
+                    Delete</button>
+            </form>
+        </div>
 
-</div>
-<hr>
+    </div>
+    <hr>
 
 {% endblock %}
 
