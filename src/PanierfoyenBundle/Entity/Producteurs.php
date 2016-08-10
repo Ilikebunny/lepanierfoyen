@@ -110,7 +110,7 @@ class Producteurs {
     /**
      * @var \Coordinateurs
      *
-     * @ORM\ManyToOne(targetEntity="Coordinateurs")
+     * @ORM\ManyToOne(targetEntity="Coordinateurs", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="coordinateur_id", referencedColumnName="id")
      * })
@@ -120,7 +120,7 @@ class Producteurs {
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Categories", inversedBy="producteur")
+     * @ORM\ManyToMany(targetEntity="Categories", inversedBy="producteur", fetch="EAGER")
      * @ORM\JoinTable(name="categories_producteurs",
      *   joinColumns={
      *     @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
