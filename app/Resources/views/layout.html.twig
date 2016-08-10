@@ -4,8 +4,8 @@
     <body>
         <div id="main" class="container">
             {{ include('layout.header.html.twig') }}
-            {% block menu_gauche %}
-                {{ include('admin_menu.html.twig') }}
+            {% block menu_haut %}
+{#                {{ include('admin_menu.html.twig') }}#}
             {% endblock %}
             <div id="main_content">
                 {% block body %}
