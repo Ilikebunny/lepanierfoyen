@@ -1,7 +1,4 @@
 
-.panel-heading{
-    background-color: #915e36;
-}
 .banniere_img{
     width: 120px;
 }
@@ -27,8 +24,14 @@
     background-color: #ffe5bd;
 }
 
+.panel-heading{
+    /*background-color: #915e36;*/
+    background-color: #c99e66;
+}
+
 .panel-body{
-    background-color: #ffe5bd;
+    /*background-color: #ffe5bd;*/
+    background-color: #e3c7a1;
 }
 
 #main_content{
