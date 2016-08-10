@@ -14,7 +14,8 @@
 
 #banniere_bande{
     height: 70px;
-    background-color: #549e33;
+    /*background-color: #549e33;*/
+    background-color: #adc917;
 }
 
 #admin_menu{
