@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-{#    {{ dump() }}#}
+    {#    {{ dump() }}#}
 
     <header class="panel-heading">
         <h2>Producteurs list </h2>
@@ -30,6 +30,7 @@
                             <th>Siteinternet</th>
                             <th>Chequeordre</th>
                             <th>Email</th>
+                            <th width = "130px">List</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,6 +48,11 @@
                                 <td>{{ producteur.siteInternet }}</td>
                                 <td>{{ producteur.chequeOrdre }}</td>
                                 <td>{{ producteur.email }}</td>
+                                <td>  
+                                    <a title='show' class="btn btn-success btn-sm" href="{{ path('producteurs_show_slug', { 'slug': producteur.slug }) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

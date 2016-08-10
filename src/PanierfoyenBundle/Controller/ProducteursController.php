@@ -68,31 +68,62 @@ class ProducteursController extends Controller {
     }
 
     /**
-     * Creates a form to delete a Producteurs entity.
+     * Finds and displays a Producteurs entity.
      *
-     * @param Producteurs $producteur The Producteurs entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * @Route("/{id}", name="producteurs_show", requirements={"id": "\d+"}) 
+     * @Method("GET")
      */
-    private function createDeleteForm(Producteurs $producteur) {
-        return $this->createFormBuilder()
-                        ->setAction($this->generateUrl('producteurs_delete', array('id' => $producteur->getId())))
-                        ->setMethod('DELETE')
-                        ->getForm()
-        ;
+    public function showAction(Producteurs $producteur) {
+        return $this->render('producteurs/show.html.twig', array(
+                    'producteur' => $producteur
+        ));
     }
 
     /**
      * Finds and displays a Producteurs entity.
      *
-     * @Route("/{id}", name="producteurs_show")
+     * @Route("/{slug}", name="producteurs_show_slug", requirements={"slug": "[^/]++"}) 
      * @Method("GET")
      */
-    public function showAction(Producteurs $producteur) {
-        $deleteForm = $this->createDeleteForm($producteur);
+    public function showActionSlug(Producteurs $producteur) {
         return $this->render('producteurs/show.html.twig', array(
-                    'producteur' => $producteur,
-                    'delete_form' => $deleteForm->createView(),
+                    'producteur' => $producteur
+        ));
+    }
+
+    /**
+     * Finds and displays a Producteurs entity.
+     *
+     * @Route("/{slug}/coordinateur", name="producteurs_show_slug_coordinateur", requirements={"slug": "[^/]++"}) 
+     * @Method("GET")
+     */
+    public function showActionSlugCoordinateur(Producteurs $producteur) {
+        return $this->render('producteurs/show.html.twig', array(
+                    'producteur' => $producteur
+        ));
+    }
+
+    /**
+     * Finds and displays a Producteurs entity.
+     *
+     * @Route("/{slug}/produits", name="producteurs_show_slug_produits", requirements={"slug": "[^/]++"}) 
+     * @Method("GET")
+     */
+    public function showActionSlugProduits(Producteurs $producteur) {
+        return $this->render('producteurs/show.html.twig', array(
+                    'producteur' => $producteur
+        ));
+    }
+
+    /**
+     * Finds and displays a Producteurs entity.
+     *
+     * @Route("/{slug}/photos", name="producteurs_show_slug_photos", requirements={"slug": "[^/]++"}) 
+     * @Method("GET")
+     */
+    public function showActionSlugPhotos(Producteurs $producteur) {
+        return $this->render('producteurs/show.html.twig', array(
+                    'producteur' => $producteur
         ));
     }
 

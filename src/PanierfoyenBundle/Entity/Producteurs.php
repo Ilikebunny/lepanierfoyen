@@ -3,6 +3,7 @@
 namespace PanierfoyenBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Producteurs
@@ -24,9 +25,17 @@ class Producteurs {
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=90, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=90, nullable=false, unique=true)
      */
     private $nom;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"nom"})
+     * @ORM\Column(name="slug", type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -166,6 +175,28 @@ class Producteurs {
      */
     public function getNom() {
         return $this->nom;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Producteurs
+     */
+    public function setSlug($slug) {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getslug() {
+        return $this->slug;
     }
 
     /**
