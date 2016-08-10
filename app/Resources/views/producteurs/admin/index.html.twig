@@ -58,6 +58,7 @@
                             <th>Siteinternet</th>
                             <th>Chequeordre</th>
                             <th>Email</th>
+                            <th>Coordinateur</th>
                             <th width = "130px">List</th>
                         </tr>
                     </thead>
@@ -77,6 +78,7 @@
                                 <td>{{ producteur.siteInternet }}</td>
                                 <td>{{ producteur.chequeOrdre }}</td>
                                 <td>{{ producteur.email }}</td>
+                                <td>{{ producteur.coordinateur.nom }}</td>
                                 <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('producteurs_by_id_delete', { 'id': producteur.id}) }}">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
