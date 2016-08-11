@@ -37,7 +37,6 @@ class ImportCSV {
             }
             fclose($handle);
         }
-        var_dump($csvContent);
         return $csvContent;
     }
 
