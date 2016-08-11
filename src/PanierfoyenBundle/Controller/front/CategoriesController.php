@@ -1,6 +1,6 @@
 <?php
 
-namespace PanierfoyenBundle\Controller;
+namespace PanierfoyenBundle\Controller\front;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

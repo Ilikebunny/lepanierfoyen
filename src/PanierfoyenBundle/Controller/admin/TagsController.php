@@ -1,6 +1,6 @@
 <?php
 
-namespace PanierfoyenBundle\Controller;
+namespace PanierfoyenBundle\Controller\admin;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,32 +11,32 @@ use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
-use PanierfoyenBundle\Entity\Conditionnements;
-use PanierfoyenBundle\Form\ConditionnementsType;
+use PanierfoyenBundle\Entity\Tags;
+use PanierfoyenBundle\Form\TagsType;
 
 
 /**
- * Conditionnements controller.
+ * Tags controller.
  *
- * @Route("/conditionnements")
+ * @Route("/admin/tags")
  */
-class ConditionnementsController extends Controller
+class TagsController extends Controller
 {
     /**
-     * Lists all Conditionnements entities.
+     * Lists all Tags entities.
      *
-     * @Route("/", name="conditionnements")
+     * @Route("/", name="tags")
      * @Method("GET")
      */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Conditionnements')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Tags')->createQueryBuilder('e');
 
-        list($conditionnements, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        list($tags, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
-        return $this->render('conditionnements/index.html.twig', array(
-            'conditionnements' => $conditionnements,
+        return $this->render('tags/index.html.twig', array(
+            'tags' => $tags,
             'pagerHtml' => $pagerHtml,
 
         ));
@@ -60,7 +60,7 @@ class ConditionnementsController extends Controller
         $me = $this;
         $routeGenerator = function($page) use ($me)
         {
-            return $me->generateUrl('conditionnements', array('page' => $page));
+            return $me->generateUrl('tags', array('page' => $page));
         };
 
         // Paginator - view
@@ -77,27 +77,27 @@ class ConditionnementsController extends Controller
     
 
     /**
-     * Displays a form to create a new Conditionnements entity.
+     * Displays a form to create a new Tags entity.
      *
-     * @Route("/new", name="conditionnements_new")
+     * @Route("/new", name="tags_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
     {
     
-        $conditionnement = new Conditionnements();
-        $form   = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
+        $tag = new Tags();
+        $form   = $this->createForm('PanierfoyenBundle\Form\TagsType', $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($conditionnement);
+            $em->persist($tag);
             $em->flush();
 
-            return $this->redirectToRoute('conditionnements_show', array('id' => $conditionnement->getId()));
+            return $this->redirectToRoute('tags_show', array('id' => $tag->getId()));
         }
-        return $this->render('conditionnements/new.html.twig', array(
-            'conditionnement' => $conditionnement,
+        return $this->render('tags/new.html.twig', array(
+            'tag' => $tag,
             'form'   => $form->createView(),
         ));
     }
@@ -106,16 +106,16 @@ class ConditionnementsController extends Controller
 
     
     /**
-     * Finds and displays a Conditionnements entity.
+     * Finds and displays a Tags entity.
      *
-     * @Route("/{id}", name="conditionnements_show")
+     * @Route("/{id}", name="tags_show")
      * @Method("GET")
      */
-    public function showAction(Conditionnements $conditionnement)
+    public function showAction(Tags $tag)
     {
-        $deleteForm = $this->createDeleteForm($conditionnement);
-        return $this->render('conditionnements/show.html.twig', array(
-            'conditionnement' => $conditionnement,
+        $deleteForm = $this->createDeleteForm($tag);
+        return $this->render('tags/show.html.twig', array(
+            'tag' => $tag,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -123,27 +123,27 @@ class ConditionnementsController extends Controller
     
 
     /**
-     * Displays a form to edit an existing Conditionnements entity.
+     * Displays a form to edit an existing Tags entity.
      *
-     * @Route("/{id}/edit", name="conditionnements_edit")
+     * @Route("/{id}/edit", name="tags_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Conditionnements $conditionnement)
+    public function editAction(Request $request, Tags $tag)
     {
-        $deleteForm = $this->createDeleteForm($conditionnement);
-        $editForm = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
+        $deleteForm = $this->createDeleteForm($tag);
+        $editForm = $this->createForm('PanierfoyenBundle\Form\TagsType', $tag);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($conditionnement);
+            $em->persist($tag);
             $em->flush();
             
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
-            return $this->redirectToRoute('conditionnements_edit', array('id' => $conditionnement->getId()));
+            return $this->redirectToRoute('tags_edit', array('id' => $tag->getId()));
         }
-        return $this->render('conditionnements/edit.html.twig', array(
-            'conditionnement' => $conditionnement,
+        return $this->render('tags/edit.html.twig', array(
+            'tag' => $tag,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -152,70 +152,70 @@ class ConditionnementsController extends Controller
     
 
     /**
-     * Deletes a Conditionnements entity.
+     * Deletes a Tags entity.
      *
-     * @Route("/{id}", name="conditionnements_delete")
+     * @Route("/{id}", name="tags_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Conditionnements $conditionnement)
+    public function deleteAction(Request $request, Tags $tag)
     {
     
-        $form = $this->createDeleteForm($conditionnement);
+        $form = $this->createDeleteForm($tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($conditionnement);
+            $em->remove($tag);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.delete.success');
         } else {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
         
-        return $this->redirectToRoute('conditionnements');
+        return $this->redirectToRoute('tags');
     }
     
     /**
-     * Creates a form to delete a Conditionnements entity.
+     * Creates a form to delete a Tags entity.
      *
-     * @param Conditionnements $conditionnement The Conditionnements entity
+     * @param Tags $tag The Tags entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Conditionnements $conditionnement)
+    private function createDeleteForm(Tags $tag)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('conditionnements_delete', array('id' => $conditionnement->getId())))
+            ->setAction($this->generateUrl('tags_delete', array('id' => $tag->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
     }
     
     /**
-     * Delete Conditionnements by id
+     * Delete Tags by id
      *
      * @param mixed $id The entity id
-     * @Route("/delete/{id}", name="conditionnements_by_id_delete")
+     * @Route("/delete/{id}", name="tags_by_id_delete")
      * @Method("GET")
      */
     public function deleteById($id){
 
         $em = $this->getDoctrine()->getManager();
-        $conditionnement = $em->getRepository('PanierfoyenBundle:Conditionnements')->find($id);
+        $tag = $em->getRepository('PanierfoyenBundle:Tags')->find($id);
         
-        if (!$conditionnement) {
-            throw $this->createNotFoundException('Unable to find Conditionnements entity.');
+        if (!$tag) {
+            throw $this->createNotFoundException('Unable to find Tags entity.');
         }
         
         try {
-            $em->remove($conditionnement);
+            $em->remove($tag);
             $em->flush();
             $this->get('session')->getFlashBag()->add('success', 'flash.delete.success');
         } catch (Exception $ex) {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('conditionnements'));
+        return $this->redirect($this->generateUrl('tags'));
 
     }
     
