@@ -1,49 +1,22 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - coordinateur index
+    {{ parent() }} - coordinateur index
 {% endblock %}
 
 {% block body %}
-<header class="panel-heading">
-    <h2>Coordinateurs list </h2>
-</header>
-<div class="panel-body">
+    <header class="panel-heading">
+        <h2>Coordinateurs list </h2>
+    </header>
+    <div class="panel-body">
 
-    <div class="row">
-        <div class="col-md-12">
-            {% for flash_message in app.session.flashbag.get('error') %}
-            <div class="alert alert-error ">
-                 {{ flash_message }}
-            </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('success') %}
-            <div class="alert alert-success ">
-                 {{ flash_message }}
-            </div>
-             {% endfor %}
-        </div>
-    </div>
-
-
-    
-            <div class="row">
-            <div class="col-md-2 form-group pull-right">
-                <a class="btn btn-primary likepaginator" href="{{ path('coordinateurs_new') }}">
-                    <i class="fa fa-plus"></i> New
-                </a>
-            </div>
-        </div>
-
-    
-    
         <div class="row">
             <div class="col-md-12">
 
                 <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                         <tr>
-                            
+
                             <th>Id</th>
                             <th>Nom</th>
                             <th>Codepostal</th>
@@ -54,43 +27,37 @@
                             <th>Tel</th>
                             <th>Mobile</th>
                             <th>Email</th>
-                            <th width = "130px">List</th>
+                            <th>List</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for coordinateur in coordinateurs %}
-                        <tr>
-                            
-                            <td><a href="{{ path('coordinateurs_show', { 'id': coordinateur.id }) }}">{{ coordinateur.id }}</a></td>
-                            <td>{{ coordinateur.nom }}</td>
-                            <td>{{ coordinateur.codepostal }}</td>
-                            <td>{{ coordinateur.ville }}</td>
-                            <td>{{ coordinateur.adr1 }}</td>
-                            <td>{{ coordinateur.adr2 }}</td>
-                            <td>{{ coordinateur.adr3 }}</td>
-                            <td>{{ coordinateur.tel }}</td>
-                            <td>{{ coordinateur.mobile }}</td>
-                            <td>{{ coordinateur.email }}</td>
-                            <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('coordinateurs_by_id_delete', { 'id': coordinateur.id}) }}">
-        <i class="fa fa-trash-o"></i>
-    </a>
-<a title='show' class="btn btn-success btn-sm" href="{{ path('coordinateurs_show', { 'id': coordinateur.id }) }}">
-    <i class="fa fa-eye"></i>
-</a>
-    <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('coordinateurs_edit', { 'id': coordinateur.id }) }}">
-        <i class="fa fa-pencil"></i>
-    </a>
+                            <tr>
 
-                            </td>
-                        </tr>
+                                <td><a href="{{ path('coordinateurs_show', { 'id': coordinateur.id }) }}">{{ coordinateur.id }}</a></td>
+                                <td>{{ coordinateur.nom }}</td>
+                                <td>{{ coordinateur.codepostal }}</td>
+                                <td>{{ coordinateur.ville }}</td>
+                                <td>{{ coordinateur.adr1 }}</td>
+                                <td>{{ coordinateur.adr2 }}</td>
+                                <td>{{ coordinateur.adr3 }}</td>
+                                <td>{{ coordinateur.tel }}</td>
+                                <td>{{ coordinateur.mobile }}</td>
+                                <td>{{ coordinateur.email }}</td>
+                                <td>    
+                                    <a title='show' class="btn btn-success btn-sm" href="{{ path('coordinateurs_show', { 'id': coordinateur.id }) }}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
 
             </div>
         </div>
-        
-</div>
+
+    </div>
 
 
 {% endblock %}
