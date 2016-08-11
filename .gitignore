@@ -65,3 +65,4 @@ Temporary Items
 /web/bundles/
 /web/uploads/.thumbs/
 /web/uploads/images/
+/app/csv/*
