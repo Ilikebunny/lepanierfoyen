@@ -17,7 +17,15 @@
     /*background-color: #549e33;*/
     background-color: #adc917;
 }
-
+#menu_haut{
+    /*background-color: #adc917;*/
+}
+.navbar-default {
+  background-color:#adc917;
+  border-color:#adc917;
+  background-image: none;
+  background-repeat: no-repeat;
+ }
 #admin_menu{
 }
 
