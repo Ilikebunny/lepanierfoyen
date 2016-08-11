@@ -21,6 +21,7 @@ class AppKernel extends Kernel {
             new Triton\Bundle\CrudBundle\TritonCrudBundle(),
             new Ikadoc\KCFinderBundle\IkadocKCFinderBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
