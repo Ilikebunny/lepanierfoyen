@@ -13,6 +13,7 @@ class ProduitsType extends AbstractType
         $builder
             ->add('libelle')
             ->add('descriptif')
+            ->add('image')
             ->add('category')
             ->add('frequence')
             ->add('producteur')
