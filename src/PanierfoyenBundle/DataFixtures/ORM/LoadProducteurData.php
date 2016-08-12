@@ -9,6 +9,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use PanierfoyenBundle\Entity\Producteurs;
+use PanierfoyenBundle\Entity\Categories;
 
 class LoadProducteurData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 
@@ -41,9 +42,25 @@ class LoadProducteurData extends AbstractFixture implements OrderedFixtureInterf
                 $entity->setSiteInternet($row[9]);
                 $entity->setChequeOrdre($row[10]);
 
+                //link to coordianteur entity
                 if ($row[11] != "") {
                     $entity->setCoordinateur($this->getReference($row[11]));
                 }
+
+                //links to categories entities
+                if ($row[12] != "") {
+                    $categoriesList = explode("/", $row[12]);
+                    foreach ($categoriesList as $categorieLibelle) {
+                        $categorie = new Categories();
+
+                        $categorie = $this->container->get('doctrine')
+                                ->getRepository('PanierfoyenBundle:Categories')
+                                ->findOneByLibelle($categorieLibelle);
+
+                        $entity->addCategory($categorie);
+                    }
+                }
+
                 $manager->persist($entity);
                 $manager->flush();
             }
