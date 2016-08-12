@@ -41,6 +41,8 @@ class LoadCoordinateurData extends AbstractFixture implements OrderedFixtureInte
 
                 $manager->persist($coordinateur);
                 $manager->flush();
+                
+                $this->addReference($coordinateur->getNom(), $coordinateur);
             }
         }
     }

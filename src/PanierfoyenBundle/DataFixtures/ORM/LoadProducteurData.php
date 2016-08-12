@@ -38,7 +38,12 @@ class LoadProducteurData extends AbstractFixture implements OrderedFixtureInterf
                 $entity->setTel($row[6]);
                 $entity->setMobile($row[7]);
                 $entity->setEmail($row[8]);
+                $entity->setSiteInternet($row[9]);
+                $entity->setChequeOrdre($row[10]);
 
+                if ($row[11] != "") {
+                    $entity->setCoordinateur($this->getReference($row[11]));
+                }
                 $manager->persist($entity);
                 $manager->flush();
             }
