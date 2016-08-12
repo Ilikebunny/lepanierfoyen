@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block body %}
-{#    {{ dump() }}#}
-    
+    {#    {{ dump() }}#}
+
     <header class="panel-heading">
         <h2>Producteurs list </h2>
     </header>
@@ -78,7 +78,11 @@
                                 <td>{{ producteur.siteInternet }}</td>
                                 <td>{{ producteur.chequeOrdre }}</td>
                                 <td>{{ producteur.email }}</td>
-                                <td>{{ producteur.coordinateur.nom }}</td>
+                                <td>
+                                    {% if producteur.coordinateur %}
+                                        {{ producteur.coordinateur.nom }}
+                                    {% endif %}
+                                </td>
                                 <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('producteurs_by_id_delete', { 'id': producteur.id}) }}">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
