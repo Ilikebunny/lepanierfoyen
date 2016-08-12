@@ -152,7 +152,7 @@ class AdminProducteursController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirectToRoute('producteurs');
+        return $this->redirectToRoute('/admin/producteurs');
     }
 
     /**
