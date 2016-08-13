@@ -51,18 +51,14 @@ class LoadProducteurData extends AbstractFixture implements OrderedFixtureInterf
                 if ($row[12] != "") {
                     $categoriesList = explode("/", $row[12]);
                     foreach ($categoriesList as $categorieLibelle) {
-                        $categorie = new Categories();
-
-                        $categorie = $this->container->get('doctrine')
-                                ->getRepository('PanierfoyenBundle:Categories')
-                                ->findOneByLibelle($categorieLibelle);
-
-                        $entity->addCategory($categorie);
+                        $entity->addCategory($this->getReference($categorieLibelle));
                     }
                 }
 
                 $manager->persist($entity);
                 $manager->flush();
+                
+                $this->addReference($entity->getNom(), $entity);
             }
         }
     }
