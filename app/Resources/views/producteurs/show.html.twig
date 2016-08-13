@@ -6,12 +6,7 @@
 
 {% block body %}
 
-    <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="{{ path('producteurs_show_slug', { 'slug': producteur.slug }) }}">Présentation</a></li>
-        <li role="presentation"><a href="{{ path('producteurs_show_slug_produits', { 'slug': producteur.slug }) }}">Produits</a></li>
-        <li role="presentation"><a href="{{ path('producteurs_show_slug_coordinateur', { 'slug': producteur.slug }) }}">Coordinateur</a></li>
-        <li role="presentation"><a href="{{ path('producteurs_show_slug_photos', { 'slug': producteur.slug }) }}">Photos</a></li>
-    </ul>
+    {% include 'producteurs/navTab.html.twig' %}
 
     <div class="panel-body">
 
