@@ -27,6 +27,7 @@ class ProducteursType extends AbstractType {
                 ->add('category', null, array('attr' => array(
                         'class' => 'chosen-select'
             )))
+                ->add('presentation')
         ;
     }
 

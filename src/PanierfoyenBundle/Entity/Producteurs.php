@@ -32,6 +32,13 @@ class Producteurs {
     /**
      * @var string
      *
+     * @ORM\Column(name="presentation", type="text", length=65535, nullable=true)
+     */
+    private $presentation;
+
+    /**
+     * @var string
+     *
      * @Gedmo\Slug(fields={"nom"})
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
@@ -175,6 +182,28 @@ class Producteurs {
      */
     public function getNom() {
         return $this->nom;
+    }
+
+    /**
+     * Set presentation
+     *
+     * @param string $presentation
+     *
+     * @return Producteurs
+     */
+    public function setPresentation($presentation) {
+        $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    /**
+     * Get presentation
+     *
+     * @return string
+     */
+    public function getPresentation() {
+        return $this->presentation;
     }
 
     /**
