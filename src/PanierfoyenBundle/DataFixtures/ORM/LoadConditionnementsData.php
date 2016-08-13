@@ -8,12 +8,9 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use PanierfoyenBundle\Entity\Produits;
-use PanierfoyenBundle\Entity\Producteurs;
-use PanierfoyenBundle\Entity\Categories;
-use PanierfoyenBundle\Entity\Frequences;
+use PanierfoyenBundle\Entity\Conditionnements;
 
-class LoadProduitsData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
+class LoadConditionnementsData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 
     /**
      * @var ContainerInterface
@@ -27,22 +24,18 @@ class LoadProduitsData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager) {
 
         $import = $this->container->get('panierfoyen.importcsv');
-        $fileContent = $import->CSV_to_array('produits.csv');
+        $fileContent = $import->CSV_to_array('conditionnements.csv');
 
         foreach ($fileContent as $numRow => $row) {
             if ($numRow != 1) {
-                $entity = new Produits();
-                $entity->setProducteur($this->getReference($row[0]));
-                $entity->setCategory($this->getReference($row[1]));
-                $entity->setFrequence($this->getReference($row[2]));
-                $entity->setLibelle($row[3]);
-                $entity->setDescriptif($row[4]);
-                $entity->setImage($row[5]);
+                $entity = new Conditionnements();
+                
+                $entity->setProduit($this->getReference($row[0]));
+                $entity->setLibelle($row[1]);
+                $entity->setPrixUnitaire($row[2]);
 
                 $manager->persist($entity);
                 $manager->flush();
-                
-                $this->addReference($entity->getLibelle(), $entity);
             }
         }
     }
@@ -50,7 +43,7 @@ class LoadProduitsData extends AbstractFixture implements OrderedFixtureInterfac
     public function getOrder() {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 5;
+        return 6;
     }
 
 }
