@@ -12,8 +12,6 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 
 use PanierfoyenBundle\Entity\Produits;
-use PanierfoyenBundle\Form\ProduitsType;
-
 
 /**
  * Produits controller.
