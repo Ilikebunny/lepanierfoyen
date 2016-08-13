@@ -29,6 +29,13 @@ class Frequences {
     private $libelle;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="details", type="string", length=90, nullable=false)
+     */
+    private $details;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="jours", type="integer", nullable=true)
@@ -71,6 +78,28 @@ class Frequences {
      */
     public function getLibelle() {
         return $this->libelle;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $details
+     *
+     * @return Frequences
+     */
+    public function seDetails($details) {
+        $this->details = $details;
+
+        return $this;
+    }
+
+    /**
+     * Get $details
+     *
+     * @return string
+     */
+    public function getDetails() {
+        return $this->details;
     }
 
     /**

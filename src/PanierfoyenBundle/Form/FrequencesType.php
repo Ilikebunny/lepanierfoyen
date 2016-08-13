@@ -12,6 +12,7 @@ class FrequencesType extends AbstractType
     {
         $builder
             ->add('libelle')
+            ->add('details')
             ->add('jours')
         ;
     }
