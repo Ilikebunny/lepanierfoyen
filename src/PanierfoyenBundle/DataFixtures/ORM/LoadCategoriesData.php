@@ -30,6 +30,7 @@ class LoadCategoriesData extends AbstractFixture implements OrderedFixtureInterf
             if ($numRow != 1) {
                 $category = new Categories();
                 $category->setLibelle($row[0]);
+                $category->setLogo($row[1]);
 
                 $manager->persist($category);
                 $manager->flush();
