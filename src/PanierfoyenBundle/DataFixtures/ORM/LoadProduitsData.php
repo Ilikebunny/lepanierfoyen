@@ -32,9 +32,9 @@ class LoadProduitsData extends AbstractFixture implements OrderedFixtureInterfac
         foreach ($fileContent as $numRow => $row) {
             if ($numRow != 1) {
                 $entity = new Produits();
-                $entity->setProducteur($this->getProducteurByNom($row[0]));
-                $entity->setCategory($this->getCategoryByLibelle($row[1]));
-                $entity->setFrequence($this->getCategoryByLibelle($row[2]));
+                $entity->setProducteur($this->getReference($row[0]));
+                $entity->setCategory($this->getReference($row[1]));
+                $entity->setFrequence($this->getReference($row[2]));
                 $entity->setLibelle($row[3]);
                 $entity->setDescriptif($row[4]);
                 $entity->setImage($row[5]);
@@ -43,36 +43,6 @@ class LoadProduitsData extends AbstractFixture implements OrderedFixtureInterfac
                 $manager->flush();
             }
         }
-    }
-
-    private function getCategoryByLibelle($categorieLibelle) {
-        $categorie = new Categories();
-
-        $categorie = $this->container->get('doctrine')
-                ->getRepository('PanierfoyenBundle:Categories')
-                ->findOneByLibelle($categorieLibelle);
-
-        return $categorie;
-    }
-
-    private function getProducteurByNom($libelle) {
-        $entityResult = new Producteurs();
-
-        $entityResult = $this->container->get('doctrine')
-                ->getRepository('PanierfoyenBundle:Producteurs')
-                ->findOneByNom($libelle);
-
-        return $entityResult;
-    }
-
-    private function getFrequenceByLibelle($libelle) {
-        $entityResult = new Frequences();
-
-        $entityResult = $this->container->get('doctrine')
-                ->getRepository('PanierfoyenBundle:Frequences')
-                ->findOneByLibelle($libelle);
-
-        return $entityResult;
     }
 
     public function getOrder() {

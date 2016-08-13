@@ -87,7 +87,7 @@ class Frequences {
      *
      * @return Frequences
      */
-    public function seDetails($details) {
+    public function setDetails($details) {
         $this->details = $details;
 
         return $this;

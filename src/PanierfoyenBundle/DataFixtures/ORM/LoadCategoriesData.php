@@ -33,6 +33,8 @@ class LoadCategoriesData extends AbstractFixture implements OrderedFixtureInterf
 
                 $manager->persist($category);
                 $manager->flush();
+                
+                 $this->addReference($category->getLibelle(), $category);
             }
         }
     }

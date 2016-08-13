@@ -31,10 +31,13 @@ class LoadFrequencesData extends AbstractFixture implements OrderedFixtureInterf
             if ($numRow != 1) {
                 $frequence = new Frequences();
                 $frequence->setLibelle($row[0]);
-                $frequence->setJours($row[1]);
+                $frequence->setDetails($row[1]);
+                $frequence->setJours($row[2]);
 
                 $manager->persist($frequence);
                 $manager->flush();
+                
+                $this->addReference($frequence->getLibelle(), $frequence);
             }
         }
     }
