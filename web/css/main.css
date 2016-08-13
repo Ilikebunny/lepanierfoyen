@@ -3,6 +3,11 @@
     width: 120px;
 }
 
+/*.navtab_img{
+    width: 40px;
+    margin-right: 20px;
+}*/
+
 #logo{
     width: 180px;
     position: absolute;
@@ -21,11 +26,11 @@
     /*background-color: #adc917;*/
 }
 .navbar-default {
-  background-color:#adc917;
-  border-color:#adc917;
-  background-image: none;
-  background-repeat: no-repeat;
- }
+    background-color:#adc917;
+    border-color:#adc917;
+    background-image: none;
+    background-repeat: no-repeat;
+}
 #admin_menu{
 }
 

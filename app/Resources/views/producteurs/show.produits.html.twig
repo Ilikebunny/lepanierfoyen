@@ -1,0 +1,82 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - producteur
+{% endblock %}
+
+{% block body %}
+
+    {% include 'producteurs/navTab.html.twig' %}
+
+    <div class="panel-body">
+
+        <form class="form form-vertical">
+            <fieldset>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Id</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.id }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Nom</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.nom }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Codepostal</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.codepostal }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Ville</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.ville }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Adr1</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.adr1 }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Adr2</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.adr2 }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Adr3</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.adr3 }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Tel</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.tel }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Mobile</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.mobile }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Siteinternet</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.siteInternet }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Chequeordre</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.chequeOrdre }}</span>
+                    </div>
+                </div>            <div class="control-group">
+                    <label class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <span class="input-xlarge uneditable-input">{{ producteur.email }}</span>
+                    </div>
+                </div>       
+            </fieldset>
+        </form>
+        <hr>
+    </div>
+    <hr>
+
+{% endblock %}
+

@@ -98,7 +98,7 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlugCoordinateur(Producteurs $producteur) {
-        return $this->render('producteurs/show.html.twig', array(
+        return $this->render('producteurs/show.coordinateur.html.twig', array(
                     'producteur' => $producteur
         ));
     }
@@ -110,7 +110,7 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlugProduits(Producteurs $producteur) {
-        return $this->render('producteurs/show.html.twig', array(
+        return $this->render('producteurs/show.produits.html.twig', array(
                     'producteur' => $producteur
         ));
     }
@@ -122,7 +122,7 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlugPhotos(Producteurs $producteur) {
-        return $this->render('producteurs/show.html.twig', array(
+        return $this->render('producteurs/show.photos.html.twig', array(
                     'producteur' => $producteur
         ));
     }

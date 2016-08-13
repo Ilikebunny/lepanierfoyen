@@ -2,14 +2,19 @@
     {% set currentRoute = app.request.attributes.get('_route') %}
 
     {% set linkRoute = 'producteurs_show_slug' %}
-    <li role="presentation" li{{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Présentation</a></li>
+    <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Présentation</a></li>
 
     {% set linkRoute = 'producteurs_show_slug_produits' %}
-    <li role="presentation" li{{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Produits</a></li>
+    <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Produits</a></li>
 
     {% set linkRoute = 'producteurs_show_slug_coordinateur' %}
-    <li role="presentation" li{{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Coordinateur</a></li>
+    <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Coordinateur</a></li>
 
     {% set linkRoute = 'producteurs_show_slug_photos' %}
-    <li role="presentation" li{{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Photos</a></li>
+    <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Photos</a></li>
+
+    {#<li class="navbar-right">
+        <img class="navtab_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" />
+        <img class="navtab_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" />
+    <li>#}
 </ul>
