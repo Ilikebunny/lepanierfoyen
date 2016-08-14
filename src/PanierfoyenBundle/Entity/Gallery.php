@@ -31,7 +31,7 @@ class Gallery {
     /**
      * @var \Producteurs
      *
-     * @ORM\ManyToOne(targetEntity="Producteurs")
+     * @ORM\ManyToOne(targetEntity="Producteurs", inversedBy="myGallery")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
      * })

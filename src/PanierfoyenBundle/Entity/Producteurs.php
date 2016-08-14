@@ -140,10 +140,25 @@ class Producteurs {
     private $category;
 
     /**
+     * @ORM\OneToMany(targetEntity="Gallery", mappedBy="producteur", fetch="EAGER")
+     */
+    protected $myGallery;
+
+    /**
+     * Get myGallery
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getMyGallery() {
+        return $this->myGallery;
+    }
+
+    /**
      * Constructor
      */
     public function __construct() {
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
+         $this->les_conditionnements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
