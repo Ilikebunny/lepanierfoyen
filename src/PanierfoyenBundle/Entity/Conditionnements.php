@@ -45,8 +45,6 @@ class Conditionnements
      */
     private $produit;
 
-
-
     /**
      * Get id
      *
