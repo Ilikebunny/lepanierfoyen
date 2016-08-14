@@ -14,25 +14,6 @@ class ProduitsRepository extends EntityRepository {
         $listProduits = $repository->findByProducteur($producteur->getId());
         $listProduits = $repository->findBy(array('producteur' => $producteur->getId()));
         return $listProduits;
-
-//        $queryBuilder = $this->createQueryBuilder('p')
-//                ->leftJoin('p.producteur', 'r')
-//                ->leftJoin('Conditionnements.produit', 'c')
-//                ->andWhere('p.producteur = ' . $producteur->getId())
-//        ;
-//
-//        $repository = $this->_em->getRepository('PanierfoyenBundle:Conditionnements');
-//        $queryBuilder = $repository->createQueryBuilder('c')
-//                ->leftJoin('c.produit', 'produit')
-//                ->leftJoin('produit.producteur', 'producteur')
-//                ->andWhere('produit.producteur = ' . $producteur->getId())
-//        ;
-        
-        return $queryBuilder
-                        ->getQuery()
-                        ->getResult()
-
-        ;
     }
 
 }

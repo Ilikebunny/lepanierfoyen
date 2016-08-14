@@ -73,6 +73,24 @@ class Produits {
     private $producteur;
 
     /**
+     * @ORM\OneToMany(targetEntity="Conditionnements", mappedBy="produit", fetch="EAGER")
+     */
+    protected $les_conditionnements;
+
+    public function __construct() {
+        $this->les_conditionnements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get les_conditionnements
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getLes_conditionnements() {
+        return $this->les_conditionnements;
+    }
+
+    /**
      * To string
      */
     public function __toString() {

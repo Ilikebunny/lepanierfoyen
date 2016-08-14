@@ -38,7 +38,7 @@ class Conditionnements
     /**
      * @var \Produits
      *
-     * @ORM\ManyToOne(targetEntity="Produits")
+     * @ORM\ManyToOne(targetEntity="Produits", inversedBy="les_conditionnements")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="produit_id", referencedColumnName="id")
      * })
