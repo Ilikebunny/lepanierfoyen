@@ -110,8 +110,14 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlugProduits(Producteurs $producteur) {
+        $repository = $this->getDoctrine()->getManager()
+                ->getRepository('PanierfoyenBundle:Produits');
+
+        $listProduits = $repository->getAllProduits($producteur);
+
         return $this->render('producteurs/show.produits.html.twig', array(
-                    'producteur' => $producteur
+                    'producteur' => $producteur,
+                    'produits' => $listProduits
         ));
     }
 

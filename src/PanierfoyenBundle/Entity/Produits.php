@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Produits
  *
  * @ORM\Table(name="produits", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"})}, indexes={@ORM\Index(name="fk_produits_producteurs1_idx", columns={"producteur_id"}), @ORM\Index(name="fk_produits_frequences1_idx", columns={"frequence_id"}), @ORM\Index(name="fk_produits_categories_production1_idx", columns={"category_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PanierfoyenBundle\Repository\ProduitsRepository")
  */
 class Produits {
 
@@ -45,7 +45,7 @@ class Produits {
     /**
      * @var \Categories
      *
-     * @ORM\ManyToOne(targetEntity="Categories")
+     * @ORM\ManyToOne(targetEntity="Categories", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
@@ -55,7 +55,7 @@ class Produits {
     /**
      * @var \Frequences
      *
-     * @ORM\ManyToOne(targetEntity="Frequences")
+     * @ORM\ManyToOne(targetEntity="Frequences", fetch="EAGER")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="frequence_id", referencedColumnName="id")
      * })

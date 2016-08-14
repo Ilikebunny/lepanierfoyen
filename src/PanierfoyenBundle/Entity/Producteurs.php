@@ -9,7 +9,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Producteurs
  *
  * @ORM\Table(name="producteurs", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"}), @ORM\UniqueConstraint(name="nom_UNIQUE", columns={"nom"})}, indexes={@ORM\Index(name="fk_producteurs_coordinateurs1_idx", columns={"coordinateur_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PanierfoyenBundle\Repository\ProducteursRepository")
  */
 class Producteurs {
 
