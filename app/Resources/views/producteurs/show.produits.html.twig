@@ -10,8 +10,39 @@
 
     <div class="panel-body">
         {{ dump() }}
-
+        {% for produit in produits%}
+            {{ produit.libelle }}<br>
+            {% for variante in produit.les_conditionnements%}
+                {#                {{ produit.libelle }}<br>#}
+                {{ dump(variante) }}
+            {% endfor %}
+        {% endfor %}
         <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                {% for produit in produits%}
+                    <p>{{ produit.descriptif }}</p>
+                    <table class="table table-condensed table-responsive">
+                        <thead>
+                            <tr>
+                                <th> {{ produit.libelle }}</th>
+                                <th>Prix</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for variante in produit.les_conditionnements%}
+                                <tr>
+                                    <td>{{ variante.libelle }} </td>
+                                    <td>{{ variante.prixUnitaire }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endfor %}
+            </div>
+        </div>
+
     </div>
     <hr>
 
