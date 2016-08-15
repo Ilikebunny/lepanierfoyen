@@ -22,8 +22,4 @@
     {% set linkRoute = 'producteurs_show_slug_photos' %}
     <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Photos</a></li>
 
-    {#<li class="navbar-right">
-        <img class="navtab_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" />
-        <img class="navtab_img" src="{{ asset('images/icone_actu.png') }}" alt="Actu" />
-    <li>#}
 </ul>
