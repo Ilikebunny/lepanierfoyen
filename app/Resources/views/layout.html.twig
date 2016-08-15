@@ -5,16 +5,23 @@
         <div id="main" class="container">
             {{ include('layout.header.html.twig') }}
             {% block menu_haut %}
-               {# {% set currentPath = path(app.request.attributes.get('_route')) %}
-                {% if (currentPath starts with '/admin') or (currentPath starts with '/app_dev.php/admin') %}
-                    {{ include('admin_menu.html.twig') }}
-                {% endif %}#}
+                {# {% set currentPath = path(app.request.attributes.get('_route')) %}
+                 {% if (currentPath starts with '/admin') or (currentPath starts with '/app_dev.php/admin') %}
+                     {{ include('admin_menu.html.twig') }}
+                 {% endif %}#}
             {% endblock %}
             <div id="main_content">
-                {% block panel %}
-                {% endblock %}
-                {% block body %}
-                {% endblock %}
+                <section class="panel">
+                    <header class="panel-heading">
+                        <h2>{% block panel_head %}{% endblock %}</h2>
+                    </header>
+                    {% block menu_content %}
+                    {% endblock %}
+                    <div class="panel-body">
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                </section>
             </div>
             {{ include('layout.footer.html.twig') }}  
         </div>

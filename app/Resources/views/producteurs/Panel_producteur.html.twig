@@ -1,0 +1,4 @@
+{{ producteur.nom }}
+{% for categorie in producteur.category %}
+    <img class="navtab_img" src="{{ asset( categorie.logo) }}" alt="{{ categorie.libelle}}" />
+{% endfor %}

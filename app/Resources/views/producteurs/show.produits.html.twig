@@ -4,59 +4,63 @@
     {{ parent() }} - producteur
 {% endblock %}
 
+{% block panel_head %}
+    {% include 'producteurs/Panel_producteur.html.twig' %}
+{% endblock %}
+
+{% block menu_content %}
+    {% include 'producteurs/navTab.html.twig' %}
+{% endblock %}
+
 {% block body %}
 
-    {% include 'producteurs/navTab.html.twig' %}
-
-    <div class="panel-body">
-        {{ dump() }}<hr>
-        {% for produit in produits%}
-            <div class="row fiche_produit">
-                <div class="row">
-                    <div class="col-lg-4">
-                        {{ produit.libelle }}
-                    </div>
-                    <div class="col-lg-2">
-                        <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
-                    </div>
+    {{ dump() }}<hr>
+    {% for produit in produits%}
+        <div class="row fiche_produit">
+            <div class="row">
+                <div class="col-lg-4">
+                    {{ produit.libelle }}
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-2">
-                        <img class="navtab_img img-responsive" src="{{ asset( produit.image) }}" alt="Image" />
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="row">
-                            {{ produit.descriptif }}
-                        </div>
-                        <div class="row">
-                            {{ "Frequence :" ~ produit.frequence.libelle ~ " " ~ produit.frequence.details }}
-                        </div>
-                    </div>
+                <div class="col-lg-2">
+                    <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
                 </div>
-
-                <div class="row">
-                    <table class="table table-condensed table-responsive">
-                        <thead>
-                                <th> {{ "Conditionnment(s) / Variante(s)" }} </th>
-                                <th>Prix</th>
-                        </thead>
-                        <tbody>
-                            {% for variante in produit.les_conditionnements%}
-                                <tr>
-                                    <td>{{ variante.libelle }} </td>
-                                    <td>{{ variante.prixUnitaire }}</td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-
-                <hr>
             </div>
-        {% endfor %}
 
-    </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <img class="navtab_img img-responsive" src="{{ asset( produit.image) }}" alt="Image" />
+                </div>
+                <div class="col-lg-4">
+                    <div class="row">
+                        {{ produit.descriptif }}
+                    </div>
+                    <div class="row">
+                        {{ "Frequence :" ~ produit.frequence.libelle ~ " " ~ produit.frequence.details }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <table class="table table-condensed table-responsive">
+                    <thead>
+                    <th> {{ "Conditionnment(s) / Variante(s)" }} </th>
+                    <th>Prix</th>
+                    </thead>
+                    <tbody>
+                        {% for variante in produit.les_conditionnements%}
+                            <tr>
+                                <td>{{ variante.libelle }} </td>
+                                <td>{{ variante.prixUnitaire }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <hr>
+        </div>
+    {% endfor %}
+
     <hr>
 
 {% endblock %}
