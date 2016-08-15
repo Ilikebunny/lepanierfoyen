@@ -4,51 +4,48 @@
     {{ parent() }} - producteur index
 {% endblock %}
 
+{% block panel_head %}
+    Producteurs list 
+{% endblock %}
+
 {% block body %}
     {#    {{ dump() }}#}
 
-    <header class="panel-heading">
-        <h2>Producteurs list </h2>
-    </header>
-    <div class="panel-body">
+    <div class="row">
+        <div class="col-md-12">
 
-        <div class="row">
-            <div class="col-md-12">
-
-                <table class="table table-condensed table-responsive">
-                    <thead>
+            <table class="table table-condensed table-responsive">
+                <thead>
+                    <tr>
+                        <th>Production</th>
+                        <th>Nom</th>
+                        <th>Localisation</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producteur in producteurs %}
                         <tr>
-                            <th>Production</th>
-                            <th>Nom</th>
-                            <th>Localisation</th>
-                            <th>Action</th>
+                            <td>
+                                {% for categorie in producteur.category %}
+                                    <img class="banniere_img" src="{{ asset( categorie.logo) }}" alt="{{ categorie.libelle}}" />
+                                {% endfor %}
+                            </td>
+                            <td>{{ producteur.nom }}</td>
+                            <td>{{ producteur.codepostal ~ ' ' ~ producteur.ville }}</td>
+                            <td>  
+                                <a title='show' class="btn btn-success btn-sm" href="{{ path('producteurs_show_slug', { 'slug': producteur.slug }) }}">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for producteur in producteurs %}
-                            <tr>
-                                <td>
-                                    {% for categorie in producteur.category %}
-                                        <img class="banniere_img" src="{{ asset( categorie.logo) }}" alt="{{ categorie.libelle}}" />
-                                    {% endfor %}
-                                </td>
-                                <td>{{ producteur.nom }}</td>
-                                <td>{{ producteur.codepostal ~ ' ' ~ producteur.ville }}</td>
-                                <td>  
-                                    <a title='show' class="btn btn-success btn-sm" href="{{ path('producteurs_show_slug', { 'slug': producteur.slug }) }}">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-            </div>
         </div>
-        {{ pagerHtml | raw}}
     </div>
-
+    {{ pagerHtml | raw}}
 
 {% endblock %}
 
