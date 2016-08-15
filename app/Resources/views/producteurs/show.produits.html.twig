@@ -9,26 +9,37 @@
     {% include 'producteurs/navTab.html.twig' %}
 
     <div class="panel-body">
-        {{ dump() }}
+        {{ dump() }}<hr>
         {% for produit in produits%}
-            {{ produit.libelle }}<br>
-            {% for variante in produit.les_conditionnements%}
-                {#                {{ produit.libelle }}<br>#}
-                {{ dump(variante) }}
-            {% endfor %}
-        {% endfor %}
-        <hr>
+            <div class="row fiche_produit">
+                <div class="row">
+                    <div class="col-lg-4">
+                        {{ produit.libelle }}
+                    </div>
+                    <div class="col-lg-2">
+                        <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
+                    </div>
+                </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                {% for produit in produits%}
-                    <p>{{ produit.descriptif }}</p>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <img class="navtab_img img-responsive" src="{{ asset( produit.image) }}" alt="Image" />
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="row">
+                            {{ produit.descriptif }}
+                        </div>
+                        <div class="row">
+                            {{ "Frequence :" ~ produit.frequence.libelle ~ " " ~ produit.frequence.details }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <table class="table table-condensed table-responsive">
                         <thead>
-                            <tr>
-                                <th> {{ produit.libelle }}</th>
+                                <th> {{ "Conditionnment(s) / Variante(s)" }} </th>
                                 <th>Prix</th>
-                            </tr>
                         </thead>
                         <tbody>
                             {% for variante in produit.les_conditionnements%}
@@ -39,9 +50,11 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                {% endfor %}
+                </div>
+
+                <hr>
             </div>
-        </div>
+        {% endfor %}
 
     </div>
     <hr>
