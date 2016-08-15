@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
+    {{ app.request.attributes.get('_route') }}
     {{ path(app.request.attributes.get('_route')) }}
 {% endblock %}
