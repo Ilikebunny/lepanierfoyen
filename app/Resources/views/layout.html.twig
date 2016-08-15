@@ -5,7 +5,10 @@
         <div id="main" class="container">
             {{ include('layout.header.html.twig') }}
             {% block menu_haut %}
-{#                {{ include('admin_menu.html.twig') }}#}
+                {% set currentPath = path(app.request.attributes.get('_route')) %}
+                {% if (currentPath starts with '/admin') or (currentPath starts with '/app_dev.php/admin') %}
+                    {{ include('admin_menu.html.twig') }}
+                {% endif %}
             {% endblock %}
             <div id="main_content">
                 {% block body %}

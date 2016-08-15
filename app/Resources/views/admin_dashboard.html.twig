@@ -1,1 +1,5 @@
-{% extends 'layout.admin.html.twig' %}
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    {{ path(app.request.attributes.get('_route')) }}
+{% endblock %}
