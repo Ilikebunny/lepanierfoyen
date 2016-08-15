@@ -1,5 +1,9 @@
 {% extends 'layout.admin.html.twig' %}
 
+{% block panel_head %}
+    Administration
+{% endblock %}
+
 {% block body %}
     {{ app.request.attributes.get('_route') }}
     {{ path(app.request.attributes.get('_route')) }}
