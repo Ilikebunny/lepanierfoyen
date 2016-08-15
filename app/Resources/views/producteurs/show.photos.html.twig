@@ -15,7 +15,7 @@
         <section class="row">
             {% for gallery in producteur.myGallery %}
                 <div class="col-xs-10 col-sm-8 col-md-6">
-                    <img class="gallery_img" src="{{ asset( gallery.image) }}" alt="{{ gallery.id}}" />
+                    <img class="gallery_img img-responsive" src="{{ asset( gallery.image) }}" alt="{{ gallery.id}}" />
                 </div>
             {% endfor %}
         </section>
