@@ -49,14 +49,23 @@ class ProducteursController extends Controller {
      */
     public function indexCategorieAction(Request $request, $categorySelected) {
         $em = $this->getDoctrine()->getManager();
-        
+
         $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
         $categorySelectedObject = $em->getRepository('PanierfoyenBundle:Categories')->findOneByLibelle($categorySelected);
-        
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
+
+        //temp
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('a')
+                ->select('a')
+                ->leftJoin('a.category', 'c')
+                ->addSelect('c');
+
+        $queryBuilder = $queryBuilder->add('where', $queryBuilder->expr()->in('c', ':c'))
+                ->setParameter('c', $categorySelectedObject->getId())
+        ;
+        //temp
 
         list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
-        
+
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
                     'categories' => $categories,
