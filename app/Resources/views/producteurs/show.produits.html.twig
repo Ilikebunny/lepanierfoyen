@@ -17,19 +17,19 @@
     {% for produit in produits%}
         <div class="row fiche_produit">
             <div class="row">
-                <div class="col-md-4">
-                    {{ produit.libelle }}
+                <div class="col-md-8 vertical-align">
+                    <h3>{{ produit.libelle }}</h3>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-4">
                     <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <img class="navtab_img img-responsive" src="{{ asset( produit.image) }}" alt="Image" />
                 </div>
-                <div class="col-lg-4">
+                <div class="col-md-10">
                     <div class="row">
                         {{ produit.descriptif }}
                     </div>
@@ -40,24 +40,27 @@
             </div>
 
             <div class="row">
-                <table class="table table-condensed table-responsive">
-                    <thead>
-                    <th> {{ "Conditionnment(s) / Variante(s)" }} </th>
-                    <th>Prix</th>
-                    </thead>
-                    <tbody>
-                        {% for variante in produit.les_conditionnements%}
-                            <tr>
-                                <td>{{ variante.libelle }} </td>
-                                <td>{{ variante.prixUnitaire }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="col-md-4">
+                    {{ "Conditionnment(s) / Variante(s)" }} 
+                </div>
+                <div class="col-md-2">
+                    Prix
+                </div>
             </div>
 
-            <hr>
+            {% for variante in produit.les_conditionnements%}
+                <div class="row">
+                    <div class="col-md-4">
+                        {{ variante.libelle }} 
+                    </div>
+                    <div class="col-md-2">
+                        {{ variante.prixUnitaire }} 
+                    </div>
+                </div>
+            {% endfor %}
+
         </div>
+        <br>
     {% endfor %}
 
     <hr>
