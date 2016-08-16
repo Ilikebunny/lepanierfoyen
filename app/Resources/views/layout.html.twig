@@ -11,20 +11,31 @@
                  {% endif %}#}
             {% endblock %}
             <div id="main_content">
-                <section class="panel">
-                    <header class="panel-heading">
+                <section class="panel row">
+                    <header class="panel-heading col-md-12">
                         <h2>{% block panel_head %}{% endblock %}</h2>
                     </header>
                     {% block menu_content %}
                     {% endblock %}
-                    <div class="panel-body">
-                        {{ dump() }}<hr>
+                    <div class="panel-body col-md-8">
+                        {# {{ dump() }}<hr>#}
                         {% block body %}
+                        {% endblock %}
+                    </div>
+                    <div class="panel-body col-md-4">
+                        {{ dump() }}<hr>
+                        {% block aside %}
                         {% endblock %}
                     </div>
                 </section>
             </div>
-            {{ include('layout.footer.html.twig') }}  
+            <div id="footer" class="row">
+                {{ include('layout.footer.html.twig') }}  
+            </div>
+            {% block javascripts %}
+                <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+                {{ include('chosen_init.html.twig') }}
+            {% endblock %}
         </div>
     </body>
 </html>

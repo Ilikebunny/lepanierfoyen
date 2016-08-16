@@ -57,6 +57,12 @@
     min-height: 500px;
 }    
 
+.panel{
+    min-height: 500px;
+    /*background-color: #ffe5bd;*/
+    background-color: #e3c7a1;
+}    
+
 #footer{
     background-color: #915e36;
 }
