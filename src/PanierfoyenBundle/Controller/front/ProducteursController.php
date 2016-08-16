@@ -42,6 +42,31 @@ class ProducteursController extends Controller {
     }
 
     /**
+     * Lists all Producteurs entities filtered by categories
+     *
+     * @Route("/categories/{categorySelected}", name="producteursByCategories")
+     * @Method("GET")
+     */
+    public function indexCategorieAction(Request $request, $categorySelected) {
+        $em = $this->getDoctrine()->getManager();
+        
+        $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
+        $categorySelectedObject = $em->getRepository('PanierfoyenBundle:Categories')->findOneByLibelle($categorySelected);
+        
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
+
+        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        
+        return $this->render('producteurs/index.html.twig', array(
+                    'producteurs' => $producteurs,
+                    'categories' => $categories,
+                    'categorySelected' => $categorySelected,
+                    'categorySelectedObject' => $categorySelectedObject,
+                    'pagerHtml' => $pagerHtml,
+        ));
+    }
+
+    /**
      * Get results from paginator and get paginator view.
      *
      */
