@@ -64,7 +64,7 @@ class ProducteursController extends Controller {
         ;
         //temp
 
-        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        list($producteurs, $pagerHtml) = $this->paginatorByCategory($queryBuilder, $request);
 
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
@@ -92,6 +92,38 @@ class ProducteursController extends Controller {
         $routeGenerator = function($page) use ($me) {
             return $me->generateUrl('producteurs', array(
                         'page' => $page
+            ));
+        };
+
+        // Paginator - view
+        $view = new TwitterBootstrap3View();
+        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
+            'proximity' => 3,
+            'prev_message' => 'previous',
+            'next_message' => 'next',
+        ));
+
+        return array($entities, $pagerHtml);
+    }
+
+    /**
+     * Get results from paginator and get paginator view.
+     *
+     */
+    protected function paginatorByCategory($queryBuilder, $request) {
+        // Paginator
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
+        $currentPage = $request->get('page', 1);
+        $pagerfanta->setCurrentPage($currentPage);
+        $entities = $pagerfanta->getCurrentPageResults();
+
+        // Paginator - route generator
+        $me = $this;
+        $routeGenerator = function($page) use ($me) {
+            return $me->generateUrl('producteursByCategories', array(
+                        'page' => $page,
+                        'categorySelected' => 'Fruits',
             ));
         };
 
