@@ -4,25 +4,23 @@
     {{ parent() }} - producteur
 {% endblock %}
 
+{% block panel_head %}
+    {% include 'producteurs/Panel_producteur.html.twig' %}
+{% endblock %}
+
+{% block menu_content %}
+    {% include 'producteurs/navTab.html.twig' %}
+{% endblock %}
+
 {% block body %}
 
-    {% include 'producteurs/navTab.html.twig' %}
-
-    <div class="panel-body">
-        {{ dump() }}
-        <hr>
-
-        <section class="row">
-            {% for gallery in producteur.myGallery %}
-                <div class="col-xs-10 col-sm-8 col-md-6">
-                    <img class="gallery_img img-responsive" src="{{ asset( gallery.image) }}" alt="{{ gallery.id}}" />
-                </div>
-            {% endfor %}
-        </section>
-
-        <hr>
-    </div>
-    <hr>
+    <section class="row">
+        {% for gallery in producteur.myGallery %}
+            <div class="col-xs-10 col-sm-8 col-md-6">
+                <img class="gallery_img img-responsive" src="{{ asset( gallery.image) }}" alt="{{ gallery.id}}" />
+            </div>
+        {% endfor %}
+    </section>
 
 {% endblock %}
 

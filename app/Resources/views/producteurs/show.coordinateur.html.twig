@@ -4,27 +4,29 @@
     {{ parent() }} - producteur
 {% endblock %}
 
+{% block panel_head %}
+    {% include 'producteurs/Panel_producteur.html.twig' %}
+{% endblock %}
+
+{% block menu_content %}
+    {% include 'producteurs/navTab.html.twig' %}
+{% endblock %}
+
 {% block body %}
 
-    {% include 'producteurs/navTab.html.twig' %}
+    Coordinateur
 
-    <div class="panel-body">
-        Coordinateur
-        {{dump()}}
-        {% if producteur.coordinateur %}
-            <div>{{ producteur.coordinateur.nom }}</div>
-            <div>{{ producteur.coordinateur.adr1 }}</div>
-            <div>{{ producteur.coordinateur.adr2 }}</div>
-            <div>{{ producteur.coordinateur.adr3 }}</div>
-            <div>{{ producteur.coordinateur.codepostal }} 
-                {{ producteur.coordinateur.ville }}</div>
-            <div>{{ producteur.coordinateur.tel }} </div>
-            <div>{{ producteur.coordinateur.mobile }}</div>
-            <div>{{ producteur.coordinateur.email }}</div>
-        {% endif %}
-
-        <hr>
-    </div>
+    {% if producteur.coordinateur %}
+        <div>{{ producteur.coordinateur.nom }}</div>
+        <div>{{ producteur.coordinateur.adr1 }}</div>
+        <div>{{ producteur.coordinateur.adr2 }}</div>
+        <div>{{ producteur.coordinateur.adr3 }}</div>
+        <div>{{ producteur.coordinateur.codepostal }} 
+            {{ producteur.coordinateur.ville }}</div>
+        <div>{{ producteur.coordinateur.tel }} </div>
+        <div>{{ producteur.coordinateur.mobile }}</div>
+        <div>{{ producteur.coordinateur.email }}</div>
+    {% endif %}
 
 {% endblock %}
 

@@ -17,10 +17,10 @@
     {% for produit in produits%}
         <div class="row fiche_produit">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-md-4">
                     {{ produit.libelle }}
                 </div>
-                <div class="col-lg-2">
+                <div class="col-md-2">
                     <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
                 </div>
             </div>
