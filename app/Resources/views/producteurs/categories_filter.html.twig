@@ -1,0 +1,9 @@
+
+<p>Filtrer par catégorie</p>
+{% for category in categories %}
+    <div class=" col-md-6">
+        <a href="/producteurs/{{ category.libelle }}">
+            <img class="banniere_img img-responsive" src="{{ asset( category.logo) }}" alt="{{ category.libelle}}" />
+        </a>
+    </div>
+{% endfor %}

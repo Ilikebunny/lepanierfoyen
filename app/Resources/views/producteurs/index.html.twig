@@ -9,7 +9,6 @@
 {% endblock %}
 
 {% block body %}
-    {#    {{ dump() }}#}
 
     <div class="row">
         <div class="col-md-12">
@@ -49,3 +48,6 @@
 
 {% endblock %}
 
+{% block aside %}
+    {{ include('producteurs/categories_filter.html.twig') }} 
+{% endblock %}

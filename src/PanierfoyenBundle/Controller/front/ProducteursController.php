@@ -32,8 +32,11 @@ class ProducteursController extends Controller {
 
         list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
+        $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
+
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
+                    'categories' => $categories,
                     'pagerHtml' => $pagerHtml,
         ));
     }
@@ -53,7 +56,9 @@ class ProducteursController extends Controller {
         // Paginator - route generator
         $me = $this;
         $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('producteurs', array('page' => $page));
+            return $me->generateUrl('producteurs', array(
+                        'page' => $page
+            ));
         };
 
         // Paginator - view
