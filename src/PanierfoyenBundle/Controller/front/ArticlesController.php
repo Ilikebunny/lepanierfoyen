@@ -79,6 +79,8 @@ class ArticlesController extends Controller {
     public function indexTagAction(Request $request, $tagLibelle) {
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
+        $tagSelected = $em->getRepository('PanierfoyenBundle:Tags')->findOneByTitle($tagLibelle);
+        
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e');
 
         list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -88,6 +90,7 @@ class ArticlesController extends Controller {
                     'pagerHtml' => $pagerHtml,
                     'tagSelectedLibelle' => $tagLibelle,
                     'tags' => $tags,
+                    'tagSelected' => $tagSelected,
         ));
     }
 
