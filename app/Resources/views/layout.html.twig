@@ -22,10 +22,11 @@
                         {% endblock %}
                     </div>
                     <div class="panel-body col-md-4">
-                        {{ dump() }}<hr>
-                        {{ include('layout.aside.html.twig') }} 
                         {% block aside %}
                         {% endblock %}
+                        <hr>
+                        {{ include('layout.aside.html.twig') }} 
+                        {{ dump() }}
                     </div>
                 </section>
             </div>
