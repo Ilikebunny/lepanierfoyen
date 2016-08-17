@@ -40,7 +40,7 @@ class TagsController extends Controller {
 
     public function getAllTagsForNavAction() {
         $em = $this->getDoctrine()->getManager();
-        $tagsForNav = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
+        $tagsForNav = $em->getRepository('PanierfoyenBundle:Tags')->findBy([], ['title' => 'ASC']);
         return $this->render(
                         'nav_tags.html.twig', array('tagsForNav' => $tagsForNav)
         );
