@@ -13,7 +13,7 @@ class TagsType extends AbstractType {
                 ->add('title')
 //            ->add('created')
 //            ->add('modified')
-                ->add('article')
+//                ->add('article')
         ;
     }
 

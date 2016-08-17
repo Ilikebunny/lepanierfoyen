@@ -1,57 +1,54 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} -  Edit tag
+    {{ parent() }} -  Edit tag
+{% endblock %}
+
+{% block panel_head %}
+    Tags Edit
 {% endblock %}
 
 {% block body %}
 
-<section class="panel">
-
-    <header class="panel-heading">
-        <h2> Tags Edit</h2>
-    </header>
-    <div class="panel-body">
-
-        {% if form_errors(edit_form) %}
+    {% if form_errors(edit_form) %}
         <div class="alert alert-block alert-error fade in form-errors">
             {{ form_errors(edit_form) }}
         </div>
-        {% endif %}
+    {% endif %}
 
-        {% for flash_message in app.session.flashbag.get('error') %}
+    {% for flash_message in app.session.flashbag.get('error') %}
         <div class="alert alert-error ">
-             {{ flash_message }}
+            {{ flash_message }}
         </div>
-        {% endfor %}
-        {% for flash_message in app.session.flashbag.get('success') %}
+    {% endfor %}
+    {% for flash_message in app.session.flashbag.get('success') %}
         <div class="alert alert-success ">
-             {{ flash_message }}
+            {{ flash_message }}
         </div>
-         {% endfor %}
+    {% endfor %}
 
 
-        {{ form_start(edit_form) }}
+    {{ form_start(edit_form) }}
 
-        {{ form_widget(edit_form) }}
-        <p>
-            <button type="submit" class="btn btn-success">
-                <i class="fa fa-floppy-o"></i> Edit
-            </button>
-        </p>
-        {{ form_end(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-floppy-o"></i> Edit
+        </button>
+    </p>
+    {{ form_end(edit_form) }}
 
 
-                <div class="form-group">
-    <a class="btn btn-default" href="{{ path('tags') }}">
-        <i class="fa fa-list" aria-hidden="true"></i>
-        Back to list
-    </a>
-                <a class="btn btn-primary" href="{{ path('tags_new') }}">
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('tags') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Back to list
+        </a>
+        <a class="btn btn-primary" href="{{ path('tags_new') }}">
             <i class="fa fa-plus" aria-hidden="true"></i>
             New
         </a>
-                <form action="{{ path('tags_delete', { 'id': tag.id }) }}" method="post" style="display: inline-block">
+        <form action="{{ path('tags_delete', { 'id': tag.id }) }}" method="post" style="display: inline-block">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
@@ -60,9 +57,6 @@
         </form>
     </div>
 
-    </div>
-
-</section>
 
 {% endblock %}
 
