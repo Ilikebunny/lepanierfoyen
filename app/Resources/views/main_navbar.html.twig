@@ -34,6 +34,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Les publications <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('articles') }}">Tous</a></li>
+                        <li role="separator" class="divider"></li>
                             {{ render(controller('PanierfoyenBundle:front\\Tags:getAllTagsForNav' )) }}
                     </ul>
                 </li>
