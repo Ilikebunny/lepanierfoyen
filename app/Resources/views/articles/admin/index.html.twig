@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.admin.html.twig' %}
 
 {% block title %}
     {{ parent() }} - article index
@@ -77,6 +77,7 @@
 
         </div>
     </div>
+    {{ pagerHtml | raw}}
 
 {% endblock %}
 
