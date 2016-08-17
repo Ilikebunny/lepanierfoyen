@@ -84,7 +84,7 @@ class AdminArticlesController extends Controller {
             $em->persist($article);
             $em->flush();
 
-            return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
+            return $this->redirectToRoute('admin_articles', array('id' => $article->getId()));
         }
         return $this->render('articles/admin/new.html.twig', array(
                     'article' => $article,
