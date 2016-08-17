@@ -3,6 +3,10 @@
     width: 120px;
 }
 
+.table_img{
+    width: 60px;
+}
+
 .gallery_img{
     width: 100%;
     padding-top: 10px;
@@ -10,8 +14,12 @@
 
 .navtab_img{
     width: 60px;
-    /*margin-right: 20px;*/
 }
+
+.filter_img{
+    width: 80px;
+}
+
 
 #logo{
     width: 180px;
