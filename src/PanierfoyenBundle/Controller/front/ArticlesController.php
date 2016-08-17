@@ -28,6 +28,8 @@ class ArticlesController extends Controller {
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
+        $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
+
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e');
 
         list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -35,6 +37,7 @@ class ArticlesController extends Controller {
         return $this->render('articles/index.html.twig', array(
                     'articles' => $articles,
                     'pagerHtml' => $pagerHtml,
+                    'tags' => $tags,
         ));
     }
 
@@ -75,6 +78,7 @@ class ArticlesController extends Controller {
      */
     public function indexTagAction(Request $request, $tagLibelle) {
         $em = $this->getDoctrine()->getManager();
+        $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e');
 
         list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -83,6 +87,7 @@ class ArticlesController extends Controller {
                     'articles' => $articles,
                     'pagerHtml' => $pagerHtml,
                     'tagSelectedLibelle' => $tagLibelle,
+                    'tags' => $tags,
         ));
     }
 
