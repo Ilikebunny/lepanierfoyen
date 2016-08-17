@@ -79,7 +79,7 @@ class Articles {
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Tags", inversedBy="article")
+     * @ORM\ManyToMany(targetEntity="Tags", inversedBy="article", fetch="EAGER")
      * @ORM\JoinTable(name="articles_tags",
      *   joinColumns={
      *     @ORM\JoinColumn(name="article_id", referencedColumnName="id")
