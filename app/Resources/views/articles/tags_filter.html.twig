@@ -1,9 +1,12 @@
-
+{% if tagSelectedLibelle is defined %}
+{% else %}
+    {% set tagSelectedLibelle = "" %}
+{% endif %}
 <p>Filtrer par tag</p>
 {% for tag in tags %}
     <div class=" col-md-4">
         <a href="{{ path('articlesByTag', { 'tagLibelle': tag.title }) }}">
-            <span {{ (tag.title == tagSelected.title) ? ' class="label label-primary"' }}{{ (tag.title != tagSelected.title) ? ' class="label label-default"' }}>
+            <span {{ (tag.title == tagSelectedLibelle) ? ' class="label label-primary"' }}{{ (tag.title !=tagSelectedLibelle) ? ' class="label label-default"' }}>
                 {{ tag.title}}
             </span>
         </a>
