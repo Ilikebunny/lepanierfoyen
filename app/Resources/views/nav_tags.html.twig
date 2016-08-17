@@ -1,0 +1,7 @@
+{% for tag in tagsForNav %}
+    <li>
+        <a href="{{ path('articlesByTag', { 'tagLibelle': tag.title }) }}">
+            {{ tag.title}}
+        </a>
+    </li>
+{% endfor %}

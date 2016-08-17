@@ -18,7 +18,7 @@ use PanierfoyenBundle\Form\TagsType;
  *
  * @Route("/admin/tags")
  */
-class TagsController extends Controller {
+class AdminTagsController extends Controller {
 
     /**
      * Lists all Tags entities.
