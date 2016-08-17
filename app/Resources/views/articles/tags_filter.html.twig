@@ -3,7 +3,9 @@
 {% for tag in tags %}
     <div class=" col-md-6">
         <a href="{{ path('articlesByTag', { 'tagLibelle': tag.title }) }}">
-            <span class="label label-default">{{ tag.title}}</span>
+            <span {{ (tag.title == tagSelected.title) ? ' class="label label-primary"' }}{{ (tag.title != tagSelected.title) ? ' class="label label-default"' }}>
+                {{ tag.title}}
+            </span>
         </a>
     </div>
 {% endfor %}
