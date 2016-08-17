@@ -68,6 +68,25 @@ class ArticlesController extends Controller {
     }
 
     /**
+     * Lists all Articles entities filtered by tag
+     *
+     * @Route("/tag/{tagLibelle}", name="articlesByTag")
+     * @Method("GET")
+     */
+    public function indexTagAction(Request $request, $tagLibelle) {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e');
+
+        list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
+
+        return $this->render('articles/index.html.twig', array(
+                    'articles' => $articles,
+                    'pagerHtml' => $pagerHtml,
+                    'tagSelectedLibelle' => $tagLibelle,
+        ));
+    }
+
+    /**
      * Finds and displays a Articles entity.
      *
      * @Route("/{id}", name="articles_show")
