@@ -86,7 +86,7 @@ class AdminArticlesController extends Controller {
 
             return $this->redirectToRoute('articles_show', array('id' => $article->getId()));
         }
-        return $this->render('articles/new.html.twig', array(
+        return $this->render('articles/admin/new.html.twig', array(
                     'article' => $article,
                     'form' => $form->createView(),
         ));
@@ -111,7 +111,7 @@ class AdminArticlesController extends Controller {
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('articles_edit', array('id' => $article->getId()));
         }
-        return $this->render('articles/edit.html.twig', array(
+        return $this->render('articles/admin/edit.html.twig', array(
                     'article' => $article,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
