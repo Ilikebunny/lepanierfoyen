@@ -82,10 +82,6 @@ class AdminUsersController extends Controller {
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-            $user = $this->removeAllRoles($user);
-            $roleToAdd = $form->get('role')->getData();
-            $user->addRole($roleToAdd);
-
             $em->persist($user);
             $em->flush();
 

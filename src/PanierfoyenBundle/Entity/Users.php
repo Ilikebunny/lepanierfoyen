@@ -111,13 +111,12 @@ class Users extends BaseUser {
     private $coordinateur;
 
     /**
-     * @ORM\ManyToMany(targetEntity="PanierfoyenBundle\Entity\Group")
-     * @ORM\JoinTable(name="fos_user_user_group",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToOne(targetEntity="PanierfoyenBundle\Entity\Group", fetch="EAGER")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="group_id", referencedColumnName="id")
+     * })
      */
-    protected $groups;
+    protected $group;
 
     public function __construct() {
         parent::__construct();
@@ -461,6 +460,42 @@ class Users extends BaseUser {
      */
     public function getCoordinateur() {
         return $this->coordinateur;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \PanierfoyenBundle\Entity\Group $group
+     *
+     * @return Users
+     */
+    public function setGroup(\PanierfoyenBundle\Entity\Group $group = null) {
+        $this->group = $group;
+        $this->removeAllRoles();
+        foreach ($group->getRoles() as $role) {
+            $this->addRole($role);
+        }
+        return $this;
+    }
+
+    /**
+     * Get coordinateur
+     *
+     * @return \PanierfoyenBundle\Entity\Group
+     */
+    public function getGroup() {
+        return $this->group;
+    }
+
+    /**
+     * Remove all roles
+     *
+     */
+    protected function removeAllRoles() {
+
+        $this->removeRole("ROLE_ADMIN");
+        $this->removeRole("ROLE_PUBLISHER");
+        $this->removeRole("ROLE_COORDINATEUR");
     }
 
 }

@@ -13,14 +13,7 @@ class UsersRightsType extends AbstractType {
         $builder
                 ->add('username')
                 ->add('coordinateur')
-                ->add('groups')
-                ->add('role', ChoiceType::class, array(
-                    'mapped' => false,
-                    'choices' => array(
-                        'Administrateur' => 'ROLE_ADMIN',
-                        'Publicateur' => 'ROLE_PUBLISHER',
-                        'Coordinateur' => 'ROLE_COORDINATEUR',
-            )))
+                ->add('group')
         ;
     }
 

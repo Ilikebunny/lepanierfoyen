@@ -44,6 +44,7 @@
                         <th>Nom</th>
                         <th>Codepostal</th>
                         <th>Ville</th>
+                        <th>Groupe</th>
                         <th>Role</th>
                         <th>Created</th>
                         <th>List</th>
@@ -57,6 +58,7 @@
                             <td>{{ user.nom }}</td>
                             <td>{{ user.codepostal }}</td>
                             <td>{{ user.ville }}</td>
+                            <td>{{ user.group }}</td>
                             <td>{{ user.roles[0] }}</td>
                             <td>{% if user.created %}{{ user.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>    
