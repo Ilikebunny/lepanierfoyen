@@ -1,6 +1,6 @@
 <?php
 
-namespace PanierfoyenBundle\Controller;
+namespace PanierfoyenBundle\Controller\admin;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,14 +18,14 @@ use PanierfoyenBundle\Form\UsersType;
 /**
  * Users controller.
  *
- * @Route("/users")
+ * @Route("/admin/users")
  */
-class UsersController extends Controller
+class AdminUsersController extends Controller
 {
     /**
      * Lists all Users entities.
      *
-     * @Route("/", name="users")
+     * @Route("/", name="admin_users")
      * @Method("GET")
      */
     public function indexAction(Request $request)
