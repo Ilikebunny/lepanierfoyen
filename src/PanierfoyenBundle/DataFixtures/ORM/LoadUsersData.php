@@ -42,8 +42,10 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
 //            ;
 //        $user->setPassword($encoder->encodePassword('somepass', $user->getSalt()));
 
-
+        $user->addRole('ROLE_ADMIN');
         $userManager->updateUser($user);
+        
+        
     }
 
     public function getOrder() {
