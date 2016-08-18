@@ -8,7 +8,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use PanierfoyenBundle\Entity\Tags;
+use PanierfoyenBundle\Entity\Users;
 
 class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface {
 
