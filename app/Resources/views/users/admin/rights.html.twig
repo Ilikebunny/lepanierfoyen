@@ -1,0 +1,30 @@
+{% extends 'layout.admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - droits utilisateurs
+{% endblock %}
+
+{% block panel_head %}
+    Droits utilisateur
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Valider</button>
+    </p>
+    {{ form_end(form) }}
+
+
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('admin_users') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Retour à la liste
+        </a>
+    </div>
+
+
+{% endblock %}
+
