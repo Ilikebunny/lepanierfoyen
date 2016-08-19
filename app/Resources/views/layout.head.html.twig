@@ -11,6 +11,9 @@
     <link href="{{ asset('bundles/tritoncrud/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('bundles/tritoncrud/css/crud.css') }}" rel="stylesheet" />
     <!-- Triton Crud-->
+    <!-- ADesignsCalendarBundle-->
+    <link rel="stylesheet" href="{{ asset('bundles/adesignscalendar/css/fullcalendar/fullcalendar.css') }}" />
+    <!-- ADesignsCalendarBundle-->
     <!-- Form theme -->
     {% if form is defined %}
         {% form_theme form 'bootstrap_3_layout.html.twig' %}
@@ -28,4 +31,8 @@
     <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
     <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
     <!-- FOS/JSRoutingBundle-->
+    <!-- ADesignsCalendarBundle-->
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/fullcalendar/jquery.fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/adesignscalendar/js/calendar-settings.js') }}"></script>
+    <!-- ADesignsCalendarBundle-->
 </head>
