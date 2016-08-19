@@ -22,6 +22,7 @@ class AppKernel extends Kernel {
             new Ikadoc\KCFinderBundle\IkadocKCFinderBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

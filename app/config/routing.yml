@@ -17,3 +17,6 @@ kcfinder:
 kcfinder_browse:
     path:      /admin/kcfinder/browse.php
     defaults:  { _controller: IkadocKCFinderBundle:Proxy:proxy }   
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

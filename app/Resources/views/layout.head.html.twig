@@ -19,8 +19,13 @@
         {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
     {% endif %}
     <!-- Form theme END-->
-{% block stylesheets %}{% endblock %}
-<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-<script src="{{ asset('js/jquery-3.1.0.min.js') }}"></script>
-<script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+    {% block stylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <script src="{{ asset('js/jquery-3.1.0.min.js') }}"></script>
+    <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+    <!-- FOS/JSRoutingBundle-->
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+    <!-- FOS/JSRoutingBundle-->
 </head>
