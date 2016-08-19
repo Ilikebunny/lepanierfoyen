@@ -94,18 +94,6 @@ class AdminUsersController extends Controller {
     }
 
     /**
-     * Remove all roles
-     *
-     */
-    protected function removeAllRoles($user) {
-
-        $user->removeRole("ROLE_ADMIN");
-        $user->removeRole("ROLE_PUBLISHER");
-        $user->removeRole("ROLE_COORDINATEUR");
-        return $user;
-    }
-
-    /**
      * Displays a form to create a new Users entity.
      *
      * @Route("/new", name="users_new")
