@@ -1,15 +1,14 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layout.admin.html.twig' %}
 
 {% block title %}
-{{ parent() }} - lieus
+    {{ parent() }} - lieus
+{% endblock %}
+
+{% block panel_head %}
+    {{ lieus.libelle }}
 {% endblock %}
 
 {% block body %}
-
-<header class="panel-heading">
-    <h2> Lieus</h2>
-</header>
-<div class="panel-body">
 
     <form class="form form-vertical">
         <fieldset>            <div class="control-group">
@@ -49,21 +48,21 @@
                 </div>
             </div>        </fieldset>
     </form>
-        <hr>
-        <div class="form-group">
-    <a class="btn btn-default" href="{{ path('lieus') }}">
-        <i class="fa fa-list" aria-hidden="true"></i>
-        Back to list
-    </a>
-            <a class="btn btn-success" href="{{ path('lieus_edit', { 'id':  lieus.id }) }}">
+    <hr>
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('lieus') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Back to list
+        </a>
+        <a class="btn btn-success" href="{{ path('lieus_edit', { 'id':  lieus.id }) }}">
             <i class="fa fa-pencil" aria-hidden="true"></i>
             Edit
         </a>
-                <a class="btn btn-primary" href="{{ path('lieus_new') }}">
+        <a class="btn btn-primary" href="{{ path('lieus_new') }}">
             <i class="fa fa-plus" aria-hidden="true"></i>
             New
         </a>
-                <form action="{{ path('lieus_delete', { 'id': lieus.id }) }}" method="post" style="display: inline-block">
+        <form action="{{ path('lieus_delete', { 'id': lieus.id }) }}" method="post" style="display: inline-block">
             <input type="hidden" name="_method" value="DELETE" />
             {{ form_widget(delete_form) }}
             <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
@@ -71,9 +70,6 @@
                 Delete</button>
         </form>
     </div>
-
-</div>
-<hr>
 
 {% endblock %}
 

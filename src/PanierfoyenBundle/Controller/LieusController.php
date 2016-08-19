@@ -10,45 +10,39 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
-
 use PanierfoyenBundle\Entity\Lieus;
 use PanierfoyenBundle\Form\LieusType;
-
 
 /**
  * Lieus controller.
  *
  * @Route("/admin/lieus")
  */
-class LieusController extends Controller
-{
+class LieusController extends Controller {
+
     /**
      * Lists all Lieus entities.
      *
      * @Route("/", name="lieus")
      * @Method("GET")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Lieus')->createQueryBuilder('e');
 
         list($lieuses, $pagerHtml) = $this->paginator($queryBuilder, $request);
-        
-        return $this->render('lieus/index.html.twig', array(
-            'lieuses' => $lieuses,
-            'pagerHtml' => $pagerHtml,
 
+        return $this->render('lieus/index.html.twig', array(
+                    'lieuses' => $lieuses,
+                    'pagerHtml' => $pagerHtml,
         ));
     }
 
-
     /**
-    * Get results from paginator and get paginator view.
-    *
-    */
-    protected function paginator($queryBuilder, $request)
-    {
+     * Get results from paginator and get paginator view.
+     *
+     */
+    protected function paginator($queryBuilder, $request) {
         // Paginator
         $adapter = new DoctrineORMAdapter($queryBuilder);
         $pagerfanta = new Pagerfanta($adapter);
@@ -58,8 +52,7 @@ class LieusController extends Controller
 
         // Paginator - route generator
         $me = $this;
-        $routeGenerator = function($page) use ($me)
-        {
+        $routeGenerator = function($page) use ($me) {
             return $me->generateUrl('lieus', array('page' => $page));
         };
 
@@ -73,8 +66,6 @@ class LieusController extends Controller
 
         return array($entities, $pagerHtml);
     }
-    
-    
 
     /**
      * Displays a form to create a new Lieus entity.
@@ -82,11 +73,10 @@ class LieusController extends Controller
      * @Route("/new", name="lieus_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
-    
+    public function newAction(Request $request) {
+
         $lieus = new Lieus();
-        $form   = $this->createForm('PanierfoyenBundle\Form\LieusType', $lieus);
+        $form = $this->createForm('PanierfoyenBundle\Form\LieusType', $lieus);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -97,30 +87,24 @@ class LieusController extends Controller
             return $this->redirectToRoute('lieus_show', array('id' => $lieus->getId()));
         }
         return $this->render('lieus/new.html.twig', array(
-            'lieus' => $lieus,
-            'form'   => $form->createView(),
+                    'lieus' => $lieus,
+                    'form' => $form->createView(),
         ));
     }
-    
-    
 
-    
     /**
      * Finds and displays a Lieus entity.
      *
      * @Route("/{id}", name="lieus_show")
      * @Method("GET")
      */
-    public function showAction(Lieus $lieus)
-    {
+    public function showAction(Lieus $lieus) {
         $deleteForm = $this->createDeleteForm($lieus);
         return $this->render('lieus/show.html.twig', array(
-            'lieus' => $lieus,
-            'delete_form' => $deleteForm->createView(),
+                    'lieus' => $lieus,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
 
     /**
      * Displays a form to edit an existing Lieus entity.
@@ -128,8 +112,7 @@ class LieusController extends Controller
      * @Route("/{id}/edit", name="lieus_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Lieus $lieus)
-    {
+    public function editAction(Request $request, Lieus $lieus) {
         $deleteForm = $this->createDeleteForm($lieus);
         $editForm = $this->createForm('PanierfoyenBundle\Form\LieusType', $lieus);
         $editForm->handleRequest($request);
@@ -138,18 +121,16 @@ class LieusController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($lieus);
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('lieus_edit', array('id' => $lieus->getId()));
         }
         return $this->render('lieus/edit.html.twig', array(
-            'lieus' => $lieus,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'lieus' => $lieus,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
 
     /**
      * Deletes a Lieus entity.
@@ -157,9 +138,8 @@ class LieusController extends Controller
      * @Route("/{id}", name="lieus_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Lieus $lieus)
-    {
-    
+    public function deleteAction(Request $request, Lieus $lieus) {
+
         $form = $this->createDeleteForm($lieus);
         $form->handleRequest($request);
 
@@ -171,10 +151,10 @@ class LieusController extends Controller
         } else {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
-        
+
         return $this->redirectToRoute('lieus');
     }
-    
+
     /**
      * Creates a form to delete a Lieus entity.
      *
@@ -182,15 +162,14 @@ class LieusController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Lieus $lieus)
-    {
+    private function createDeleteForm(Lieus $lieus) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('lieus_delete', array('id' => $lieus->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('lieus_delete', array('id' => $lieus->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
-    
+
     /**
      * Delete Lieus by id
      *
@@ -198,15 +177,15 @@ class LieusController extends Controller
      * @Route("/delete/{id}", name="lieus_by_id_delete")
      * @Method("GET")
      */
-    public function deleteById($id){
+    public function deleteById($id) {
 
         $em = $this->getDoctrine()->getManager();
         $lieus = $em->getRepository('PanierfoyenBundle:Lieus')->find($id);
-        
+
         if (!$lieus) {
             throw $this->createNotFoundException('Unable to find Lieus entity.');
         }
-        
+
         try {
             $em->remove($lieus);
             $em->flush();
@@ -216,9 +195,6 @@ class LieusController extends Controller
         }
 
         return $this->redirect($this->generateUrl('lieus'));
-
     }
-    
-    
-    
+
 }
