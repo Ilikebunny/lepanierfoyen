@@ -21,4 +21,11 @@ class DefaultController extends Controller {
         return $this->render('amap/le-concept.html.twig');
     }
 
+    /**
+     * @Route("/calendrier", name="amap_calendrier")
+     */
+    public function showCalendrierAction() {
+        return $this->render('amap/calendrier.html.twig');
+    }
+
 }
