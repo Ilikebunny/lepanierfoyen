@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ path('_welcome') }}">PanierFoyen</a>
+            <a class="navbar-brand" href="{{ path('_welcome') }}"><i class="fa fa-home"></i>PanierFoyen</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +51,7 @@
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <!-- Logged -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{app.user.username}} <span class="caret"></span>
+                           <i class="fa fa-user"></i> {{app.user.username}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('fos_user_profile_edit') }}">Editer profil</a></li>
