@@ -4,9 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8cebb696c21d7cd5b5d5a11ef45a0745",
-    "content-hash": "16a8cad54f7fee97902915585e817fd0",
+    "hash": "e04e293c1f6ff2b6c305ca3e612a7c38",
+    "content-hash": "3c7c9fe73190c79dbb7692e4f408c450",
     "packages": [
+        {
+            "name": "ancarebeca/full-calendar-bundle",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ancarebeca/FullCalendarBundle.git",
+                "reference": "1b4908bf4fdce8914bd8910af49f5c9d6fa08fac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ancarebeca/FullCalendarBundle/zipball/1b4908bf4fdce8914bd8910af49f5c9d6fa08fac",
+                "reference": "1b4908bf4fdce8914bd8910af49f5c9d6fa08fac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/symfony": "3.1.*"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "^2.2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "AncaRebeca\\FullCalendarBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rebeca Mora Anca",
+                    "email": "anca.rebeca@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Symfony2 integration with the library FullCalendar.js",
+            "homepage": "https://github.com/ancarebeca/FullCalendarBundle",
+            "keywords": [
+                "calendar",
+                "fullcalendar",
+                "jquery calendar",
+                "symfony2 bundle",
+                "symfony2 calendar"
+            ],
+            "time": "2016-07-18 21:02:01"
+        },
         {
             "name": "behat/transliterator",
             "version": "v1.1.0",
