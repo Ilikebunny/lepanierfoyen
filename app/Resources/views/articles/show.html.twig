@@ -9,31 +9,18 @@
 {% endblock %}
 
 {% block body %}
-<div class="col-md-12">
-    <form class="form form-vertical">
-        <fieldset>            
-            <div class="control-group">
-                <label class="col-sm-2 control-label">Publicationdate</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{% if article.publicationDate %}{{ article.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="col-sm-2 control-label">Modified</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{% if article.modified %}{{ article.modified|date('Y-m-d H:i:s') }}{% endif %}</span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="col-sm-2 control-label">Created</label>
-                <div class="col-sm-10">
-                    <span class="input-xlarge uneditable-input">{% if article.created %}{{ article.created|date('Y-m-d H:i:s') }}{% endif %}</span>
-                </div>
-            </div>
-        </fieldset>
-    </form>
-    {{ article.contenue | raw }}
-</div>
+    <div class="col-md-12">
+        {% if article.publicationDate %}
+            <span  class="label label-primary">
+                {{ article.tag[0].title }}
+            </span>
+            <h3>
+                Article publié le {{ article.publicationDate|date('Y-m-d H:i:s') }} par  {{ article.user.username }} 
+            </h3>
+        {% endif %}
+        <hr>
+        {{ article.contenue | raw }}
+    </div>
     <hr>
 
 {% endblock %}
