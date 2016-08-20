@@ -45,7 +45,7 @@ class LoadUsersData extends AbstractFixture implements OrderedFixtureInterface, 
         $user->addRole('ROLE_ADMIN');
         $userManager->updateUser($user);
         
-        
+        $this->addReference($user->getUsername(), $user);
     }
 
     public function getOrder() {
