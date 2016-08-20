@@ -33,9 +33,9 @@
             <div id="footer" class="row">
                 {{ include('layout.footer.html.twig') }}  
             </div>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             {% block javascripts %}
-                <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-                {{ include('chosen_init.html.twig') }}
+{#                {{ include('chosen_init.html.twig') }}#}
             {% endblock %}
         </div>
     </body>
