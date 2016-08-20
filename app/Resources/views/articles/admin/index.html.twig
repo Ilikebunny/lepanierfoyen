@@ -46,7 +46,7 @@
                         <th>Modified</th>
                         <th>Created</th>
                         <th>Slug</th>
-                        <th width = "130px">List</th>
+                        <th width = "160px">List</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,7 +59,8 @@
                             <td>{% if article.modified %}{{ article.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>{% if article.created %}{{ article.created|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>{{ article.slug }}</td>
-                            <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('articles_by_id_delete', { 'id': article.id}) }}">
+                            <td>    
+                                <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('articles_by_id_delete', { 'id': article.id}) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
                                 <a title='show' class="btn btn-success btn-sm" href="{{ path('articles_show', { 'id': article.id }) }}">
@@ -68,7 +69,11 @@
                                 <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('articles_edit', { 'id': article.id }) }}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
-
+                                {% if article.published == false %}
+                                    <a  title='Publier' class="btn btn-primary btn-sm" href="{{ path('articles_by_id_publish', { 'id': article.id }) }}">
+                                        <i class="fa fa-envelope"></i>
+                                    </a>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}

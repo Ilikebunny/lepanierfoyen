@@ -138,7 +138,7 @@ class AdminArticlesController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirectToRoute('articles');
+        return $this->redirectToRoute('admin_articles');
     }
 
     /**
@@ -180,7 +180,35 @@ class AdminArticlesController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('articles'));
+        return $this->redirect($this->generateUrl('admin_articles'));
+    }
+
+    /**
+     * Delete Articles by id
+     *
+     * @param mixed $id The entity id
+     * @Route("/publish/{id}", name="articles_by_id_publish")
+     * @Method("GET")
+     */
+    public function publishById($id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('PanierfoyenBundle:Articles')->findOneById($id);
+
+        if (!$article) {
+            throw $this->createNotFoundException('Unable to find Articles entity.');
+        }
+
+        try {
+            $article->setPublished(TRUE);
+            $em->persist($article);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.delete.success');
+        } catch (Exception $ex) {
+            $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
+        }
+
+        return $this->redirect($this->generateUrl('admin_articles'));
     }
 
 }

@@ -304,5 +304,27 @@ class Articles {
     public function getTag() {
         return $this->tag;
     }
+    
+      /**
+     * Set published
+     *
+     * @param string $published
+     *
+     * @return Articles
+     */
+    public function setPublished($published) {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return string
+     */
+    public function getPublished() {
+        return $this->published;
+    }
 
 }
