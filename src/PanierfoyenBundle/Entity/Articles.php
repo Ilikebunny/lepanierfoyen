@@ -37,8 +37,14 @@ class Articles {
     private $contenue;
 
     /**
+     * @var notification
+     * @ORM\Column(name="published", type="boolean")
+     */
+    protected $published = false;
+
+    /**
      * @var \DateTime
-     *
+     * @Gedmo\Timestampable(on="change", field="published", value="true")
      * @ORM\Column(name="publication_date", type="datetime", nullable=true)
      */
     private $publicationDate;
