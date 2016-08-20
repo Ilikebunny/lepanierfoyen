@@ -33,9 +33,21 @@
             <div id="footer" class="row">
                 {{ include('layout.footer.html.twig') }}  
             </div>
+            <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+            <!-- FOS/JSRoutingBundle-->
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+            <!-- FOS/JSRoutingBundle-->
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <!-- FullCalendarBundle -->
+            {#    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>#}
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+            <script src="{{ asset('js/fullcalendar/lang/fr.js') }}"></script>
+            <!-- FullCalendarBundle -->
             {% block javascripts %}
-{#                {{ include('chosen_init.html.twig') }}#}
+                {#                {{ include('chosen_init.html.twig') }}#}
             {% endblock %}
         </div>
     </body>
