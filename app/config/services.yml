@@ -14,6 +14,6 @@ services:
         
 services:
     app_bundle.service.listener:
-        class: AppBundle\Listener\LoadDataListener
+        class: PanierfoyenBundle\Listener\LoadDataListener
     tags:
         - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }        
