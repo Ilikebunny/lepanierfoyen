@@ -44,9 +44,9 @@
                 <li><a href="#">Cartographie</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+{#                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     <li><a href="{{ path('admin_dashboard') }}">Administration</a></li>
-                    {% endif %}
+                    {% endif %}#}
                 <li class="dropdown">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <!-- Logged -->
@@ -57,7 +57,8 @@
                             <li><a href="{{ path('fos_user_profile_edit') }}">Editer profil</a></li>
                             <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
                             <li><a href="{{ path('fos_user_group_list') }}">Liste des groupes</a></li>
-                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('admin_dashboard') }}">Administration</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
                         </ul>
