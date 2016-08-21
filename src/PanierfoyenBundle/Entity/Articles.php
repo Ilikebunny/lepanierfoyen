@@ -37,6 +37,13 @@ class Articles {
     private $contenue;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="summary", type="text", length=500, nullable=true)
+     */
+    private $summary;
+
+    /**
      * @var notification
      * @ORM\Column(name="published", type="boolean")
      */
@@ -162,6 +169,28 @@ class Articles {
      */
     public function getContenue() {
         return $this->contenue;
+    }
+
+    /**
+     * Set summary
+     *
+     * @param string $summary
+     *
+     * @return Articles
+     */
+    public function setSummary($summary) {
+        $this->summary = $summary;
+
+        return $this;
+    }
+
+    /**
+     * Get summary
+     *
+     * @return string
+     */
+    public function getSummary() {
+        return $this->summary;
     }
 
     /**
@@ -304,8 +333,8 @@ class Articles {
     public function getTag() {
         return $this->tag;
     }
-    
-      /**
+
+    /**
      * Set published
      *
      * @param string $published
