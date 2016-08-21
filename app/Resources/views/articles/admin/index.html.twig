@@ -53,7 +53,7 @@
                     {% for article in articles %}
                         <tr>
 
-                            <td><a href="{{ path('articles_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                            <td><a href="{{ path('articles_preview',  { 'slug': article.slug }) }}">{{ article.id }}</a></td>
                             <td>{{ article.titre }}</td>
                             <td>{% if article.publicationDate %}{{ article.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>{% if article.modified %}{{ article.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -63,7 +63,7 @@
                                 <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('articles_by_id_delete', { 'id': article.id}) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
-                                <a title='show' class="btn btn-success btn-sm" href="{{ path('articles_show', { 'id': article.id }) }}">
+                                <a title='show' class="btn btn-success btn-sm" href="{{ path('articles_preview', { 'slug': article.slug }) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('articles_edit', { 'id': article.id }) }}">

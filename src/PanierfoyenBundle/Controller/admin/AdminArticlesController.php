@@ -211,4 +211,16 @@ class AdminArticlesController extends Controller {
         return $this->redirect($this->generateUrl('admin_articles'));
     }
 
+    /**
+     * Finds and displays a Articles entity.
+     *
+     * @Route("/preview/{slug}", name="articles_preview", requirements={"slug": "[^/]++"})
+     * @Method("GET")
+     */
+    public function showAction(Articles $article) {
+        return $this->render('articles/show.html.twig', array(
+                    'article' => $article,
+        ));
+    }
+
 }
