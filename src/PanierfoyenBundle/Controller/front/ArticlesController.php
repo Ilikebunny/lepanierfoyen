@@ -30,7 +30,11 @@ class ArticlesController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
 
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')
+                ->createQueryBuilder('e')
+                ->where('e.published = 1')
+                ->orderBy('e.publicationDate', 'DESC')
+                ;
 
         list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
