@@ -158,7 +158,7 @@ class Articles {
      */
     public function setContenue($contenue) {
         $this->contenue = $contenue;
-
+        $this->generateSummary($contenue);
         return $this;
     }
 
@@ -169,6 +169,15 @@ class Articles {
      */
     public function getContenue() {
         return $this->contenue;
+    }
+
+    /**
+     * Generate summary
+     *
+     */
+    private function generateSummary($content) {
+        preg_match('/^([^.!?\s]*[\.!?\s]+){0,30}/', strip_tags($content), $abstract);
+        $this->summary = $abstract[0]."[...]";
     }
 
     /**
