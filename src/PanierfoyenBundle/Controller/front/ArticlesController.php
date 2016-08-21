@@ -80,7 +80,7 @@ class ArticlesController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
         $tagSelected = $em->getRepository('PanierfoyenBundle:Tags')->findOneByTitle($tagLibelle);
-        
+
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e');
 
         list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -97,7 +97,7 @@ class ArticlesController extends Controller {
     /**
      * Finds and displays a Articles entity.
      *
-     * @Route("/{id}", name="articles_show")
+     * @Route("/{slug}", name="articles_show", requirements={"slug": "[^/]++"})
      * @Method("GET")
      */
     public function showAction(Articles $article) {
