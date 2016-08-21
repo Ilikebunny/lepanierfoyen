@@ -39,6 +39,7 @@ class LoadArticlesData extends AbstractFixture implements OrderedFixtureInterfac
                 $entity->setUser($this->getReference($row[3]));
                 $entity->setPublished($row[4]);
                 
+                $publicationDate = new \DateTime($row[5]);
                 $entity->setPublicationDate($publicationDate);
                               
                 $manager->persist($entity);
