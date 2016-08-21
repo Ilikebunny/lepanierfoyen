@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e04e293c1f6ff2b6c305ca3e612a7c38",
-    "content-hash": "3c7c9fe73190c79dbb7692e4f408c450",
+    "hash": "946c6f81dc80c87868d78e29ddc9dd63",
+    "content-hash": "66aaf89b32a9684564220d1c753e5720",
     "packages": [
         {
             "name": "ancarebeca/full-calendar-bundle",
@@ -973,6 +973,60 @@
                 "json"
             ],
             "time": "2015-12-06 13:20:24"
+        },
+        {
+            "name": "elao/web-profiler-extra-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Elao/WebProfilerExtraBundle.git",
+                "reference": "247a1ac8c088e955385b1aab11eb52ebfdd1bbe5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Elao/WebProfilerExtraBundle/zipball/247a1ac8c088e955385b1aab11eb52ebfdd1bbe5",
+                "reference": "247a1ac8c088e955385b1aab11eb52ebfdd1bbe5",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "~2.1|~3.0",
+                "symfony/twig-bundle": "~2.0|~3.0",
+                "twig/twig": "~1.12"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Elao\\WebProfilerExtraBundle\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Elao Team",
+                    "homepage": "http://www.elao.com"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "http://github.com/Elao/WebProfilerExtraBundle/contributors"
+                }
+            ],
+            "description": "Add routing, container, assetic & twig information inside the profiler",
+            "homepage": "http://github.com/Elao/WebProfilerExtraBundle",
+            "keywords": [
+                "bundle",
+                "elao",
+                "extra",
+                "profiler"
+            ],
+            "time": "2016-01-06 13:00:41"
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
@@ -3021,7 +3075,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "sunhater/kcfinder": 20
+        "sunhater/kcfinder": 20,
+        "elao/web-profiler-extra-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
