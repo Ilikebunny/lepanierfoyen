@@ -1,4 +1,8 @@
 <p>Prochaine distribution</p>
 <hr>
 <p>Dernières publications</p>
+{{ render(controller(
+        'PanierfoyenBundle:front\\Articles:recentArticles',
+        { 'max': 3 }
+    )) }}
 <hr>

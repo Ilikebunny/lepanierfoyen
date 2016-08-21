@@ -34,7 +34,7 @@ class ArticlesController extends Controller {
                 ->createQueryBuilder('e')
                 ->where('e.published = 1')
                 ->orderBy('e.publicationDate', 'DESC')
-                ;
+        ;
 
         list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
@@ -43,6 +43,21 @@ class ArticlesController extends Controller {
                     'pagerHtml' => $pagerHtml,
                     'tags' => $tags,
         ));
+    }
+
+    public function recentArticlesAction($max = 3) {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')
+                ->createQueryBuilder('e')
+                ->where('e.published = 1')
+                ->orderBy('e.publicationDate', 'DESC')
+                ->setMaxResults($max)
+        ;
+        $articles = $queryBuilder->getQuery()->getResult();
+
+        return $this->render(
+                        'articles/recent_list.html.twig', array('recent_articles' => $articles)
+        );
     }
 
     /**
