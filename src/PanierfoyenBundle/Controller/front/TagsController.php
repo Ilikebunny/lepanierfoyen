@@ -38,6 +38,10 @@ class TagsController extends Controller {
         ));
     }
 
+    /**
+     * Lists all Tags entities to render them in navbar.
+     *
+     */
     public function getAllTagsForNavAction() {
         $em = $this->getDoctrine()->getManager();
         $tagsForNav = $em->getRepository('PanierfoyenBundle:Tags')->findBy([], ['title' => 'ASC']);
