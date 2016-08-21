@@ -38,7 +38,7 @@ class LoadArticlesData extends AbstractFixture implements OrderedFixtureInterfac
                 $entity->addTag($this->getReference($row[2]));
                 $entity->setUser($this->getReference($row[3]));
                 
-                $entity->setPublished($row[4]));
+                $entity->setPublished($row[4]);
                 
                 $manager->persist($entity);
                 $manager->flush();
