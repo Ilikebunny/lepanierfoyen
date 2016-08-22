@@ -16,12 +16,16 @@
             {% for article in articles %}
                 {% if article.publicationDate %}
 
-                    <h3>
-                        <a href="{{ path('articles_show', { 'slug': article.slug }) }}">{{ article.titre }} </a></td>
-                        <span  class="label label-primary">
-                            {{ article.tag[0].title }}
-                        </span>
-                    </h3>
+                    <div class ="article_entete row">
+                        <div class="article_titre col-md-10">
+                            <h3><a href="{{ path('articles_show', { 'slug': article.slug }) }}">{{ article.titre }} </a></td></h3>
+                        </div>
+                        <div class="article_tag col-md-2 text-center">
+                            <span  class="label label-primary">
+                                {{ article.tag[0].title }}
+                            </span>
+                        </div>
+                    </div>
                     <h4>  Article publié le {{ article.publicationDate|date('Y-m-d H:i:s') }} par  {{ article.user.username }} </h4>
                     <p>{{ article.summary | raw }}</p>
                     <hr>
