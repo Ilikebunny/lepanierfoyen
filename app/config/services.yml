@@ -27,8 +27,7 @@ services:
 #        tags:
 #            - { name: twig.extension }
             
-services:
     app_bundle.service.listener:
         class: PanierfoyenBundle\Listener\LoadDataListener
-    tags:
-        - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }        
+        tags:
+            - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }        
