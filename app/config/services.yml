@@ -11,7 +11,22 @@ services:
     panierfoyen.importcsv:
         class: PanierfoyenBundle\ImportCSV\ImportCSV
         arguments: ["@service_container"]
-        
+                
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+            - { name: twig.extension }
+ 
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+ 
+#    twig.extension.debug:
+#        class: Twig_Extensions_Extension_Debug
+#        tags:
+#            - { name: twig.extension }
+            
 services:
     app_bundle.service.listener:
         class: PanierfoyenBundle\Listener\LoadDataListener

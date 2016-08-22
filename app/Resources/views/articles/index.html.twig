@@ -28,7 +28,8 @@
                     </div>
                     <h4 class="article_header">
 {#                        Article publié le {{ article.publicationDate|date('Y-m-d') }} par  {{ article.user.username }} #}
-                        Article publié le <span>{{ article.publicationDate|date('l d F Y') }}</span> par  <span>{{ article.user.username }}</span> 
+{#                        Article publié le <span>{{ article.publicationDate|date('l d F Y') }}</span> par  <span>{{ article.user.username }}</span> #}
+                        Article publié le <span>{{ article.publicationDate|localizeddate('medium', 'none', 'fr') }}</span> par  <span>{{ article.user.username }}</span> 
                     </h4>
                     <p class="article_summary">{{ article.summary | raw }}</p>
                     <hr>
