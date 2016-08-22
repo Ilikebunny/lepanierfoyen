@@ -88,3 +88,26 @@
     display: flex;
     align-items: center;
 }
+
+.article_entete{
+    background-color: #adc917;
+}
+
+.article_entete a{
+    background-color: #adc917;
+    color: whitesmoke;
+}
+
+.article_summary{
+    background-color: whitesmoke;
+    color: black;
+}
+
+.article_header{
+    font-style: italic;
+}
+
+.article_header span{
+    font-style: normal;
+    color: orangered;
+}

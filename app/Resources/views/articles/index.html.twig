@@ -26,8 +26,11 @@
                             </span>
                         </div>
                     </div>
-                    <h4>  Article publié le {{ article.publicationDate|date('Y-m-d H:i:s') }} par  {{ article.user.username }} </h4>
-                    <p>{{ article.summary | raw }}</p>
+                    <h4 class="article_header">
+{#                        Article publié le {{ article.publicationDate|date('Y-m-d') }} par  {{ article.user.username }} #}
+                        Article publié le <span>{{ article.publicationDate|date('l d F Y') }}</span> par  <span>{{ article.user.username }}</span> 
+                    </h4>
+                    <p class="article_summary">{{ article.summary | raw }}</p>
                     <hr>
                 {% endif %}
             {% endfor %}
