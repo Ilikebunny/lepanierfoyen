@@ -22,3 +22,6 @@ services:
         class: PanierfoyenBundle\Listener\LoadDataListener
         tags:
             - { name: 'kernel.event_listener', event: 'fullcalendar.set_data', method: loadData }        
+    panierfoyen.paginator:
+        class: PanierfoyenBundle\Helper\paginator
+        arguments: ["@service_container", "@router"]

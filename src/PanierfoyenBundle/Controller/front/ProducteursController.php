@@ -30,7 +30,12 @@ class ProducteursController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
 
-        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
+
+        $paginator = $this->container->get('panierfoyen.paginator');
+         $routeName = 'producteurs';
+        list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 8, $routeName);
+
+//        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
         $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
 
@@ -63,9 +68,12 @@ class ProducteursController extends Controller {
                 ->setParameter('c', $categorySelectedObject->getId())
         ;
         //temp
-
         $routeName = 'producteursByCategories';
-        list($producteurs, $pagerHtml) = $this->paginatorByCategory($queryBuilder, $request,$routeName, 'categorySelected', $categorySelected);
+
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($producteurs, $pagerHtml) = $paginator->paginatorWithParameters($queryBuilder, $request, 8, $routeName, 'categorySelected', $categorySelected);
+
+//        list($producteurs, $pagerHtml) = $this->paginatorByCategory($queryBuilder, $request, 8, $routeName, 'categorySelected', $categorySelected);
 
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
@@ -74,69 +82,6 @@ class ProducteursController extends Controller {
                     'categorySelectedObject' => $categorySelectedObject,
                     'pagerHtml' => $pagerHtml,
         ));
-    }
-
-    /**
-     * Get results from paginator and get paginator view.
-     *
-     */
-    protected function paginator($queryBuilder, $request) {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('producteurs', array(
-                        'page' => $page
-            ));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
-    }
-
-    /**
-     * Get results from paginator and get paginator view.
-     *
-     */
-    protected function paginatorByCategory($queryBuilder, $request,$routeName, $routeParamName, $routeParamValue) {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-        
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me, $routeName, $routeParamName, $routeParamValue) {
-            return $me->generateUrl($routeName, array(
-                        'page' => $page,
-                        $routeParamName => $routeParamValue,
-            ));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
     }
 
     /**
