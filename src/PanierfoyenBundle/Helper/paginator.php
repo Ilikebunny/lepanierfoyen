@@ -24,11 +24,7 @@ class paginator {
      */
     public function paginatorSimple($queryBuilder, $request, $maxPerPage, $routeName) {
         // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage($maxPerPage);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
+        $pagerfanta = $this->manageEntities($queryBuilder, $request, $maxPerPage);
         $entities = $pagerfanta->getCurrentPageResults();
 
         // Paginator - route generator
@@ -40,23 +36,14 @@ class paginator {
         };
 
         // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
+        $pagerHtml = $this->generatePager($pagerfanta, $routeGenerator);
 
         return array($entities, $pagerHtml);
     }
 
     public function paginatorWithParameters($queryBuilder, $request, $maxPerPage, $routeName, $routeParamName, $routeParamValue) {
         // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage($maxPerPage);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
+        $pagerfanta = $this->manageEntities($queryBuilder, $request, $maxPerPage);
         $entities = $pagerfanta->getCurrentPageResults();
 
         // Paginator - route generator
@@ -69,14 +56,29 @@ class paginator {
         };
 
         // Paginator - view
+        $pagerHtml = $this->generatePager($pagerfanta, $routeGenerator);
+
+        return array($entities, $pagerHtml);
+    }
+
+    private function manageEntities($queryBuilder, $request, $maxPerPage) {
+        // Paginator
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage($maxPerPage);
+        $currentPage = $request->get('page', 1);
+        $pagerfanta->setCurrentPage($currentPage);
+        return $pagerfanta;
+    }
+
+    private function generatePager($pagerfanta, $routeGenerator) {
         $view = new TwitterBootstrap3View();
         $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
             'proximity' => 3,
             'prev_message' => 'previous',
             'next_message' => 'next',
         ));
-
-        return array($entities, $pagerHtml);
+        return $pagerHtml;
     }
 
 }
