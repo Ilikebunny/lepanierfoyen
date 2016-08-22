@@ -84,7 +84,7 @@ class ArticlesController extends Controller {
         $routeName = 'articlesByTag';
 
         $paginator = $this->container->get('panierfoyen.paginator');
-        list($articles, $pagerHtml) = $paginator->paginatorWithParameters($queryBuilder, $request, 8, $routeName, 'tagLibelle', $tagLibelle);
+        list($articles, $pagerHtml) = $paginator->paginatorWithParameters($queryBuilder, $request, 5, $routeName, 'tagLibelle', $tagLibelle);
 
         return $this->render('articles/index.html.twig', array(
                     'articles' => $articles,
