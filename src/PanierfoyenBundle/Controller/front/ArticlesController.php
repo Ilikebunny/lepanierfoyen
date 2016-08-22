@@ -36,7 +36,10 @@ class ArticlesController extends Controller {
                 ->orderBy('e.publicationDate', 'DESC')
         ;
 
-        list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        //pagination
+        $paginator = $this->container->get('panierfoyen.paginator');
+        $routeName = 'articles';
+        list($articles, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 5, $routeName);
 
         return $this->render('articles/index.html.twig', array(
                     'articles' => $articles,
@@ -61,36 +64,6 @@ class ArticlesController extends Controller {
     }
 
     /**
-     * Get results from paginator and get paginator view.
-     *
-     */
-    protected function paginator($queryBuilder, $request) {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $pagerfanta->setMaxPerPage(4);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('articles', array('page' => $page));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
-    }
-
-    /**
      * Lists all Articles entities filtered by tag
      *
      * @Route("/tag/{tagLibelle}", name="articlesByTag")
@@ -107,7 +80,11 @@ class ArticlesController extends Controller {
                 ->orderBy('e.publicationDate', 'DESC')
         ;
 
-        list($articles, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        //temp
+        $routeName = 'articlesByTag';
+
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($articles, $pagerHtml) = $paginator->paginatorWithParameters($queryBuilder, $request, 8, $routeName, 'tagLibelle', $tagLibelle);
 
         return $this->render('articles/index.html.twig', array(
                     'articles' => $articles,
