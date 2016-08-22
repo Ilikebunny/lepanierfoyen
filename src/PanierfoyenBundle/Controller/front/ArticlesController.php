@@ -68,6 +68,7 @@ class ArticlesController extends Controller {
         // Paginator
         $adapter = new DoctrineORMAdapter($queryBuilder);
         $pagerfanta = new Pagerfanta($adapter);
+        $pagerfanta->setMaxPerPage(4);
         $currentPage = $request->get('page', 1);
         $pagerfanta->setCurrentPage($currentPage);
         $entities = $pagerfanta->getCurrentPageResults();
