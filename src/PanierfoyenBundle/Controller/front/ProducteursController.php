@@ -64,7 +64,8 @@ class ProducteursController extends Controller {
         ;
         //temp
 
-        list($producteurs, $pagerHtml) = $this->paginatorByCategory($queryBuilder, $request);
+        $routeName = 'producteursByCategories';
+        list($producteurs, $pagerHtml) = $this->paginatorByCategory($queryBuilder, $request,$routeName, 'categorySelected', $categorySelected);
 
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
@@ -110,20 +111,20 @@ class ProducteursController extends Controller {
      * Get results from paginator and get paginator view.
      *
      */
-    protected function paginatorByCategory($queryBuilder, $request) {
+    protected function paginatorByCategory($queryBuilder, $request,$routeName, $routeParamName, $routeParamValue) {
         // Paginator
         $adapter = new DoctrineORMAdapter($queryBuilder);
         $pagerfanta = new Pagerfanta($adapter);
         $currentPage = $request->get('page', 1);
         $pagerfanta->setCurrentPage($currentPage);
         $entities = $pagerfanta->getCurrentPageResults();
-
+        
         // Paginator - route generator
         $me = $this;
-        $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('producteursByCategories', array(
+        $routeGenerator = function($page) use ($me, $routeName, $routeParamName, $routeParamValue) {
+            return $me->generateUrl($routeName, array(
                         'page' => $page,
-                        'categorySelected' => 'Fruits',
+                        $routeParamName => $routeParamValue,
             ));
         };
 
