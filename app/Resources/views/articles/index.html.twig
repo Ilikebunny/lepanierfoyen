@@ -16,7 +16,7 @@
             {% for article in articles %}
                 {% if article.publicationDate %}
 
-                    <div class ="article_entete row">
+                    <div class ="article_entete row vertical-align">
                         <div class="article_titre col-md-10">
                             <h3><a href="{{ path('articles_show', { 'slug': article.slug }) }}">{{ article.titre }} </a></td></h3>
                         </div>

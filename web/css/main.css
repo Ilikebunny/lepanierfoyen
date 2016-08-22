@@ -83,3 +83,8 @@
 #espaceAdmin{
     float: right;
 }
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
