@@ -81,6 +81,20 @@ class ArticlesController extends Controller {
         ;
 
         //temp
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')
+                ->createQueryBuilder('a')
+                ->select('a')
+                ->leftJoin('a.tag', 't')
+                ->addSelect('t')
+                ->andWhere('a.published = 1')
+                ->orderBy('a.publicationDate', 'DESC')
+        ;
+
+        $queryBuilder = $queryBuilder->add('where', $queryBuilder->expr()->in('t', ':t'))
+                ->setParameter('t', $tagSelected->getId())
+        ;
+        //temp
+        //temp
         $routeName = 'articlesByTag';
 
         $paginator = $this->container->get('panierfoyen.paginator');
