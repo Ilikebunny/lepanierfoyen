@@ -121,7 +121,7 @@ class AdminUsersController extends Controller {
     /**
      * Finds and displays a Users entity.
      *
-     * @Route("/{id}", name="users_show")
+     * @Route("/{id}", name="users_preview")
      * @Method("GET")
      */
     public function showAction(Users $user) {

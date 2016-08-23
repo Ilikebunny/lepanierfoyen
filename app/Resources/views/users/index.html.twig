@@ -65,7 +65,7 @@
                                 <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('users_by_id_delete', { 'id': user.id}) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
-                                <a title='show' class="btn btn-success btn-sm" href="{{ path('users_show', { 'id': user.id }) }}">
+                                <a title='show' class="btn btn-success btn-sm" href="{{ path('users_preview', { 'id': user.id }) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('users_edit', { 'id': user.id }) }}">

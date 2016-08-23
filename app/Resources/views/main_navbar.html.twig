@@ -54,9 +54,10 @@
                            <i class="fa fa-user"></i> {{app.user.username}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('fos_user_profile_edit') }}">Editer profil</a></li>
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Editer compte</a></li>
                             <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
-                            <li><a href="{{ path('fos_user_group_list') }}">Liste des groupes</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('fos_user_profile_edit') }}">Editer profil</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('admin_dashboard') }}">Administration</a></li>
                             <li role="separator" class="divider"></li>
