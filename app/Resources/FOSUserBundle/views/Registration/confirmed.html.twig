@@ -7,4 +7,6 @@
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
+    
+    <p>Vous pouvez dès maintenant <a href="{{ path('myprofil_edit') }}">éditer votre profil</a></p>
 {% endblock fos_user_content %}

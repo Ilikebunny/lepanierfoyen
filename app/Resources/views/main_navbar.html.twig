@@ -55,9 +55,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('fos_user_profile_edit') }}">Editer compte</a></li>
-                            <li><a href="{{ path('fos_user_change_password') }}">Changer mot de passe</a></li>
+                            <li><a href="{{ path('fos_user_change_password') }}">Mot de passe</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ path('fos_user_profile_edit') }}">Editer profil</a></li>
+                            <li><a href="{{ path('myprofil_edit') }}">Editer profil</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ path('admin_dashboard') }}">Administration</a></li>
                             <li role="separator" class="divider"></li>
@@ -67,10 +67,10 @@
                         <!-- Not Logged -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mon compte <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
                             <li><a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+                            <li><a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a></li>
                         </ul>
                     {% endif %}
                 </li>
