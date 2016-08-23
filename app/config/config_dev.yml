@@ -45,3 +45,6 @@ web_profiler_extra:
     twig:
         enabled:        true
         display_in_wdt: true
+        
+swiftmailer:
+    delivery_address: 'larrue.jerome@gmail.com'        

@@ -140,7 +140,7 @@ fos_user:
         mailer: fos_user.mailer.twig_swift
     resetting:
         email:
-            template: email/password_resetting.email.twig        
+#            template: email/password_resetting.email.twig        
         
 ikadoc_kc_finder:
     base_path : "%kernel.root_dir%/../vendor/sunhater/kcfinder"
