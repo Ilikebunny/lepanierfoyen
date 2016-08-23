@@ -130,6 +130,17 @@ fos_user:
     user_class: PanierfoyenBundle\Entity\Users
     group:
         group_class: PanierfoyenBundle\Entity\Group    
+    registration:
+        confirmation:
+            enabled: true
+    from_email:
+        address:        lePanierFoyen@example.com
+        sender_name:    LePanierFoyen
+    service:
+        mailer: fos_user.mailer.twig_swift
+    resetting:
+        email:
+            template: email/password_resetting.email.twig        
         
 ikadoc_kc_finder:
     base_path : "%kernel.root_dir%/../vendor/sunhater/kcfinder"
