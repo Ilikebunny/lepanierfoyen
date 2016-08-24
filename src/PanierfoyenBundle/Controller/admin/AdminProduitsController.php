@@ -1,6 +1,6 @@
 <?php
 
-namespace PanierfoyenBundle\Controller;
+namespace PanierfoyenBundle\Controller\admin;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -16,14 +16,14 @@ use PanierfoyenBundle\Entity\Produits;
 /**
  * Produits controller.
  *
- * @Route("/produits")
+ * @Route("/admin/produits")
  */
-class ProduitsController extends Controller
+class AdminProduitsController extends Controller
 {
     /**
      * Lists all Produits entities.
      *
-     * @Route("/", name="produits")
+     * @Route("/", name="admin_produits")
      * @Method("GET")
      */
     public function indexAction(Request $request)
@@ -106,7 +106,7 @@ class ProduitsController extends Controller
     /**
      * Finds and displays a Produits entity.
      *
-     * @Route("/{id}", name="produits_show")
+     * @Route("/preview/{id}", name="produits_prewiev")
      * @Method("GET")
      */
     public function showAction(Produits $produit)
