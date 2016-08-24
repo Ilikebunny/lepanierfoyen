@@ -55,7 +55,7 @@ class AdminProduitsController extends Controller
             $em->persist($produit);
             $em->flush();
 
-            return $this->redirectToRoute('produits_show', array('id' => $produit->getId()));
+            return $this->redirectToRoute('produits_prewiev', array('id' => $produit->getId()));
         }
         return $this->render('produits/admin/new.html.twig', array(
             'produit' => $produit,

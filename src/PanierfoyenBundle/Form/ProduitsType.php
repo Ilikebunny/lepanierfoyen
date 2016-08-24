@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 class ProduitsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -13,7 +15,7 @@ class ProduitsType extends AbstractType
         $builder
             ->add('libelle')
             ->add('descriptif')
-            ->add('image')
+            ->add('image',HiddenType::class)
             ->add('category', null, array('attr' => array(
                         'class' => 'chosen-select'
             )))

@@ -56,7 +56,7 @@
                             <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('produits_by_id_delete', { 'id': produit.id}) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
-                                <a title='show' class="btn btn-success btn-sm" href="{{ path('produits_show', { 'id': produit.id }) }}">
+                                <a title='show' class="btn btn-success btn-sm" href="{{ path('produits_prewiev', { 'id': produit.id }) }}">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('produits_edit', { 'id': produit.id }) }}">
