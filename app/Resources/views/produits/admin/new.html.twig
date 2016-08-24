@@ -1,0 +1,32 @@
+{% extends 'layout.admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - New produit
+{% endblock %}
+
+{% block panel_head %}
+    Ajout Produit
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Submit</button>
+    </p>
+    {{ form_end(form) }}
+
+
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('admin_produits') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Back to list
+        </a>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ include('chosen_init.html.twig') }}
+{% endblock %}

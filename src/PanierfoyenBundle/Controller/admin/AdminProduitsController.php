@@ -7,9 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\View\TwitterBootstrap3View;
 
 use PanierfoyenBundle\Entity\Produits;
 
@@ -31,48 +28,14 @@ class AdminProduitsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->createQueryBuilder('e');
 
-        list($produits, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($produits, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, 'admin_produits');
         
-        return $this->render('produits/index.html.twig', array(
+        return $this->render('produits/admin/index.html.twig', array(
             'produits' => $produits,
             'pagerHtml' => $pagerHtml,
-
         ));
     }
-
-
-    /**
-    * Get results from paginator and get paginator view.
-    *
-    */
-    protected function paginator($queryBuilder, $request)
-    {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me)
-        {
-            return $me->generateUrl('produits', array('page' => $page));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
-    }
-    
-    
 
     /**
      * Displays a form to create a new Produits entity.
@@ -84,7 +47,7 @@ class AdminProduitsController extends Controller
     {
     
         $produit = new Produits();
-        $form   = $this->createForm('PanierfoyenBundle\Form\ProduitsType', $produit);
+        $form = $this->createForm('PanierfoyenBundle\Form\ProduitsType', $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -94,15 +57,12 @@ class AdminProduitsController extends Controller
 
             return $this->redirectToRoute('produits_show', array('id' => $produit->getId()));
         }
-        return $this->render('produits/new.html.twig', array(
+        return $this->render('produits/admin/new.html.twig', array(
             'produit' => $produit,
             'form'   => $form->createView(),
         ));
     }
-    
-    
-
-    
+        
     /**
      * Finds and displays a Produits entity.
      *
@@ -112,12 +72,11 @@ class AdminProduitsController extends Controller
     public function showAction(Produits $produit)
     {
         $deleteForm = $this->createDeleteForm($produit);
-        return $this->render('produits/show.html.twig', array(
+        return $this->render('produits/admin/show.html.twig', array(
             'produit' => $produit,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
     
 
     /**
@@ -140,13 +99,12 @@ class AdminProduitsController extends Controller
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('produits_edit', array('id' => $produit->getId()));
         }
-        return $this->render('produits/edit.html.twig', array(
+        return $this->render('produits/admin/edit.html.twig', array(
             'produit' => $produit,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
     
 
     /**
@@ -216,7 +174,6 @@ class AdminProduitsController extends Controller
         return $this->redirect($this->generateUrl('produits'));
 
     }
-    
-    
+     
     
 }

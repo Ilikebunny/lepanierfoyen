@@ -14,9 +14,15 @@ class ProduitsType extends AbstractType
             ->add('libelle')
             ->add('descriptif')
             ->add('image')
-            ->add('category')
-            ->add('frequence')
-            ->add('producteur')
+            ->add('category', null, array('attr' => array(
+                        'class' => 'chosen-select'
+            )))
+            ->add('frequence', null, array('attr' => array(
+                        'class' => 'chosen-select'
+            )))
+            ->add('producteur', null, array('attr' => array(
+                        'class' => 'chosen-select'
+            )))
         ;
     }
 
