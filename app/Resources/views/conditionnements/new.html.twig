@@ -1,32 +1,32 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-{{ parent() }} - New conditionnement
+    {{ parent() }} - New conditionnement
 {% endblock %}
 
 {% block body %}
-<section class="panel">
-    <header class="panel-heading">
-        <h2>New conditionnement</h2>
-    </header>
-    <div class="panel-body">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <p>
-            <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Submit</button>
-        </p>
-        {{ form_end(form) }}
+    <section class="panel">
+        <header class="panel-heading">
+            <h2>New conditionnement</h2>
+        </header>
+        <div class="panel-body">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <p>
+                <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Submit</button>
+            </p>
+            {{ form_end(form) }}
 
 
-                <div class="form-group">
-    <a class="btn btn-default" href="{{ path('conditionnements') }}">
-        <i class="fa fa-list" aria-hidden="true"></i>
-        Back to list
-    </a>
+            <div class="form-group">
+                <a class="btn btn-default" href="{{ path('conditionnements') }}">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                    Back to list
+                </a>
             </div>
 
-    </div>
-</section>
+        </div>
+    </section>
 
 
 {% endblock %}
