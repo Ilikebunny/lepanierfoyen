@@ -29,7 +29,7 @@ class AdminProduitsController extends Controller
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->createQueryBuilder('e');
 
         $paginator = $this->container->get('panierfoyen.paginator');
-        list($produits, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, 'admin_produits');
+        list($produits, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 12, 'admin_produits');
         
         return $this->render('produits/admin/index.html.twig', array(
             'produits' => $produits,
@@ -128,7 +128,7 @@ class AdminProduitsController extends Controller
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
         
-        return $this->redirectToRoute('produits');
+        return $this->redirectToRoute('admin_produits');
     }
     
     /**

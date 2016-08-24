@@ -8,6 +8,15 @@
     Produits list 
 {% endblock %}
 
+{% block aside %}
+    <div class="form-group">
+        <a class="btn btn-primary"href="{{ path('produits_new') }}">
+            <i class="fa fa-plus"></i>
+            Ajouter
+        </a>
+    </div>
+{% endblock %}
+
 {% block body %}
 
     <div class="row">
@@ -22,14 +31,6 @@
                     {{ flash_message }}
                 </div>
             {% endfor %}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-2 form-group pull-right">
-            <a class="btn btn-primary likepaginator" href="{{ path('produits_new') }}">
-                <i class="fa fa-plus"></i> New
-            </a>
         </div>
     </div>
 
