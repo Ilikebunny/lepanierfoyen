@@ -11,7 +11,7 @@
     <div class="panel-body">
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        {{ include('KCFinder_image_selector.html.twig') }}
+        {% include 'KCFinder_image_selector.html.twig' with {'elementId': 'panierfoyenbundle_categories_logo'} %}
 
         <p>
             <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Submit</button>
