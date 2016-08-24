@@ -32,7 +32,7 @@ class ProduitsController extends Controller {
 //        list($produits, $pagerHtml) = $this->paginator($queryBuilder, $request);
         $paginator = $this->container->get('panierfoyen.paginator');
         list($produits, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 8, 'produits');
-        
+
         return $this->render('produits/index.html.twig', array(
                     'produits' => $produits,
                     'pagerHtml' => $pagerHtml,
