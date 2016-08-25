@@ -18,6 +18,7 @@
                     {% block menu_content %}
                     {% endblock %}
                     <div class="panel-body col-md-8">
+                        {{ include('flash_message_block.html.twig') }}
                         {% block body %}
                         {% endblock %}
                     </div>
