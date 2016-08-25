@@ -7,9 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\View\TwitterBootstrap3View;
+
 use PanierfoyenBundle\Entity\Coordinateurs;
 use PanierfoyenBundle\Form\CoordinateursType;
 
@@ -30,41 +28,14 @@ class AdminCoordinateursController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Coordinateurs')->createQueryBuilder('e');
 
-        list($coordinateurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        //Pagination
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($entities, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, 'admin_coordinateurs');
 
         return $this->render('coordinateurs/admin/index.html.twig', array(
-                    'coordinateurs' => $coordinateurs,
+                    'coordinateurs' => $entities,
                     'pagerHtml' => $pagerHtml,
         ));
-    }
-
-    /**
-     * Get results from paginator and get paginator view.
-     *
-     */
-    protected function paginator($queryBuilder, $request) {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('coordinateurs', array('page' => $page));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
     }
 
     /**
@@ -84,7 +55,7 @@ class AdminCoordinateursController extends Controller {
             $em->persist($coordinateur);
             $em->flush();
 
-            return $this->redirectToRoute('coordinateurs_show', array('id' => $coordinateur->getId()));
+            return $this->redirectToRoute('admin_coordinateurs');
         }
         return $this->render('coordinateurs/admin/new.html.twig', array(
                     'coordinateur' => $coordinateur,
@@ -99,7 +70,6 @@ class AdminCoordinateursController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Coordinateurs $coordinateur) {
-        $deleteForm = $this->createDeleteForm($coordinateur);
         $editForm = $this->createForm('PanierfoyenBundle\Form\CoordinateursType', $coordinateur);
         $editForm->handleRequest($request);
 
@@ -114,7 +84,6 @@ class AdminCoordinateursController extends Controller {
         return $this->render('coordinateurs/admin/edit.html.twig', array(
                     'coordinateur' => $coordinateur,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -138,7 +107,7 @@ class AdminCoordinateursController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirectToRoute('coordinateurs');
+        return $this->redirectToRoute('admin_coordinateurs');
     }
 
     /**
@@ -180,7 +149,7 @@ class AdminCoordinateursController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('coordinateurs'));
+        return $this->redirectToRoute('admin_coordinateurs');
     }
 
 }
