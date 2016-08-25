@@ -21,6 +21,9 @@
                         {{ include('flash_message_block.html.twig') }}
                         {% block body %}
                         {% endblock %}
+                        {% if pagerHtml is defined %}
+                            {{ pagerHtml | raw}}
+                        {% endif %}
                     </div>
                     <div class="panel-body col-md-4">
                         {% block aside %}
