@@ -13,7 +13,7 @@ class ConditionnementsType extends AbstractType
         $builder
             ->add('libelle')
             ->add('prixUnitaire')
-            ->add('produit')
+//            ->add('produit')
         ;
     }
 
