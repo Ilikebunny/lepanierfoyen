@@ -5,6 +5,7 @@ namespace PanierfoyenBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
 class ProducteursType extends AbstractType {
 
@@ -27,7 +28,7 @@ class ProducteursType extends AbstractType {
                 ->add('category', null, array('attr' => array(
                         'class' => 'chosen-select'
             )))
-                ->add('presentation')
+                ->add('presentation', CKEditorType::class)
         ;
     }
 
