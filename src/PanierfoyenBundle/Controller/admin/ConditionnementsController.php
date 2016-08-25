@@ -113,9 +113,9 @@ class ConditionnementsController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Conditionnements $conditionnement) {
-        $deleteForm = $this->createDeleteForm($conditionnement);
         $editForm = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
         $editForm->handleRequest($request);
+        $produit = $conditionnement->getProduit();
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -128,7 +128,7 @@ class ConditionnementsController extends Controller {
         return $this->render('conditionnements/edit.html.twig', array(
                     'conditionnement' => $conditionnement,
                     'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
+                    'produit' => $produit,
         ));
     }
 
