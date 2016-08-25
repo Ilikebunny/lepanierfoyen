@@ -5,6 +5,12 @@
     </a>
 </div>
 <div class="form-group">
+    <a class="btn btn-default" href="{{ path('produits_edit', { 'id': produit.id }) }}">
+        <i class="fa fa-list" aria-hidden="true"></i>
+        Retour à la fiche produit
+    </a>
+</div>
+<div class="form-group">
     <a class="btn btn-default" href="{{ path('admin_produits_conditionnements', { 'id': produit.id }) }}">
         <i class="fa fa-list" aria-hidden="true"></i>
         Conditionnement(s)
