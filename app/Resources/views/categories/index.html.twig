@@ -1,48 +1,45 @@
 {% extends 'layout.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - category index
+    {{ parent() }} - categories index
+{% endblock %}
+
+{% block panel_head %}
+    Les catégories
 {% endblock %}
 
 {% block body %}
-    <header class="panel-heading">
-        <h2>Categories list </h2>
-    </header>
-    <div class="panel-body">
 
-        <div class="row">
-            <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
 
-                <table class="table table-striped table-bordered table-hover table-condensed">
-                    <thead>
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Libelle</th>
+                        <th>Logo</th>
+                        <th width = "130px">List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
                         <tr>
-                            <th>Id</th>
-                            <th>Libelle</th>
-                            <th>Logo</th>
-                            <th width = "130px">List</th>
+                            <td>{{ category.libelle }}</td>
+                            <td><img class="banniere_img" src="{{ asset( category.logo) }}" alt="" /></td>
+                            <td>    
+                                <a title='show' class="btn btn-success btn-sm" href="{{ path('categories_show', { 'id': category.id }) }}">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for category in categories %}
-                            <tr>
-                                <td><a href="{{ path('categories_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                                <td>{{ category.libelle }}</td>
-                                <td><img class="banniere_img" src="{{ asset( category.logo) }}" alt="" /></td>
-                                <td>    
-                                    <a title='show' class="btn btn-success btn-sm" href="{{ path('categories_show', { 'id': category.id }) }}">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-            </div>
         </div>
-
     </div>
 
+    {{ pagerHtml | raw}}
 
 {% endblock %}
 

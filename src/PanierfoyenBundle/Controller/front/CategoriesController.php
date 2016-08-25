@@ -30,10 +30,13 @@ class CategoriesController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->createQueryBuilder('e');
 
-        list($categories, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        //Pagination
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($entities, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 5, 'categories');
+//        list($categories, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
         return $this->render('categories/index.html.twig', array(
-                    'categories' => $categories,
+                    'categories' => $entities,
                     'pagerHtml' => $pagerHtml,
         ));
     }
