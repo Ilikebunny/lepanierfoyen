@@ -7,9 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\View\TwitterBootstrap3View;
 use PanierfoyenBundle\Entity\Tags;
 use PanierfoyenBundle\Form\TagsType;
 
@@ -30,41 +27,14 @@ class AdminTagsController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Tags')->createQueryBuilder('e');
 
-        list($tags, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        //Pagination
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($entities, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, 'tags');
 
         return $this->render('tags/index.html.twig', array(
-                    'tags' => $tags,
+                    'tags' => $entities,
                     'pagerHtml' => $pagerHtml,
         ));
-    }
-
-    /**
-     * Get results from paginator and get paginator view.
-     *
-     */
-    protected function paginator($queryBuilder, $request) {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('tags', array('page' => $page));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
     }
 
     /**
@@ -84,7 +54,7 @@ class AdminTagsController extends Controller {
             $em->persist($tag);
             $em->flush();
 
-            return $this->redirectToRoute('tags_show', array('id' => $tag->getId()));
+            return $this->redirectToRoute('tags');
         }
         return $this->render('tags/new.html.twig', array(
                     'tag' => $tag,
@@ -194,7 +164,7 @@ class AdminTagsController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('tags'));
+        return $this->redirectToRoute('tags');
     }
 
 }
