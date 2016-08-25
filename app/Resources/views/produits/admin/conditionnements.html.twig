@@ -10,20 +10,7 @@
 
 {% block body %}
 
-    <div class="row">
-        <div class="col-md-12">
-            {% for flash_message in app.session.flashbag.get('error') %}
-                <div class="alert alert-error ">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-            {% for flash_message in app.session.flashbag.get('success') %}
-                <div class="alert alert-success ">
-                    {{ flash_message }}
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+    {{ include('flash_message_block.html.twig') }}
 
     <div class="row">
         <div class="col-md-12">
