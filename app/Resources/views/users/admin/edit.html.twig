@@ -1,11 +1,11 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - droits utilisateurs
+    {{ parent() }} -  Modifier utilisateur
 {% endblock %}
 
 {% block panel_head %}
-    Droits utilisateur
+    Modifier utilisateur
 {% endblock %}
 
 {% block aside %}
@@ -19,12 +19,14 @@
 
 {% block body %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
     <p>
-        <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Valider</button>
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-floppy-o"></i> Valider
+        </button>
     </p>
-    {{ form_end(form) }}
+    {{ form_end(edit_form) }}
 
 {% endblock %}
 

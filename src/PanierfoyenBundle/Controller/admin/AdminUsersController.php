@@ -7,9 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Pagerfanta\Pagerfanta;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\View\TwitterBootstrap3View;
 use PanierfoyenBundle\Entity\Users;
 use PanierfoyenBundle\Form\UsersType;
 use PanierfoyenBundle\Form\UsersRightsType;
@@ -31,41 +28,14 @@ class AdminUsersController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Users')->createQueryBuilder('e');
 
-        list($users, $pagerHtml) = $this->paginator($queryBuilder, $request);
+        //Pagination
+        $paginator = $this->container->get('panierfoyen.paginator');
+        list($entities, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, 'admin_users');
 
-        return $this->render('users/index.html.twig', array(
-                    'users' => $users,
+        return $this->render('users/admin/index.html.twig', array(
+                    'users' => $entities,
                     'pagerHtml' => $pagerHtml,
         ));
-    }
-
-    /**
-     * Get results from paginator and get paginator view.
-     *
-     */
-    protected function paginator($queryBuilder, $request) {
-        // Paginator
-        $adapter = new DoctrineORMAdapter($queryBuilder);
-        $pagerfanta = new Pagerfanta($adapter);
-        $currentPage = $request->get('page', 1);
-        $pagerfanta->setCurrentPage($currentPage);
-        $entities = $pagerfanta->getCurrentPageResults();
-
-        // Paginator - route generator
-        $me = $this;
-        $routeGenerator = function($page) use ($me) {
-            return $me->generateUrl('users', array('page' => $page));
-        };
-
-        // Paginator - view
-        $view = new TwitterBootstrap3View();
-        $pagerHtml = $view->render($pagerfanta, $routeGenerator, array(
-            'proximity' => 3,
-            'prev_message' => 'previous',
-            'next_message' => 'next',
-        ));
-
-        return array($entities, $pagerHtml);
     }
 
     /**
@@ -94,31 +64,6 @@ class AdminUsersController extends Controller {
     }
 
     /**
-     * Displays a form to create a new Users entity.
-     *
-     * @Route("/new", name="users_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request) {
-
-        $user = new Users();
-        $form = $this->createForm('PanierfoyenBundle\Form\UsersType', $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute('users_show', array('id' => $user->getId()));
-        }
-        return $this->render('users/new.html.twig', array(
-                    'user' => $user,
-                    'form' => $form->createView(),
-        ));
-    }
-
-    /**
      * Finds and displays a Users entity.
      *
      * @Route("/{id}", name="users_preview")
@@ -126,7 +71,7 @@ class AdminUsersController extends Controller {
      */
     public function showAction(Users $user) {
         $deleteForm = $this->createDeleteForm($user);
-        return $this->render('users/show.html.twig', array(
+        return $this->render('users/admin/show.html.twig', array(
                     'user' => $user,
                     'delete_form' => $deleteForm->createView(),
         ));
@@ -151,7 +96,7 @@ class AdminUsersController extends Controller {
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('users_edit', array('id' => $user->getId()));
         }
-        return $this->render('users/edit.html.twig', array(
+        return $this->render('users/admin/edit.html.twig', array(
                     'user' => $user,
                     'edit_form' => $editForm->createView(),
                     'delete_form' => $deleteForm->createView(),
@@ -178,7 +123,7 @@ class AdminUsersController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirectToRoute('users');
+        return $this->redirectToRoute('admin_users');
     }
 
     /**
@@ -220,7 +165,7 @@ class AdminUsersController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('users'));
+        return $this->redirectToRoute('admin_users');
     }
 
 }
