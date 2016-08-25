@@ -105,7 +105,7 @@ class AdminProduitsController extends Controller {
     /**
      * Displays a form to edit an existing Produits entity.
      *
-     * @Route("/conditionnements/{id}/edit", name="admin_produits_conditionnements")
+     * @Route("/conditionnements/edit/{id}", name="admin_produits_conditionnements")
      * @Method({"GET", "POST"})
      */
     public function editConditionnementsAction(Request $request, Produits $produit) {

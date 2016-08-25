@@ -10,45 +10,39 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
-
 use PanierfoyenBundle\Entity\Conditionnements;
 use PanierfoyenBundle\Form\ConditionnementsType;
-
 
 /**
  * Conditionnements controller.
  *
- * @Route("/conditionnements")
+ * @Route("/admin/conditionnements")
  */
-class ConditionnementsController extends Controller
-{
+class ConditionnementsController extends Controller {
+
     /**
      * Lists all Conditionnements entities.
      *
      * @Route("/", name="conditionnements")
      * @Method("GET")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Conditionnements')->createQueryBuilder('e');
 
         list($conditionnements, $pagerHtml) = $this->paginator($queryBuilder, $request);
-        
-        return $this->render('conditionnements/index.html.twig', array(
-            'conditionnements' => $conditionnements,
-            'pagerHtml' => $pagerHtml,
 
+        return $this->render('conditionnements/index.html.twig', array(
+                    'conditionnements' => $conditionnements,
+                    'pagerHtml' => $pagerHtml,
         ));
     }
 
-
     /**
-    * Get results from paginator and get paginator view.
-    *
-    */
-    protected function paginator($queryBuilder, $request)
-    {
+     * Get results from paginator and get paginator view.
+     *
+     */
+    protected function paginator($queryBuilder, $request) {
         // Paginator
         $adapter = new DoctrineORMAdapter($queryBuilder);
         $pagerfanta = new Pagerfanta($adapter);
@@ -58,8 +52,7 @@ class ConditionnementsController extends Controller
 
         // Paginator - route generator
         $me = $this;
-        $routeGenerator = function($page) use ($me)
-        {
+        $routeGenerator = function($page) use ($me) {
             return $me->generateUrl('conditionnements', array('page' => $page));
         };
 
@@ -73,8 +66,6 @@ class ConditionnementsController extends Controller
 
         return array($entities, $pagerHtml);
     }
-    
-    
 
     /**
      * Displays a form to create a new Conditionnements entity.
@@ -82,11 +73,10 @@ class ConditionnementsController extends Controller
      * @Route("/new", name="conditionnements_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
-    
+    public function newAction(Request $request) {
+
         $conditionnement = new Conditionnements();
-        $form   = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
+        $form = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -97,30 +87,24 @@ class ConditionnementsController extends Controller
             return $this->redirectToRoute('conditionnements_show', array('id' => $conditionnement->getId()));
         }
         return $this->render('conditionnements/new.html.twig', array(
-            'conditionnement' => $conditionnement,
-            'form'   => $form->createView(),
+                    'conditionnement' => $conditionnement,
+                    'form' => $form->createView(),
         ));
     }
-    
-    
 
-    
     /**
      * Finds and displays a Conditionnements entity.
      *
      * @Route("/{id}", name="conditionnements_show")
      * @Method("GET")
      */
-    public function showAction(Conditionnements $conditionnement)
-    {
+    public function showAction(Conditionnements $conditionnement) {
         $deleteForm = $this->createDeleteForm($conditionnement);
         return $this->render('conditionnements/show.html.twig', array(
-            'conditionnement' => $conditionnement,
-            'delete_form' => $deleteForm->createView(),
+                    'conditionnement' => $conditionnement,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
 
     /**
      * Displays a form to edit an existing Conditionnements entity.
@@ -128,8 +112,7 @@ class ConditionnementsController extends Controller
      * @Route("/{id}/edit", name="conditionnements_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Conditionnements $conditionnement)
-    {
+    public function editAction(Request $request, Conditionnements $conditionnement) {
         $deleteForm = $this->createDeleteForm($conditionnement);
         $editForm = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
         $editForm->handleRequest($request);
@@ -138,28 +121,25 @@ class ConditionnementsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($conditionnement);
             $em->flush();
-            
+
             $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
             return $this->redirectToRoute('conditionnements_edit', array('id' => $conditionnement->getId()));
         }
         return $this->render('conditionnements/edit.html.twig', array(
-            'conditionnement' => $conditionnement,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'conditionnement' => $conditionnement,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
 
     /**
      * Deletes a Conditionnements entity.
      *
-     * @Route("/{id}", name="conditionnements_delete")
+     * @Route("/delete/{id}", name="conditionnements_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Conditionnements $conditionnement)
-    {
-    
+    public function deleteAction(Request $request, Conditionnements $conditionnement) {
+
         $form = $this->createDeleteForm($conditionnement);
         $form->handleRequest($request);
 
@@ -171,10 +151,12 @@ class ConditionnementsController extends Controller
         } else {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
-        
-        return $this->redirectToRoute('conditionnements');
+        return $this->redirectToRoute('admin_produits_conditionnements', array(
+                    'id' => $conditionnement->getProduit()->getId(),
+        ));
+//        return $this->redirectToRoute('conditionnements');
     }
-    
+
     /**
      * Creates a form to delete a Conditionnements entity.
      *
@@ -182,15 +164,14 @@ class ConditionnementsController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Conditionnements $conditionnement)
-    {
+    private function createDeleteForm(Conditionnements $conditionnement) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('conditionnements_delete', array('id' => $conditionnement->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
+                        ->setAction($this->generateUrl('conditionnements_delete', array('id' => $conditionnement->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
         ;
     }
-    
+
     /**
      * Delete Conditionnements by id
      *
@@ -198,15 +179,15 @@ class ConditionnementsController extends Controller
      * @Route("/delete/{id}", name="conditionnements_by_id_delete")
      * @Method("GET")
      */
-    public function deleteById($id){
+    public function deleteById($id) {
 
         $em = $this->getDoctrine()->getManager();
         $conditionnement = $em->getRepository('PanierfoyenBundle:Conditionnements')->find($id);
-        
+
         if (!$conditionnement) {
             throw $this->createNotFoundException('Unable to find Conditionnements entity.');
         }
-        
+
         try {
             $em->remove($conditionnement);
             $em->flush();
@@ -214,11 +195,10 @@ class ConditionnementsController extends Controller
         } catch (Exception $ex) {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
-
-        return $this->redirect($this->generateUrl('conditionnements'));
-
+        return $this->redirectToRoute('admin_produits_conditionnements', array(
+                    'id' => $conditionnement->getProduit()->getId(),
+        ));
+//        return $this->redirect($this->generateUrl('conditionnements'));
     }
-    
-    
-    
+
 }
