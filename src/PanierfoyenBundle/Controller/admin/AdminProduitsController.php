@@ -118,7 +118,7 @@ class AdminProduitsController extends Controller {
 
         $conditionnement = new Conditionnements();
         $conditionnement->setProduit($produit);
-        
+
         $form = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
         $form->handleRequest($request);
 
@@ -131,7 +131,7 @@ class AdminProduitsController extends Controller {
 //                        'conditionnements' => $conditionnements,
 //                        'produit' => $produit,
 //                        'form' => $form->createView(),
-                        'id' =>$produit->getId(),
+                        'id' => $produit->getId(),
             ));
         }
 
@@ -140,24 +140,6 @@ class AdminProduitsController extends Controller {
                     'produit' => $produit,
                     'form' => $form->createView(),
                     'temp' => $conditionnement,
-        ));
-
-        $deleteForm = $this->createDeleteForm($produit);
-        $editForm = $this->createForm('PanierfoyenBundle\Form\ProduitsType', $produit);
-        $editForm->handleRequest($request);
-
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($produit);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add('success', 'Edited Successfully!');
-            return $this->redirectToRoute('produits_edit', array('id' => $produit->getId()));
-        }
-        return $this->render('produits/admin/edit.html.twig', array(
-                    'produit' => $produit,
-                    'edit_form' => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
         ));
     }
 

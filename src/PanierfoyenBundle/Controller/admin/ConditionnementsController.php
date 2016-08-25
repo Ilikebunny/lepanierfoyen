@@ -12,6 +12,7 @@ use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\View\TwitterBootstrap3View;
 use PanierfoyenBundle\Entity\Conditionnements;
 use PanierfoyenBundle\Form\ConditionnementsType;
+use PanierfoyenBundle\Entity\Produits;
 
 /**
  * Conditionnements controller.
@@ -70,12 +71,14 @@ class ConditionnementsController extends Controller {
     /**
      * Displays a form to create a new Conditionnements entity.
      *
-     * @Route("/new", name="conditionnements_new")
+     * @Route("/new/{id}", name="conditionnements_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request) {
+    public function newAction(Request $request, Produits $produit) {
 
         $conditionnement = new Conditionnements();
+        $conditionnement->setProduit($produit);
+
         $form = $this->createForm('PanierfoyenBundle\Form\ConditionnementsType', $conditionnement);
         $form->handleRequest($request);
 
@@ -84,11 +87,15 @@ class ConditionnementsController extends Controller {
             $em->persist($conditionnement);
             $em->flush();
 
-            return $this->redirectToRoute('conditionnements_show', array('id' => $conditionnement->getId()));
+            return $this->redirectToRoute('admin_produits_conditionnements', array(
+                        'id' => $produit->getId(),
+            ));
         }
+
         return $this->render('conditionnements/new.html.twig', array(
                     'conditionnement' => $conditionnement,
                     'form' => $form->createView(),
+                    'produit' => $produit,
         ));
     }
 
