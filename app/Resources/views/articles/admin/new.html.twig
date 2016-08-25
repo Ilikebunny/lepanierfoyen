@@ -1,11 +1,20 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - New article
+    {{ parent() }} - Nouvel article
 {% endblock %}
 
 {% block panel_head %}
-    New article
+    Nouvel article
+{% endblock %}
+
+{% block aside %}
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('admin_articles') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Retour à la liste
+        </a>
+    </div>
 {% endblock %}
 
 {% block body %}
@@ -13,17 +22,9 @@
     {{ form_start(form) }}
     {{ form_widget(form) }}
     <p>
-        <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Submit</button>
+        <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Valider</button>
     </p>
     {{ form_end(form) }}
-
-
-    <div class="form-group">
-        <a class="btn btn-default" href="{{ path('articles') }}">
-            <i class="fa fa-list" aria-hidden="true"></i>
-            Back to list
-        </a>
-    </div>
 
 {% endblock %}
 
