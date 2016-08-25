@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use PanierfoyenBundle\Entity\Categories;
 use PanierfoyenBundle\Form\CategoriesType;
 
@@ -28,7 +27,7 @@ class AdminCategoriesController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->createQueryBuilder('e');
 
-           //Pagination
+        //Pagination
         $paginator = $this->container->get('panierfoyen.paginator');
         list($entities, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, 'admin_categories');
 
@@ -55,7 +54,7 @@ class AdminCategoriesController extends Controller {
             $em->persist($category);
             $em->flush();
 
-            return $this->redirectToRoute('categories_show', array('id' => $category->getId()));
+            return $this->redirectToRoute('admin_categories');
         }
         return $this->render('categories/admin/new.html.twig', array(
                     'category' => $category,
@@ -109,7 +108,7 @@ class AdminCategoriesController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirectToRoute('categories');
+        return $this->redirectToRoute('admin_categories');
     }
 
     /**
@@ -151,7 +150,7 @@ class AdminCategoriesController extends Controller {
             $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
         }
 
-        return $this->redirect($this->generateUrl('categories'));
+        return $this->redirectToRoute('admin_categories');
     }
 
 }

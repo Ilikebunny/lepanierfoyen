@@ -1,31 +1,32 @@
 {% extends 'layout.admin.html.twig' %}
 
 {% block title %}
-    {{ parent() }} - New category
+    {{ parent() }} - Nouvelle catégorie
+{% endblock %}
+
+{% block panel_head %}
+    Création de catégorie
+{% endblock %}
+
+{% block aside %}
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('admin_categories') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Retour à la liste
+        </a>
+    </div>
 {% endblock %}
 
 {% block body %}
-    <header class="panel-heading">
-        <h2>New category</h2>
-    </header>
-    <div class="panel-body">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {% include 'KCFinder_image_selector.html.twig' with {'elementId': 'panierfoyenbundle_categories_logo'} %}
 
-        <p>
-            <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Submit</button>
-        </p>
-        {{ form_end(form) }}
-
-        <div class="form-group">
-            <a class="btn btn-default" href="{{ path('admin_categories') }}">
-                <i class="fa fa-list" aria-hidden="true"></i>
-                Back to list
-            </a>
-        </div>
-
-    </div>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% include 'KCFinder_image_selector.html.twig' with {'elementId': 'panierfoyenbundle_categories_logo'} %}
+    <br>
+    <p>
+        <button type="submit" class="btn btn-success"> <i class="fa fa-plus-square-o" aria-hidden="true"></i> Valider</button>
+    </p>
+    {{ form_end(form) }}
 
 {% endblock %}
 
