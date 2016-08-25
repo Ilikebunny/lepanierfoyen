@@ -8,35 +8,19 @@
     Modifier Produit
 {% endblock %}
 
+{% block aside %}
+    {{ include('produits/admin/produit_admin_menu.html.twig') }}
+{% endblock %}
+
 {% block body %}
 
-    {% if form_errors(edit_form) %}
-        <div class="alert alert-block alert-error fade in form-errors">
-            {{ form_errors(edit_form) }}
-        </div>
-    {% endif %}
-
-    {% for flash_message in app.session.flashbag.get('error') %}
-        <div class="alert alert-error ">
-            {{ flash_message }}
-        </div>
-    {% endfor %}
-    {% for flash_message in app.session.flashbag.get('success') %}
-        <div class="alert alert-success ">
-            {{ flash_message }}
-        </div>
-    {% endfor %}
-
-
     {{ form_start(edit_form) }}
-
     {{ form_widget(edit_form) }}
 
     <div class=" col-md-6">Image actuelle</div>
     <div class=" col-md-6">Nouvelle Image</div>
     <div class=" col-md-6"><img class="banniere_img" src="{{ asset( produit.image) }}" alt="" /></div>
     <div class=" col-md-6"> {% include 'KCFinder_image_selector.html.twig' with {'elementId': 'panierfoyenbundle_produits_image'} %}</div>
-
 
     <p>
         <button type="submit" class="btn btn-success">
@@ -45,25 +29,4 @@
     </p>
     {{ form_end(edit_form) }}
 
-{% endblock %}
-
-{% block aside %}
-    <div class="form-group">
-        <a class="btn btn-default" href="{{ path('admin_produits') }}">
-            <i class="fa fa-list" aria-hidden="true"></i>
-            Retour à la liste produits
-        </a>
-    </div>
-    <div class="form-group">
-        <a class="btn btn-default" href="{{ path('admin_produits_conditionnements', { 'id': produit.id }) }}">
-            <i class="fa fa-list" aria-hidden="true"></i>
-            Conditionnement(s)
-        </a>
-    </div>
-    <div class="form-group">
-        <a class="btn btn-primary"href="{{ path('produits_new') }}">
-            <i class="fa fa-plus"></i>
-            Disponibilitée(s)
-        </a>
-    </div>
 {% endblock %}

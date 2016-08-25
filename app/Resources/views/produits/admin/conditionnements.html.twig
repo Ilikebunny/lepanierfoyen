@@ -8,6 +8,10 @@
     Modifier conditionnement(s) produit
 {% endblock %}
 
+{% block aside %}
+    {{ include('produits/admin/produit_admin_menu.html.twig') }}
+{% endblock %}
+
 {% block body %}
 
     <div class="row">
@@ -53,25 +57,4 @@
     </p>
     {{ form_end(form) }}
 
-{% endblock %}
-
-{% block aside %}
-    <div class="form-group">
-        <a class="btn btn-default" href="{{ path('admin_produits') }}">
-            <i class="fa fa-list" aria-hidden="true"></i>
-            Retour à la liste produits
-        </a>
-    </div>
-    <div class="form-group">
-        <a class="btn btn-default" href="{{ path('admin_produits_conditionnements', { 'id': produit.id }) }}">
-            <i class="fa fa-list" aria-hidden="true"></i>
-            Conditionnement(s)
-        </a>
-    </div>
-    <div class="form-group">
-        <a class="btn btn-primary"href="{{ path('produits_new') }}">
-            <i class="fa fa-plus"></i>
-            Disponibilitée(s)
-        </a>
-    </div>
 {% endblock %}
