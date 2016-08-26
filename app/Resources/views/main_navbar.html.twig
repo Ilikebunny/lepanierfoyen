@@ -21,7 +21,8 @@
                         <li><a href="#">Engagements</a></li>
                         <li><a href="#">Adhérer</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Qui somme nous ?</a></li>
+                            {{ render(controller('PanierfoyenBundle:front\\ContentDynamic:generateNav' )) }}
+                        <li role="separator" class="divider"></li>
                         <li><a href="#">Le bureau</a></li>
                         <li><a href="{{ path('coordinateurs') }}">Les coordinateurs</a></li>
                         <li role="separator" class="divider"></li>
@@ -44,14 +45,14 @@
                 <li><a href="{{ path('amap_cartographie') }}">Cartographie</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-{#                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li><a href="{{ path('admin_dashboard') }}">Administration</a></li>
-                    {% endif %}#}
+                {#                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <li><a href="{{ path('admin_dashboard') }}">Administration</a></li>
+                                    {% endif %}#}
                 <li class="dropdown">
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                         <!-- Logged -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                           <i class="fa fa-user"></i> {{app.user.username}} <span class="caret"></span>
+                            <i class="fa fa-user"></i> {{app.user.username}} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ path('fos_user_profile_edit') }}">Editer compte</a></li>

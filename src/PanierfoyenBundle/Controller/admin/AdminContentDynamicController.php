@@ -62,19 +62,7 @@ class AdminContentDynamicController extends Controller {
                     'form' => $form->createView(),
         ));
     }
-
-    /**
-     * Finds and displays a ContentDynamic entity.
-     *
-     * @Route("/{id}", name="contentdynamic_show")
-     * @Method("GET")
-     */
-    public function showAction(ContentDynamic $contentDynamic) {
-        return $this->render('contentdynamic/show.html.twig', array(
-                    'contentDynamic' => $contentDynamic,
-        ));
-    }
-    
+   
     /**
      * Finds and displays a ContentDynamic entity.
      *

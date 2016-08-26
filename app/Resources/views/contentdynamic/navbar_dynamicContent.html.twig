@@ -1,0 +1,3 @@
+{% for dynCont in dynamicContents %}
+    <li><a href="{{ path('contentdynamic_show', { 'slug': dynCont.slug }) }}">{{ dynCont.titre}}</a></li>
+{% endfor %}
