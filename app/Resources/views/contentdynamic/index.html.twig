@@ -1,0 +1,97 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} - contentDynamic index
+{% endblock %}
+
+{% block body %}
+<header class="panel-heading">
+    <h2>ContentDynamic list </h2>
+</header>
+<div class="panel-body">
+
+    <div class="row">
+        <div class="col-md-12">
+            {% for flash_message in app.session.flashbag.get('error') %}
+            <div class="alert alert-error ">
+                 {{ flash_message }}
+            </div>
+            {% endfor %}
+            {% for flash_message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success ">
+                 {{ flash_message }}
+            </div>
+             {% endfor %}
+        </div>
+    </div>
+
+
+    
+            <div class="row">
+            <div class="col-md-2 form-group pull-right">
+                <a class="btn btn-primary likepaginator" href="{{ path('contentdynamic_new') }}">
+                    <i class="fa fa-plus"></i> New
+                </a>
+            </div>
+        </div>
+
+    
+    
+        <div class="row">
+            <div class="col-md-12">
+
+                <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th>Contenue</th>
+                            <th>Summary</th>
+                            <th>Order</th>
+                            <th>Published</th>
+                            <th>Publicationdate</th>
+                            <th>Modified</th>
+                            <th>Created</th>
+                            <th>Slug</th>
+                            <th width = "130px">List</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contentDynamic in contentDynamics %}
+                        <tr>
+                            
+                            <td><a href="{{ path('contentdynamic_show', { 'id': contentDynamic.id }) }}">{{ contentDynamic.id }}</a></td>
+                            <td>{{ contentDynamic.titre }}</td>
+                            <td>{{ contentDynamic.contenue }}</td>
+                            <td>{{ contentDynamic.summary }}</td>
+                            <td>{{ contentDynamic.order }}</td>
+                            <td>{% if contentDynamic.published %}Yes{% else %}No{% endif %}</td>
+                            <td>{% if contentDynamic.publicationDate %}{{ contentDynamic.publicationDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if contentDynamic.modified %}{{ contentDynamic.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if contentDynamic.created %}{{ contentDynamic.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ contentDynamic.slug }}</td>
+                            <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('contentdynamic_by_id_delete', { 'id': contentDynamic.id}) }}">
+        <i class="fa fa-trash-o"></i>
+    </a>
+<a title='show' class="btn btn-success btn-sm" href="{{ path('contentdynamic_show', { 'id': contentDynamic.id }) }}">
+    <i class="fa fa-eye"></i>
+</a>
+    <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('contentdynamic_edit', { 'id': contentDynamic.id }) }}">
+        <i class="fa fa-pencil"></i>
+    </a>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        
+</div>
+
+
+{% endblock %}
+
