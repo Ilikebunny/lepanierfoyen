@@ -25,7 +25,7 @@ class LoadDataListener {
 
         $event = new Event('Distribution salle blabla', $start);
         $event->setEndDate($end);
-        $event->setAllDay(false);
+//        $event->setAllDay(false);
 
         $calendarEvent->addEvent($event);
     }
