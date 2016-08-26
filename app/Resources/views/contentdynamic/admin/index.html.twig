@@ -1,0 +1,62 @@
+{% extends 'layout.admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Gestion du contenue dynamique
+{% endblock %}
+
+{% block panel_head %}
+    Gestion du contenue dynamique
+{% endblock %}
+
+{% block aside %}
+    <div class="form-group">
+        <a class="btn btn-primary"href="{{ path('contentdynamic_new') }}">
+            <i class="fa fa-plus"></i>
+            Ajouter contenue
+        </a>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12 table-responsive">
+
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Ordre</th>
+                        <th>Titre</th>
+                        <th>Créé le</th>
+                        <th>Modifié le</th>
+                        <th width = "130px">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contentDynamic in contentDynamics %}
+                        <tr>
+                            <td>{{ contentDynamic.order }}</td>
+                            <td>{{ contentDynamic.titre }}</td>
+                            <td>{% if contentDynamic.created %}{{ contentDynamic.created|localizeddate('medium', 'none', 'fr') }}{% endif %}</td>
+                            <td>{% if contentDynamic.created %}{{ contentDynamic.modified|localizeddate('medium', 'none', 'fr') }}{% endif %}</td>
+                            <td>   
+                                <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('contentdynamic_by_id_delete', { 'id': contentDynamic.id}) }}">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                                <a title='show' class="btn btn-success btn-sm" href="{{ path('contentdynamic_preview', { 'id': contentDynamic.id }) }}">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('contentdynamic_edit', { 'id': contentDynamic.id }) }}">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}
+

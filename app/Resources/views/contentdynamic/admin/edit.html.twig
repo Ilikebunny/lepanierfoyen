@@ -1,0 +1,32 @@
+{% extends 'layout.admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Modifier contenue
+{% endblock %}
+
+{% block panel_head %}
+    Modifier contenue
+{% endblock %}
+
+{% block aside %}
+    <div class="form-group">
+        <a class="btn btn-default" href="{{ path('admin_contentdynamic') }}">
+            <i class="fa fa-list" aria-hidden="true"></i>
+            Retour à la liste
+        </a>
+    </div>
+{% endblock %}
+
+{% block body %}
+
+    {{ form_start(edit_form) }}
+
+    {{ form_widget(edit_form) }}
+    <p>
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-floppy-o"></i> Valider
+        </button>
+    </p>
+    {{ form_end(edit_form) }}
+
+{% endblock %}
