@@ -10,7 +10,6 @@
                      {{ include('admin_menu.html.twig') }}
                  {% endif %}#}
             {% endblock %}
-            <div id="main_content">
                 <section class="panel row">
                     <header class="panel-heading col-md-12">
                         <h2>{% block panel_head %}{% endblock %}</h2>
@@ -33,7 +32,6 @@
                         {{ dump() }}
                     </div>
                 </section>
-            </div>
             <div id="footer" class="row">
                 {{ include('layout.footer.html.twig') }}  
             </div>
