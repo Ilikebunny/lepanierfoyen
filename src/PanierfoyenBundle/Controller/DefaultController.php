@@ -28,4 +28,11 @@ class DefaultController extends Controller {
         return $this->render('amap/calendrier.html.twig');
     }
 
+    /**
+     * @Route("/cartographie", name="amap_cartographie")
+     */
+    public function showCarteAction() {
+        return $this->render('amap/cartographie.html.twig');
+    }
+
 }
