@@ -4,6 +4,7 @@ namespace PanierfoyenBundle\Listener;
 
 use AncaRebeca\FullCalendarBundle\Event\CalendarEvent;
 use PanierfoyenBundle\Entity\CalendarEvent as Event;
+use AncaRebeca\FullCalendarBundle\Model\Event as BaseEvent;
 
 class LoadDataListener {
 
@@ -13,16 +14,18 @@ class LoadDataListener {
      * @return EventInterface[]
      */
     public function loadData(CalendarEvent $calendarEvent) {
-        $startDate = $calendarEvent->getStartDatetime();
-        $endDate = $calendarEvent->getEndDatetime();
+        $startDate = $calendarEvent->getStart();
+        $endDate = $calendarEvent->getEnd();
         $filters = $calendarEvent->getFilters();
 
         //You may want do a custom query to populate the events
-        $start = new \DateTime('2016-08-08T17:30');
-        $end = new \DateTime('2016-08-08T19:30');
+        $start = new \DateTime('2016-08-26T17:30:00');
+//        $start = new \DateTime();
+        $end = new \DateTime('2016-08-26T19:30:00');
 
-        $event = new Event('Event Title 1', $start);
+        $event = new Event('Distribution salle blabla', $start);
         $event->setEndDate($end);
+        $event->setAllDay(false);
 
         $calendarEvent->addEvent($event);
     }

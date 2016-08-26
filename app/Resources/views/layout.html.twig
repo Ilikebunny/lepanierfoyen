@@ -16,7 +16,7 @@
                     </header>
                     {% block menu_content %}
                     {% endblock %}
-                    <div class="panel-body col-md-8">
+                    <div class="panel-body col-md-9">
                         {{ include('flash_message_block.html.twig') }}
                         {% block body %}
                         {% endblock %}
@@ -24,7 +24,7 @@
                             {{ pagerHtml | raw}}
                         {% endif %}
                     </div>
-                    <div class="panel-body col-md-4">
+                    <div class="panel-body col-md-3">
                         {% block aside %}
                         {% endblock %}
                         <hr>
@@ -43,9 +43,12 @@
             <script src="{{ asset('js/bootstrap.min.js') }}"></script>
             <!-- FullCalendarBundle -->
             {#    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>#}
-            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+{#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>#}
+            <script type="text/javascript" src="{{ asset('js/fullcalendar/lib/moment.min.js') }}"></script>
+{#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>#}
+            <script type="text/javascript" src="{{ asset('js/fullcalendar/fullcalendar.min.js') }}"></script>
+{#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>#}
+            <script src="{{ asset('js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
             <script src="{{ asset('js/fullcalendar/lang/fr.js') }}"></script>
             <!-- FullCalendarBundle -->
             {% block javascripts %}

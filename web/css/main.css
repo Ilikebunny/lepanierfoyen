@@ -111,3 +111,9 @@
     font-style: normal;
     color: orangered;
 }
+
+span.fc-title {
+    padding: 5px !important;
+    text-overflow: ellipsis;
+    white-space: pre-line;
+}
