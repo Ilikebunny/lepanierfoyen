@@ -33,7 +33,7 @@ class ProducteursController extends Controller {
 
         $paginator = $this->container->get('panierfoyen.paginator');
          $routeName = 'producteurs';
-        list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 8, $routeName);
+        list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, $routeName);
 
 //        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
