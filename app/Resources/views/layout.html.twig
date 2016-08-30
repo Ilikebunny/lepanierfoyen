@@ -2,59 +2,66 @@
 <html>
     {{ include('layout.head.html.twig') }}
     <body>
+        {#        <div class="container">#}
+        {{ include('layout.header.html.twig') }}
+        {#        </div>#}
         <div id="main" class="container">
-            {{ include('layout.header.html.twig') }}
             {% block menu_haut %}
                 {# {% set currentPath = path(app.request.attributes.get('_route')) %}
                  {% if (currentPath starts with '/admin') or (currentPath starts with '/app_dev.php/admin') %}
                      {{ include('admin_menu.html.twig') }}
                  {% endif %}#}
             {% endblock %}
-                <section class="panel row">
-                    <header class="panel-heading col-md-12">
-                        <h2>{% block panel_head %}{% endblock %}</h2>
-                    </header>
-                    {% block menu_content %}
+            <section class="panel row">
+                <header class="panel-heading col-md-12">
+                    <h2>{% block panel_head %}{% endblock %}</h2>
+                </header>
+                {% block menu_content %}
+                {% endblock %}
+                <div class="panel-body col-md-9">
+                    {{ include('flash_message_block.html.twig') }}
+                    {% block body %}
                     {% endblock %}
-                    <div class="panel-body col-md-9">
-                        {{ include('flash_message_block.html.twig') }}
-                        {% block body %}
-                        {% endblock %}
-                        {% if pagerHtml is defined %}
-                            {{ pagerHtml | raw}}
-                        {% endif %}
-                    </div>
-                    <div class="panel-body col-md-3">
-                        {% block aside %}
-                        {% endblock %}
-                        <hr>
-                        {{ include('layout.aside.html.twig') }} 
-                        {{ dump() }}
-                    </div>
-                </section>
-            <div id="footer" class="row">
-                {{ include('layout.footer.html.twig') }}  
-            </div>
-            <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
-            <!-- FOS/JSRoutingBundle-->
-            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-            <!-- FOS/JSRoutingBundle-->
-            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-            <!-- FullCalendarBundle -->
-            {#    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>#}
-{#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>#}
-            <script type="text/javascript" src="{{ asset('js/fullcalendar/lib/moment.min.js') }}"></script>
-{#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>#}
-            <script type="text/javascript" src="{{ asset('js/fullcalendar/fullcalendar.min.js') }}"></script>
-{#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>#}
-            <script src="{{ asset('js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
-            <script src="{{ asset('js/fullcalendar/lang/fr.js') }}"></script>
-            <!-- FullCalendarBundle -->
-            {% block javascripts %}
-                {#                {{ include('chosen_init.html.twig') }}#}
-            {% endblock %}
+                    {% if pagerHtml is defined %}
+                        {{ pagerHtml | raw}}
+                    {% endif %}
+                </div>
+                <div class="panel-body col-md-3">
+                    {% block aside %}
+                    {% endblock %}
+                    <hr>
+                    {{ include('layout.aside.html.twig') }} 
+                    {{ dump() }}
+                </div>
+            </section>
         </div>
-    </body>
+        <div id="footer" class="container-fluid">
+            <div id="footer" class="container">
+                <div id="footer" class="row">
+                    {{ include('layout.footer.html.twig') }}  
+                </div>
+            </div>
+        </div>
+        <script src="{{ asset('js/chosen.jquery.min.js') }}"></script>
+        <!-- FOS/JSRoutingBundle-->
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <!-- FOS/JSRoutingBundle-->
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <!-- FullCalendarBundle -->
+        {#    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/jquery.min.js') }}"></script>#}
+        {#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>#}
+        <script type="text/javascript" src="{{ asset('js/fullcalendar/lib/moment.min.js') }}"></script>
+        {#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>#}
+        <script type="text/javascript" src="{{ asset('js/fullcalendar/fullcalendar.min.js') }}"></script>
+        {#            <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>#}
+        <script src="{{ asset('js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+        <script src="{{ asset('js/fullcalendar/lang/fr.js') }}"></script>
+        <!-- FullCalendarBundle -->
+        {% block javascripts %}
+            {#                {{ include('chosen_init.html.twig') }}#}
+        {% endblock %}
+    </div>
+</body>
 </html>
 

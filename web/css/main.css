@@ -65,6 +65,9 @@
     min-height: 500px;
 }    
 
+body{
+    background-color: #ffe5bd;
+}
 .panel{
     min-height: 500px;
     /*background-color: #ffe5bd;*/

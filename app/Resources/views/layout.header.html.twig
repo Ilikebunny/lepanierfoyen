@@ -1,26 +1,30 @@
 
-<div id="banniere" class="row">
-    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img img-responsive" src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a></div>
-    <div class="col-xs-2"><a href="{{ path('producteurs') }}"><img class="banniere_img img-responsive" src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a></div>
-    <div class="col-xs-4"><img id ="logo" class="img-responsive" src="{{ asset('images/logo_white_bg.png') }}" alt="Contact" /></div>
-    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img img-responsive" src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a></div>
-    <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img img-responsive" src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a> </div>
+<div class="container">
+    <div id="banniere" class="row">
+        <div class="col-xs-2 "><a href="{{ path('_welcome') }}"><img class="banniere_img img-responsive center-block" src="{{ asset('images/icone_actu.png') }}" alt="Actu" /></a></div>
+        <div class="col-xs-2"><a href="{{ path('producteurs') }}"><img class="banniere_img img-responsive center-block" src="{{ asset('images/icone_producteurs.png') }}" alt="Producteurs" /></a></div>
+        <div class="col-xs-4"><img id ="logo" class="img-responsive" src="{{ asset('images/logo_white_bg.png') }}" alt="Logo" /></div>
+        <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img img-responsive center-block" src="{{ asset('images/icone_panier.png') }}" alt="Panier" /></a></div>
+        <div class="col-xs-2"><a href="{{ path('_welcome') }}"><img class="banniere_img img-responsive center-block" src="{{ asset('images/icone_contact.png') }}" alt="Contact" /></a> </div>
+    </div>
 </div>
 
-<div id="banniere_bande" class="row">
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-4"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-    <div class="col-xs-1"></div>
-</div>
+<div class="container-fluid">
+    <div id="banniere_bande" class="row">
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-4"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-1"></div>
+    </div>
 
-<div id="menu_haut" class="row">
-    {{ include('main_navbar.html.twig') }}
+    <div id="menu_haut" class="row">
+        {{ include('main_navbar.html.twig') }}
+    </div>
 </div>
 
 <div id="bradcrumbs" class="row">
