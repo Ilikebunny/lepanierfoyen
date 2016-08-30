@@ -120,3 +120,8 @@ span.fc-title {
     text-overflow: ellipsis;
     white-space: pre-line;
 }
+
+#map { 
+    height: 500px; 
+}
+

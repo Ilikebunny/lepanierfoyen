@@ -1,10 +1,29 @@
 {% extends "::layout.html.twig" %}
 {% block body %}
-    
+
     <div class="jumbotron">
         <h1>Bienvenue sur le site du Panier Foyen</h1>
         <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive,
             mobile-first projects on the web.</p>
     </div>
+
+    <div id="map" style="height:500px;width:500px"></div>
+
+    <script type="text/javascript">
+
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 45.0094939, lng: 0.1641944},
+                zoom: 8
+            });
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf3LjAP3cFKDYnOX3nEAwfDo4Ov-ZallM&callback=initMap">
+{#            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">#}
+    </script>
+
 
 {% endblock %}
