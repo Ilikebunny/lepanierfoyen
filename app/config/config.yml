@@ -157,3 +157,12 @@ ivory_ck_editor:
             toolbar: full
             uiColor:                "#000000"
             filebrowserBrowseRoute: "kcfinder_browse"
+            
+bazinga_geocoder:
+    default_provider:         google_maps
+    providers:
+        google_maps:
+            locale:               null
+            region:               null
+            use_ssl:              false
+            api_key:              null

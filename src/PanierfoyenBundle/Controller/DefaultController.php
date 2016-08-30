@@ -11,7 +11,13 @@ class DefaultController extends Controller {
      * @Route("/", name="_welcome")
      */
     public function indexAction() {
-        return $this->render('PanierfoyenBundle:Default:index.html.twig');
+        $result = $this->container
+                ->get('bazinga_geocoder.geocoder')
+                ->geocode('7 avenue Jean Moulin 24700 Montpon Menesterol');
+
+        return $this->render('PanierfoyenBundle:Default:index.html.twig', array(
+                    'test' => $result,
+        ));
     }
 
     /**
