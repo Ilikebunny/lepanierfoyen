@@ -28,8 +28,12 @@ class DefaultController extends Controller {
         $geocoder = $result = $this->container->get('bazinga_geocoder.geocoder');
 
         $em = $this->getDoctrine()->getManager();
+
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Lieus')->createQueryBuilder('e');
         $lieus = $queryBuilder->getQuery()->getResult();
+
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
+        $producteurs = $queryBuilder->getQuery()->getResult();
 
         //Get center
         $temp = $geocoder->geocode($lieus[0]->getAdressComplete());
@@ -45,6 +49,20 @@ class DefaultController extends Controller {
             $myMarker['latitude'] = $address->getLatitude();
             $myMarker['longitude'] = $address->getLongitude();
             $myMap['markers'][] = $myMarker;
+        }
+
+        //Add markers (producteurs)
+        foreach ($producteurs as $producteur) {
+            $temp = $geocoder->geocode($producteur->getAdressComplete());
+            if ($temp->count() > 0) {
+                $address = $temp->first();
+                if (count($address) > 0) {
+                    $myMarker = array();
+                    $myMarker['latitude'] = $address->getLatitude();
+                    $myMarker['longitude'] = $address->getLongitude();
+                    $myMap['markers'][] = $myMarker;
+                }
+            }
         }
 
         return $myMap;

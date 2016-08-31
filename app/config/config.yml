@@ -164,6 +164,6 @@ bazinga_geocoder:
         google_maps:
             locale:               null
             region:               null
-            use_ssl:              false
-#            api_key:              "%gmap_api_key%"
-            api_key:              null
+            use_ssl:              true
+            api_key:              "%gmap_api_key%"
+#            api_key:              null
