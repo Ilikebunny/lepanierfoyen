@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="lieus")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  */
 class Lieus {
 
@@ -62,6 +63,47 @@ class Lieus {
      * @ORM\Column(name="ville", type="string", length=90, nullable=true)
      */
     private $ville;
+
+    /**
+     * @var string
+     */
+    private $adressComplete;
+
+    /**
+     * Set adressComplete
+     *
+     * @param string $adressComplete
+     *
+     * @return Lieus
+     */
+    public function setAdressComplete($adressComplete) {
+        $this->adressComplete = $adressComplete;
+
+        return $this;
+    }
+
+    /**
+     * Generate adressComplete
+
+     * @ORM\PostLoad
+     * @return Lieus
+     */
+    public function generateAdressComplete() {
+
+        $temp = $this->adr1 . ' ' . $this->adr2 . ' ' . $this->adr3 . ' ' . $this->codepostal . ' ' . $this->ville;
+        $this->setAdressComplete($temp);
+
+        return $this;
+    }
+
+    /**
+     * Get adressComplete
+     *
+     * @return string
+     */
+    public function getAdressComplete() {
+        return $this->adressComplete;
+    }
 
     /**
      * To string
