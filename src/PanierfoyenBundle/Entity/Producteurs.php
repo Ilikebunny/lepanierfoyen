@@ -5,13 +5,15 @@ namespace PanierfoyenBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
+use PanierfoyenBundle\Entity\AbstractAdresses;
+
 /**
  * Producteurs
  *
  * @ORM\Table(name="producteurs", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"}), @ORM\UniqueConstraint(name="nom_UNIQUE", columns={"nom"})}, indexes={@ORM\Index(name="fk_producteurs_coordinateurs1_idx", columns={"coordinateur_id"})})
  * @ORM\Entity(repositoryClass="PanierfoyenBundle\Repository\ProducteursRepository")
  */
-class Producteurs {
+class Producteurs extends AbstractAdresses{
 
     /**
      * @var integer
@@ -43,41 +45,6 @@ class Producteurs {
      * @ORM\Column(name="slug", type="string", length=255, unique=true)
      */
     private $slug;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="codePostal", type="string", length=5, nullable=true)
-     */
-    private $codepostal;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ville", type="string", length=90, nullable=true)
-     */
-    private $ville;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adr1", type="string", length=90, nullable=true)
-     */
-    private $adr1;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adr2", type="string", length=90, nullable=true)
-     */
-    private $adr2;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adr3", type="string", length=90, nullable=true)
-     */
-    private $adr3;
 
     /**
      * @var string
@@ -241,116 +208,6 @@ class Producteurs {
      */
     public function getslug() {
         return $this->slug;
-    }
-
-    /**
-     * Set codepostal
-     *
-     * @param string $codepostal
-     *
-     * @return Producteurs
-     */
-    public function setCodepostal($codepostal) {
-        $this->codepostal = $codepostal;
-
-        return $this;
-    }
-
-    /**
-     * Get codepostal
-     *
-     * @return string
-     */
-    public function getCodepostal() {
-        return $this->codepostal;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     *
-     * @return Producteurs
-     */
-    public function setVille($ville) {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string
-     */
-    public function getVille() {
-        return $this->ville;
-    }
-
-    /**
-     * Set adr1
-     *
-     * @param string $adr1
-     *
-     * @return Producteurs
-     */
-    public function setAdr1($adr1) {
-        $this->adr1 = $adr1;
-
-        return $this;
-    }
-
-    /**
-     * Get adr1
-     *
-     * @return string
-     */
-    public function getAdr1() {
-        return $this->adr1;
-    }
-
-    /**
-     * Set adr2
-     *
-     * @param string $adr2
-     *
-     * @return Producteurs
-     */
-    public function setAdr2($adr2) {
-        $this->adr2 = $adr2;
-
-        return $this;
-    }
-
-    /**
-     * Get adr2
-     *
-     * @return string
-     */
-    public function getAdr2() {
-        return $this->adr2;
-    }
-
-    /**
-     * Set adr3
-     *
-     * @param string $adr3
-     *
-     * @return Producteurs
-     */
-    public function setAdr3($adr3) {
-        $this->adr3 = $adr3;
-
-        return $this;
-    }
-
-    /**
-     * Get adr3
-     *
-     * @return string
-     */
-    public function getAdr3() {
-        return $this->adr3;
     }
 
     /**
