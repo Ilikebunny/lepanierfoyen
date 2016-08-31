@@ -4,6 +4,7 @@ namespace PanierfoyenBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use PanierfoyenBundle\Entity\Lieus;
 
 class DefaultController extends Controller {
 
@@ -15,9 +16,38 @@ class DefaultController extends Controller {
                 ->get('bazinga_geocoder.geocoder')
                 ->geocode('7 avenue Jean Moulin 24700 Montpon Menesterol');
 
+        $myMap = $this->generateMapInfo();
+
         return $this->render('PanierfoyenBundle:Default:index.html.twig', array(
                     'test' => $result,
+                    'myMap' => $myMap,
         ));
+    }
+
+    private function generateMapInfo() {
+        $geocoder = $result = $this->container->get('bazinga_geocoder.geocoder');
+
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Lieus')->createQueryBuilder('e');
+        $lieus = $queryBuilder->getQuery()->getResult();
+
+        //Get center
+        $temp = $geocoder->geocode($lieus[0]->getAdressComplete());
+        $address = $temp->first();
+        $myMap['center_lat'] = $address->getLatitude();
+        $myMap['center_long'] = $address->getLongitude();
+
+        //Add markers (lieus)
+        foreach ($lieus as $lieu) {
+            $temp = $geocoder->geocode($lieu->getAdressComplete());
+            $address = $temp->first();
+            $myMarker = array();
+            $myMarker['latitude'] = $address->getLatitude();
+            $myMarker['longitude'] = $address->getLongitude();
+            $myMap['markers'][] = $myMarker;
+        }
+
+        return $myMap;
     }
 
     /**
