@@ -7,7 +7,7 @@
             mobile-first projects on the web.</p>
     </div>
 
-    <div id="map" style="height:500px;width:500px"></div>
+    <div id="map" style="height:500px;width:100%"></div>
 
     <script type="text/javascript">
 
@@ -15,14 +15,21 @@
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 45.0094939, lng: 0.1641944},
-                zoom: 8
+                zoom: 9
             });
+
+            var marker = new google.maps.Marker({
+                position:  {lat: 45.0094939, lng: 0.1641944},
+                map: map,
+                title: 'Hello World!'
+            });
+
         }
 
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf3LjAP3cFKDYnOX3nEAwfDo4Ov-ZallM&callback=initMap">
-{#            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">#}
+        {#            src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">#}
     </script>
 
 
