@@ -48,6 +48,7 @@ class DefaultController extends Controller {
             $myMarker = array();
             $myMarker['latitude'] = $address->getLatitude();
             $myMarker['longitude'] = $address->getLongitude();
+            $myMarker['title'] = $lieu->getLibelle();
             $myMap['markers'][] = $myMarker;
         }
 
@@ -56,12 +57,12 @@ class DefaultController extends Controller {
             $temp = $geocoder->geocode($producteur->getAdressComplete());
             if ($temp->count() > 0) {
                 $address = $temp->first();
-                if (count($address) > 0) {
-                    $myMarker = array();
-                    $myMarker['latitude'] = $address->getLatitude();
-                    $myMarker['longitude'] = $address->getLongitude();
-                    $myMap['markers'][] = $myMarker;
-                }
+                $myMarker = array();
+                $myMarker['latitude'] = $address->getLatitude();
+                $myMarker['longitude'] = $address->getLongitude();
+                $myMarker['title'] = $producteur->getNom();
+                //adding content to make info panel
+                $myMap['markers'][] = $myMarker;
             }
         }
 

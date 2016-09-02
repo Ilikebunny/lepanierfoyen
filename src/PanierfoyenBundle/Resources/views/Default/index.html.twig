@@ -14,17 +14,25 @@
         var map;
         function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 45.0094939, lng: 0.1641944},
+                center: {lat: {{ myMap.center_lat}}, lng: {{ myMap.center_long}}},
                 zoom: 9
             });
 
             var marker = new google.maps.Marker({
-                position:  {lat: 45.0094939, lng: 0.1641944},
+                position: {lat: 45.0094939, lng: 0.1641944},
                 map: map,
                 title: 'Hello World!'
             });
 
-        }
+        {% for marker in myMap.markers %}
+                var marker = new google.maps.Marker({
+                position: {lat: {{ marker.latitude}}, lng:  {{ marker.longitude}}},
+                map: map,
+                title: '{{ marker.title}}'
+            });
+        {% endfor %}
+            
+                }
 
     </script>
     <script async defer
