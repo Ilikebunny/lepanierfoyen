@@ -37,19 +37,24 @@ class DefaultController extends Controller {
 
         //Get center
         $temp = $geocoder->geocode($lieus[0]->getAdressComplete());
-        $address = $temp->first();
-        $myMap['center_lat'] = $address->getLatitude();
-        $myMap['center_long'] = $address->getLongitude();
+        if ($temp->count() > 0) {
+            $address = $temp->first();
+            $myMap['center_lat'] = $address->getLatitude();
+            $myMap['center_long'] = $address->getLongitude();
+        }
 
         //Add markers (lieus)
         foreach ($lieus as $lieu) {
             $temp = $geocoder->geocode($lieu->getAdressComplete());
-            $address = $temp->first();
-            $myMarker = array();
-            $myMarker['latitude'] = $address->getLatitude();
-            $myMarker['longitude'] = $address->getLongitude();
-            $myMarker['title'] = $lieu->getLibelle();
-            $myMap['markers'][] = $myMarker;
+            if ($temp->count() > 0) {
+                $address = $temp->first();
+                $myMarker = array();
+                $myMarker['latitude'] = $address->getLatitude();
+                $myMarker['longitude'] = $address->getLongitude();
+                $myMarker['title'] = $lieu->getLibelle();
+                $myMarker['content'] = $lieu->getAdressComplete();
+                $myMap['markers'][] = $myMarker;
+            }
         }
 
         //Add markers (producteurs)
@@ -61,6 +66,7 @@ class DefaultController extends Controller {
                 $myMarker['latitude'] = $address->getLatitude();
                 $myMarker['longitude'] = $address->getLongitude();
                 $myMarker['title'] = $producteur->getNom();
+                $myMarker['content'] = $lieu->getAdressComplete();
                 //adding content to make info panel
                 $myMap['markers'][] = $myMarker;
             }
