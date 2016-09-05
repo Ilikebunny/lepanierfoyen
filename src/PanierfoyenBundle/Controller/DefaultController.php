@@ -13,14 +13,10 @@ class DefaultController extends Controller {
      * @Route("/", name="_welcome")
      */
     public function indexAction() {
-        $result = $this->container
-                ->get('bazinga_geocoder.geocoder')
-                ->geocode('7 avenue Jean Moulin 24700 Montpon Menesterol');
 
         $myMap = $this->generateMapInfo();
 
         return $this->render('PanierfoyenBundle:Default:index.html.twig', array(
-                    'test' => $result,
                     'myMap' => $myMap,
         ));
     }
@@ -37,8 +33,15 @@ class DefaultController extends Controller {
         $producteurs = $queryBuilder->getQuery()->getResult();
 
         //Get center
-        $temp = $geocoder->geocode($lieus[0]->getAdressComplete());
-        if ($temp->count() > 0) {
+        if (!empty($lieus)) {
+            $temp = $geocoder->geocode($lieus[0]->getAdressComplete());
+            if ($temp->count() > 0) {
+                $address = $temp->first();
+                $myMap['center_lat'] = $address->getLatitude();
+                $myMap['center_long'] = $address->getLongitude();
+            }
+        } else {
+            $temp = $geocoder->geocode('24700 Montpon Menesterol');
             $address = $temp->first();
             $myMap['center_lat'] = $address->getLatitude();
             $myMap['center_long'] = $address->getLongitude();
@@ -71,7 +74,7 @@ class DefaultController extends Controller {
                 $myMarker['title'] = $producteur->getNom();
                 $myMarker['content'] = $producteur->getAdressComplete();
                 $myMarker['content2'] = "";
-                foreach ($producteur->getCategory() as $category ){
+                foreach ($producteur->getCategory() as $category) {
                     $myMarker['content2'] .= $category->getLibelle() . " ";
                 }
                 $url = $this->generateUrl(
