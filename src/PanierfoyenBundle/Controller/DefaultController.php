@@ -5,6 +5,7 @@ namespace PanierfoyenBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use PanierfoyenBundle\Entity\Lieus;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class DefaultController extends Controller {
 
@@ -53,6 +54,8 @@ class DefaultController extends Controller {
                 $myMarker['longitude'] = $address->getLongitude();
                 $myMarker['title'] = $lieu->getLibelle();
                 $myMarker['content'] = $lieu->getAdressComplete();
+                $myMarker['content2'] = "";
+                $myMarker['link'] = $lieu->getAdressComplete();
                 $myMap['markers'][] = $myMarker;
             }
         }
@@ -66,7 +69,14 @@ class DefaultController extends Controller {
                 $myMarker['latitude'] = $address->getLatitude();
                 $myMarker['longitude'] = $address->getLongitude();
                 $myMarker['title'] = $producteur->getNom();
-                $myMarker['content'] = $lieu->getAdressComplete();
+                $myMarker['content'] = $producteur->getAdressComplete();
+                $myMarker['content2'] = "";
+                foreach ($producteur->getCategory() as $category ){
+                    $myMarker['content2'] .= $category->getLibelle() . " ";
+                }
+                $url = $this->generateUrl(
+                        'producteurs_show_slug', array('slug' => $producteur->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL);
+                $myMarker['link'] = $url;
                 //adding content to make info panel
                 $myMap['markers'][] = $myMarker;
             }
