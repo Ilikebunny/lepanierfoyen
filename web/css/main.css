@@ -41,7 +41,8 @@
 #banniere_bande{
     height: 70px;
     /*background-color: #549e33;*/
-    background-color: #adc917;
+    /*    background-color: #adc917;*/
+    background-color: var(--color1);
 }
 #menu_haut{
     /*background-color: #adc917;*/
