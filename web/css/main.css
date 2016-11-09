@@ -1,3 +1,11 @@
+/*Utilisation de variable pour définir les couleurs*/
+:root {
+    --color1: #adc917;
+    --color2: #c99e66;
+    --color3: #ffe5bd;
+    --color4: #e3c7a1;
+    --color5: #915e36;
+}
 
 .banniere_img{
     width: 120px;
