@@ -31,7 +31,9 @@
                     {% endblock %}
                     <hr>
                     {{ include('layout.aside.html.twig') }} 
-                    {{ dump() }}
+                    {#{% if app.environment == 'dev' %}
+                        {{ dump() }}
+                    {% endif %}#}
                 </div>
             </section>
         </div>
