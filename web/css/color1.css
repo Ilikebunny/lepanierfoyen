@@ -1,0 +1,8 @@
+/*Utilisation de variable pour définir les couleurs*/
+:root {
+    --color1: #adc917; /* vert foncé */
+    --color2: #c99e66; /* marron foncé */
+    --color3: #ffe5bd; /* beige clair */
+    --color4: #e3c7a1; /* marron clair */
+    --color5: #915e36; /* marron très foncé */
+}

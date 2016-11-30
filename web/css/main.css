@@ -1,11 +1,3 @@
-/*Utilisation de variable pour définir les couleurs*/
-:root {
-    --color1: #adc917;
-    --color2: #c99e66;
-    --color3: #ffe5bd;
-    --color4: #e3c7a1;
-    --color5: #915e36;
-}
 
 .banniere_img{
     width: 120px;
@@ -40,16 +32,14 @@
 
 #banniere_bande{
     height: 70px;
-    /*background-color: #549e33;*/
-    /*    background-color: #adc917;*/
     background-color: var(--color1);
 }
 #menu_haut{
     /*background-color: #adc917;*/
 }
 .navbar-default {
-    background-color:#adc917;
-    border-color:#adc917;
+    background-color: var(--color1);
+    border-color: var(--color1);
     background-image: none;
     background-repeat: no-repeat;
 }
@@ -57,17 +47,15 @@
 }
 
 #main{
-    background-color: #ffe5bd;
+    background-color: var(--color3);
 }
 
 .panel-heading{
-    /*background-color: #915e36;*/
-    background-color: #c99e66;
+    background-color: var(--color2);
 }
 
 .panel-body{
-    /*background-color: #ffe5bd;*/
-    background-color: #e3c7a1;
+    background-color: var(--color4);
 }
 
 #main_content{
@@ -75,12 +63,11 @@
 }    
 
 body{
-    background-color: #ffe5bd;
+    background-color: var(--color3);
 }
 .panel{
     min-height: 500px;
-    /*background-color: #ffe5bd;*/
-    background-color: #e3c7a1;
+    background-color: var(--color4);
 }    
 
 .fiche_produit{
@@ -89,7 +76,7 @@ body{
 }
 
 #footer{
-    background-color: #915e36;
+    background-color: var(--color5);
 }
 
 .vertical-align {
@@ -98,16 +85,16 @@ body{
 }
 
 .article_entete{
-    background-color: #adc917;
+    background-color: var(--color1);
 }
 
 .article_entete a{
-    background-color: #adc917;
+    background-color: var(--color1);
     color: whitesmoke;
 }
 
 .article_lien > a{
-    background-color: #c99e66;
+    background-color: var(--color2);
 }
 
 .article_summary{
