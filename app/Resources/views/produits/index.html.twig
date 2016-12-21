@@ -29,6 +29,29 @@
                 </tbody>
             </table>
 
+            {#            Test nouvelle présentation#}
+
+            <div id="id_results_list_wrapper">
+                <ul class="list_container">
+                    {% for produit in produits %}
+
+                        <a href="{{ path('producteurs_show_slug_produits', { 'slug': produit.producteur.slug }) }}">
+                            <li id="id_result_2837">
+                                <div class="list-item-thumbnail"><img src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt=""></div>
+                                <div class="list-item-content"><h4>{{ produit.libelle }}</h4>
+                                    <p>Produit par {{ produit.producteur.nom }}</p>
+                                    <div class="activity-type-button">{{ produit.category.libelle}}</div>
+                                    {#                                    <span class="latlng"><span class="lat">-21.6</span><span class="lng">47.0</span></span>#}
+                                </div>
+                                <span class="picto-container"><div class="pull-right"></div></span>
+                            </li>
+                        </a>
+
+                    {% endfor %}    
+                </ul>
+            </div>
+
+
         </div>
     </div>
 
