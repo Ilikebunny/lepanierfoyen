@@ -53,7 +53,6 @@ class Categories {
      */
     public function __construct() {
         $this->producteur = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->produits = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -147,38 +146,4 @@ class Categories {
         return $this->producteur;
     }
 
-
-    /**
-     * Add produit
-     *
-     * @param \PanierfoyenBundle\Entity\Produits $produit
-     *
-     * @return Categories
-     */
-    public function addProduit(\PanierfoyenBundle\Entity\Produits $produit)
-    {
-        $this->produits[] = $produit;
-        $produit->setCategory($this);
-        return $this;
-    }
-
-    /**
-     * Remove produit
-     *
-     * @param \PanierfoyenBundle\Entity\Produits $produit
-     */
-    public function removeProduit(\PanierfoyenBundle\Entity\Produits $produit)
-    {
-        $this->produits->removeElement($produit);
-    }
-
-    /**
-     * Get produits
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProduits()
-    {
-        return $this->produits;
-    }
 }

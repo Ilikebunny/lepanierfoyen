@@ -45,7 +45,7 @@ class Produits {
     /**
      * @var \Categories
      *
-     * @ORM\ManyToOne(targetEntity="Categories", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Categories", fetch="EAGER", inversedBy="produits")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })

@@ -11,6 +11,7 @@ class CategoriesRepository extends EntityRepository {
         $entity = $this->_em
                 ->getRepository('PanierfoyenBundle:Categories')
                 ->createQueryBuilder('e')
+                ->addSelect('r')
                 ->join('e.produits', 'r')
                 ->orderBy('e.libelle', 'ASC')
                 ->getQuery();

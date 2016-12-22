@@ -30,8 +30,8 @@ class ProduitsController extends Controller {
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->getAllOrderedByCategory();
 
         //TEST2
-        $qb = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProduits();
-        print_r($qb->getResult());
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProduits();
+        $queryBuilder2 = $queryBuilder2->getResult();
         
 //        Pagination
         $paginator = $this->container->get('panierfoyen.paginator');
@@ -40,6 +40,7 @@ class ProduitsController extends Controller {
         return $this->render('produits/index.html.twig', array(
                     'produits' => $produits,
                     'pagerHtml' => $pagerHtml,
+                    'test' => $queryBuilder2,
         ));
     }
 
