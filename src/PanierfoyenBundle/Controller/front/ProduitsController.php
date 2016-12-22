@@ -29,6 +29,10 @@ class ProduitsController extends Controller {
         //test
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->getAllOrderedByCategory();
 
+        //TEST2
+        $qb = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProduits();
+        print_r($qb->getResult());
+        
 //        Pagination
         $paginator = $this->container->get('panierfoyen.paginator');
         list($produits, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 12, 'produits');

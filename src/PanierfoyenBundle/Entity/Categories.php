@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Categories
  *
  * @ORM\Table(name="categories", uniqueConstraints={@ORM\UniqueConstraint(name="libelle_UNIQUE", columns={"libelle"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PanierfoyenBundle\Repository\CategoriesRepository")
  */
 class Categories {
 

@@ -11,7 +11,7 @@ class ProduitsRepository extends EntityRepository {
         $repository = $this->_em
                 ->getRepository('PanierfoyenBundle:Produits');
 
-        $listProduits = $repository->findByProducteur($producteur->getId());
+//        $listProduits = $repository->findByProducteur($producteur->getId());
         $listProduits = $repository->findBy(array('producteur' => $producteur->getId()));
         return $listProduits;
     }
