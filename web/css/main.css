@@ -123,3 +123,18 @@ span.fc-title {
     height: 500px; 
 }
 
+.product_list_item{
+    margin-bottom: 15px;
+    background-color: whitesmoke;
+    background-color: var(--color3);
+}
+
+.product_list_item a{
+    color: black;
+}
+
+.list_img{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 100px;
+}

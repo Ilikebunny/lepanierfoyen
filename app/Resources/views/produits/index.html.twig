@@ -31,25 +31,57 @@
 
             {#            Test nouvelle présentation#}
 
-            <div id="id_results_list_wrapper">
-                <ul class="list_container">
-                    {% for produit in produits %}
+            {#            <div id="id_results_list_wrapper">
+                            <ul class="list_container">
+                                {% for produit in produits %}
+            
+                                    <a href="{{ path('producteurs_show_slug_produits', { 'slug': produit.producteur.slug }) }}">
+                                        <li id="id_result_2837">
+                                            <div class="list-item-thumbnail"><img src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt=""></div>
+                                            <div class="list-item-content"><h4>{{ produit.libelle }}</h4>
+                                                <p>Produit par {{ produit.producteur.nom }}</p>
+                                                <div class="activity-type-button">{{ produit.category.libelle}}</div>
+                                            </div>
+                                            <span class="picto-container"><div class="pull-right"></div></span>
+                                        </li>
+                                    </a>
+            
+                                {% endfor %}    
+                            </ul>
+                        </div>#}
 
-                        <a href="{{ path('producteurs_show_slug_produits', { 'slug': produit.producteur.slug }) }}">
-                            <li id="id_result_2837">
-                                <div class="list-item-thumbnail"><img src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt=""></div>
-                                <div class="list-item-content"><h4>{{ produit.libelle }}</h4>
-                                    <p>Produit par {{ produit.producteur.nom }}</p>
-                                    <div class="activity-type-button">{{ produit.category.libelle}}</div>
-                                    {#                                    <span class="latlng"><span class="lat">-21.6</span><span class="lng">47.0</span></span>#}
-                                </div>
-                                <span class="picto-container"><div class="pull-right"></div></span>
-                            </li>
-                        </a>
-
-                    {% endfor %}    
-                </ul>
-            </div>
+            {% for produit in produits %}
+                <div class="row category_entete">
+                    <div class="col-md-2">
+                        <img class="list_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
+                    </div>
+                    <div class="col-md-10">
+                        <span>{{ produit.category.libelle}}</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row product_list_item">
+                    <a href="{{ path('producteurs_show_slug_produits', { 'slug': produit.producteur.slug }) }}">
+                        <div class="col-md-2">
+                            <img class = "list_img" src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <h4>{{ produit.libelle }}</h4>
+                            </div>
+                            <div class="row">
+                                <p>Produit par {{ produit.producteur.nom }}</p>
+                            </div>
+                            <div class="row">
+                                {{ produit.category.libelle}}
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
 
 
         </div>
