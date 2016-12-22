@@ -25,6 +25,9 @@ class ProduitsController extends Controller {
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->createQueryBuilder('e');
+        
+        //test
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->getAllOrderedByCategory();
 
 //        Pagination
         $paginator = $this->container->get('panierfoyen.paginator');

@@ -16,4 +16,15 @@ class ProduitsRepository extends EntityRepository {
         return $listProduits;
     }
 
+    public function getAllOrderedByCategory() {
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Produits')
+                ->createQueryBuilder('e')
+                ->join('e.category', 'r')
+                ->orderBy('r.libelle', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
+
 }
