@@ -9,21 +9,21 @@
     "packages": [
         {
             "name": "ancarebeca/full-calendar-bundle",
-            "version": "v3.0.0",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ancarebeca/FullCalendarBundle.git",
-                "reference": "1b4908bf4fdce8914bd8910af49f5c9d6fa08fac"
+                "reference": "0adf773e8ef802a776b600b5fee35810af0cfb68"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ancarebeca/FullCalendarBundle/zipball/1b4908bf4fdce8914bd8910af49f5c9d6fa08fac",
-                "reference": "1b4908bf4fdce8914bd8910af49f5c9d6fa08fac",
+                "url": "https://api.github.com/repos/ancarebeca/FullCalendarBundle/zipball/0adf773e8ef802a776b600b5fee35810af0cfb68",
+                "reference": "0adf773e8ef802a776b600b5fee35810af0cfb68",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.5.9",
-                "symfony/symfony": "3.1.*"
+                "symfony/symfony": "^3.1.0"
             },
             "require-dev": {
                 "phpspec/phpspec": "^2.2"
@@ -54,7 +54,7 @@
                 "symfony2 bundle",
                 "symfony2 calendar"
             ],
-            "time": "2016-07-18 21:02:01"
+            "time": "2016-12-15 09:44:23"
         },
         {
             "name": "behat/transliterator",
@@ -2919,6 +2919,7 @@
                 "pagination",
                 "symfony3"
             ],
+            "abandoned": "petkopara/crud-generator-bundle",
             "time": "2016-05-14 12:55:21"
         },
         {
