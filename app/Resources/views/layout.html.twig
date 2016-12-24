@@ -7,13 +7,9 @@
         {#        </div>#}
         <div id="main" class="container">
             {% block menu_haut %}
-                {# {% set currentPath = path(app.request.attributes.get('_route')) %}
-                 {% if (currentPath starts with '/admin') or (currentPath starts with '/app_dev.php/admin') %}
-                     {{ include('admin_menu.html.twig') }}
-                 {% endif %}#}
             {% endblock %}
             <section class="panel row">
-                <header class="panel-heading col-md-12">
+                <header class="panel-heading col-md-12 vertical_center">
                     <h2>{% block panel_head %}{% endblock %}</h2>
                 </header>
                 {% block menu_content %}

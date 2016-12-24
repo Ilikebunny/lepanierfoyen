@@ -45,8 +45,7 @@
     background-image: none;
     background-repeat: no-repeat;
 }
-#admin_menu{
-}
+
 
 #main{
     background-color: var(--color3);
@@ -171,4 +170,12 @@ span.fc-title {
 
 .product_list_item{
     height: 90px;
+}
+
+.panel-heading{
+    height: 50px;
+}
+
+#admin_menu{
+    margin-bottom: 10px;
 }
