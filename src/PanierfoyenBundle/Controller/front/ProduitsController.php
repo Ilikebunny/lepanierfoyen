@@ -40,7 +40,7 @@ class ProduitsController extends Controller {
         return $this->render('produits/index.html.twig', array(
                     'produits' => $produits,
                     'pagerHtml' => $pagerHtml,
-                    'test' => $queryBuilder2,
+                    'categories' => $queryBuilder2,
         ));
     }
 
