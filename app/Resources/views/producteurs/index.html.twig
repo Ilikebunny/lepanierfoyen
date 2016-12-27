@@ -23,7 +23,7 @@
 
         {% for prod in category.producteur %}
             <div class="row product_list_item">
-                <a href="{{ path('producteurs_show_slug_produits', { 'slug': prod.slug }) }}">
+                <a href="{{ path('producteurs_show_slug', { 'slug': prod.slug }) }}">
                     <div class="col-md-2 list_img2 vertical_center">
                         <img class = "" src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt="">
                     </div>
