@@ -34,9 +34,9 @@
                         <div class="row">
                             <p>Situé à {{ prod.ville }} ({{ prod.codepostal}})</p>
                         </div>
-                        <div class="row">
+                        <div class="row vertical_center">
                             {% for produit in prod.produits %}
-                                <span class="label label-primary">{{ produit.libelle}}</span>
+                                <span class="label label-primary product_tag">{{ produit.libelle}}</span>
                             {% endfor %}
                         </div>
                     </div>
