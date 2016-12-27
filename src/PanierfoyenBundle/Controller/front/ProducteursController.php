@@ -30,9 +30,12 @@ class ProducteursController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
 
+        //TEST
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteurs();
+        $queryBuilder2 = $queryBuilder2->getResult();
 
         $paginator = $this->container->get('panierfoyen.paginator');
-         $routeName = 'producteurs';
+        $routeName = 'producteurs';
         list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, $routeName);
 
 //        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -43,6 +46,7 @@ class ProducteursController extends Controller {
                     'producteurs' => $producteurs,
                     'categories' => $categories,
                     'pagerHtml' => $pagerHtml,
+                    'categories2' => $queryBuilder2,
         ));
     }
 

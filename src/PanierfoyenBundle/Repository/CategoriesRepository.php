@@ -19,4 +19,16 @@ class CategoriesRepository extends EntityRepository {
         return $entity;
     }
 
+    public function getAllWithProducteurs() {
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Categories')
+                ->createQueryBuilder('e')
+                ->addSelect('r')
+                ->join('e.producteur', 'r')
+                ->orderBy('e.libelle', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
+
 }
