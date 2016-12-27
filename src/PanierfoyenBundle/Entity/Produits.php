@@ -65,7 +65,7 @@ class Produits {
     /**
      * @var \Producteurs
      *
-     * @ORM\ManyToOne(targetEntity="Producteurs")
+     * @ORM\ManyToOne(targetEntity="Producteurs", inversedBy="produits")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
      * })
@@ -224,6 +224,7 @@ class Produits {
      * @return Produits
      */
     public function setProducteur(\PanierfoyenBundle\Entity\Producteurs $producteur = null) {
+        $producteur->addProduit($this);
         $this->producteur = $producteur;
 
         return $this;

@@ -30,23 +30,38 @@ class ProducteursController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
 
+        // $_GET parameters
+        $pageNumber = $request->query->get('page');
+
+        //Variables
+        $maxResults = 10;
+        $offset = ($pageNumber - 1) * $maxResults;
+        if ($offset < 0)
+            $offset = 0;
+
         //TEST
-        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteurs();
-        $queryBuilder2 = $queryBuilder2->getResult();
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteursAndProduits($offset, $maxResults);
+
 
         $paginator = $this->container->get('panierfoyen.paginator');
         $routeName = 'producteurs';
-        list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, 10, $routeName);
+        list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, $maxResults, $routeName);
+
+        $queryBuilder2 = $queryBuilder2->getResult();
 
 //        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
 
         $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
+
+
 
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
                     'categories' => $categories,
                     'pagerHtml' => $pagerHtml,
                     'categories2' => $queryBuilder2,
+                    'pageNumber' => $pageNumber,
+                    'offset' => $offset,
         ));
     }
 

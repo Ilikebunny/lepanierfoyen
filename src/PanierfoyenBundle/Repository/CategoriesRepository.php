@@ -31,4 +31,19 @@ class CategoriesRepository extends EntityRepository {
         return $entity;
     }
 
+    public function getAllWithProducteursAndProduits($offset, $limit) {
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Categories')
+                ->createQueryBuilder('e')
+                ->addSelect('r')
+                ->join('e.producteur', 'r')
+                ->leftJoin('r.produits', 't')
+                ->orderBy('e.libelle', 'ASC')
+                ->setFirstResult($offset)
+                ->setMaxResults($limit)
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
+
 }
