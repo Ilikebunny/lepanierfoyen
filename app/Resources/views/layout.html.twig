@@ -25,11 +25,10 @@
                 <div class="panel-body col-md-3">
                     {% block aside %}
                     {% endblock %}
-                    <hr>
                     {{ include('layout.aside.html.twig') }} 
-             {#       {% if app.environment != 'prod' %}
+                    {% if app.debug == true %}
                         {{ dump() }}
-                    {% endif %}#}
+                    {% endif %}
                 </div>
             </section>
         </div>
