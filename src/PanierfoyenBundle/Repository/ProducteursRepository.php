@@ -28,5 +28,18 @@ class ProducteursRepository extends EntityRepository {
 //
 //        ;
     }
+    
+    public function getAllOrderedByCategoryAndName(){
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Producteurs')
+                ->createQueryBuilder('e')
+                ->addSelect('r')
+                ->join('e.category', 'r')
+                ->orderBy('r.libelle', 'ASC')
+                ->orderBy('e.nom', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
 
 }

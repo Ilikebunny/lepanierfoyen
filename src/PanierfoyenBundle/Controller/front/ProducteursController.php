@@ -28,7 +28,7 @@ class ProducteursController extends Controller {
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->getAllOrderedByCategoryAndName();
 
         // $_GET parameters
         $pageNumber = $request->query->get('page');
