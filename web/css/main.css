@@ -188,3 +188,12 @@ span.fc-title {
 .product_tag{
     margin-right: 5px;
 }
+
+.coordinateur_title{
+    text-decoration: underline;
+}
+
+.fa{
+    margin-right: 2px;
+    width: 14px;
+}
