@@ -12,14 +12,14 @@
 
     {% for category in categories %}
         <div class="row category_entete">
-            <div class="col-md-2 list_img vertical_center">
+            <div class="col-md-1 list_img vertical_center">
                 <img class="img-responsive" src="{{ asset( category.logo) }}" alt="{{ category.libelle}}" />
             </div>
-            <div class="col-md-10 list_title vertical_center">
-                <h2>{{ category.libelle}}</h2>
+            <div class="col-md-11 list_title vertical_center">
+                <h3>{{ category.libelle}}</h3>
             </div>
         </div>
-        <hr>
+{#        <hr>#}
 
         {% for produit in category.produits %}
             <div class="row product_list_item">

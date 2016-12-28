@@ -139,22 +139,27 @@ span.fc-title {
 }
 
 .category_entete{
-    height: 70px;
+    height: 50px;
+    margin-bottom: 5px;
 }
 
 .list_img{
-    height: 70px;
+    height: 50px;
     align-items: center;
 }
 
 .list_img img{
     margin-bottom: 5px;
     margin-top: 5px;
-    width: 70px;
+    width: 50px;
 }
 
 .list_title{
-    height: 70px;
+    height: 50px;
+}
+
+.list_title h3{
+    padding-bottom: 10px;
 }
 
 .list_img2 img{
