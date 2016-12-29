@@ -24,9 +24,9 @@
             <div class=" col-md-12"><i class="fa fa-link"></i><a href="http://{{ producteur.siteInternet}}">{{ producteur.siteInternet }}</a></div>
         </div>
         <div class=" col-md-6">
-            <div class=" col-md-12 "><p class="coordinateur_title">Coordinateur : {{ producteur.coordinateur.nom }}</p></div>
             {% if producteur.coordinateur %}
-{#                <div class=" col-md-12 ">{{ producteur.coordinateur.nom }}</div>#}
+                <div class=" col-md-12 "><p class="coordinateur_title">Coordinateur : {{ producteur.coordinateur.nom }}</p></div>
+                {#                <div class=" col-md-12 ">{{ producteur.coordinateur.nom }}</div>#}
                 <div class=" col-md-12 "><i class="fa fa-address-book"></i>{{ producteur.coordinateur.codepostal }} {{ producteur.coordinateur.ville }}</div>
                 <div class=" col-md-12 "><i class="fa fa-phone"></i>{{ producteur.coordinateur.tel }} </div>
                 <div class=" col-md-12 "><i class="fa fa-mobile"></i>{{ producteur.coordinateur.mobile }}</div>
