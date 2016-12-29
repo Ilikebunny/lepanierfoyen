@@ -16,48 +16,58 @@
 
     {% for produit in produits%}
         <div class="fiche_produit">
+
             <div class="fiche_produit_entete">
                 <div class="col-md-8 vertical_center">
                     <h3>{{ produit.libelle }}</h3>
                 </div>
                 <div class="col-md-4 vertical_center">
-                    <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />
+{#                    <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />#}
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-2">
-                    <img class="navtab_img img-responsive" src="{{ asset( produit.image) }}" alt="Image" />
+                    {% if produit.image == "" %}
+                        <img class="img-responsive" src="{{ asset('images/generique.png') }}" alt="image" />
+                    {% else %}
+                        <img class="img-responsive" src="{{ asset( produit.image) }}" alt="image" />
+                    {% endif %}
                 </div>
                 <div class="col-md-10">
-                    <div class="row">
+                    <div class="fiche_produit_content">
                         {{ produit.descriptif }}
                     </div>
-                    <div class="row">
+                    <div class="fiche_produit_content">
                         {{ "Frequence :" ~ produit.frequence.libelle ~ " " ~ produit.frequence.details }}
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-5 fiche_produit_major">
+                            {{ "Conditionnement(s) / Variante(s)" }} 
+                        </div>
+                        <div class="col-md-2 fiche_produit_major">
+                            Prix
+                        </div>
+                    </div>
+
+                    {% for variante in produit.les_conditionnements%}
+                        <div class="row">
+                            <div class="col-md-5">
+                                {{ variante.libelle }} 
+                            </div>
+                            <div class="col-md-2">
+                                {{ variante.prixUnitaire }} 
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
+
+
+
             </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    {{ "Conditionnment(s) / Variante(s)" }} 
-                </div>
-                <div class="col-md-2">
-                    Prix
-                </div>
-            </div>
 
-            {% for variante in produit.les_conditionnements%}
-                <div class="row">
-                    <div class="col-md-4">
-                        {{ variante.libelle }} 
-                    </div>
-                    <div class="col-md-2">
-                        {{ variante.prixUnitaire }} 
-                    </div>
-                </div>
-            {% endfor %}
 
         </div>
         <br>

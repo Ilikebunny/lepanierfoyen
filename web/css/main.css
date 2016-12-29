@@ -80,7 +80,6 @@ body{
     align-items: center;
 }
 
-
 .vertical_center {
     display: flex;
     align-items: center;
@@ -208,6 +207,14 @@ span.fc-title {
 
 .fiche_produit_entete h3{
     padding-bottom: 10px;
+}
+
+.fiche_produit_content{
+    margin-bottom: 5px;
+}
+
+.fiche_produit_major{
+    font-weight: bold;
 }
 
 /*.fiche_produit{
