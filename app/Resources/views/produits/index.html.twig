@@ -25,7 +25,11 @@
             <div class="row product_list_item">
                 <a href="{{ path('producteurs_show_slug_produits', { 'slug': produit.producteur.slug }) }}">
                     <div class="col-md-2 list_img2 vertical_center">
-                        <img class = "" src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt="">
+                       {% if produit.image == "" %}
+                        <img class="img-responsive" src="{{ asset('images/generique.png') }}" alt="image" />
+                    {% else %}
+                        <img class="img-responsive" src="{{ asset( produit.image) }}" alt="image" />
+                    {% endif %}
                     </div>
                     <div class="col-md-8 list_text">
                         <div class="row">
