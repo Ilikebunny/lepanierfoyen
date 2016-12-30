@@ -31,18 +31,19 @@
                         <li><a href="#">Nous contacter</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
+                <li><a href="{{ path('articles') }}">Publications</a></li>
+               {# <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Les publications <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ path('articles') }}">Tous</a></li>
                         <li role="separator" class="divider"></li>
                             {{ render(controller('PanierfoyenBundle:front\\Tags:getAllTagsForNav' )) }}
                     </ul>
-                </li>
+                </li>#}
                 <li><a href="{{ path('producteurs') }}">Les producteurs</a></li>
                 <li><a href="{{ path('produits') }}">Les produits</a></li>
                 <li><a href="{{ path('amap_calendrier') }}">Calendrier</a></li>
-{#                <li><a href="{{ path('amap_cartographie') }}">Cartographie</a></li>#}
+                    {#                <li><a href="{{ path('amap_cartographie') }}">Cartographie</a></li>#}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {#                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
