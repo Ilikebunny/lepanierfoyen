@@ -55,9 +55,16 @@ class LoadProducteurData extends AbstractFixture implements OrderedFixtureInterf
                     }
                 }
 
+                //import presentation
+                $txtName = $row[13];
+                if ($txtName != "") {
+                    $txtContent = $import->TXT_to_String($txtName);
+                    $entity->setPresentation($txtContent);
+                }
+
                 $manager->persist($entity);
                 $manager->flush();
-                
+
                 $this->addReference($entity->getNom(), $entity);
             }
         }
