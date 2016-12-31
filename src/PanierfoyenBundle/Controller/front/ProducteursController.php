@@ -34,7 +34,7 @@ class ProducteursController extends Controller {
         $pageNumber = $request->query->get('page');
 
         //Variables
-        $maxResults = 13;
+        $maxResults = 100;
         $offset = ($pageNumber - 1) * $maxResults;
         if ($offset < 0)
             $offset = 0;
