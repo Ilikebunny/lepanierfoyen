@@ -12,22 +12,22 @@
 
     {% for category in categories2 %}
         <div class="row category_entete">
-            <div class="col-md-1 list_img vertical_center">
+            <div class="col-xs-1 list_img vertical_center">
                 <img class="img-responsive" src="{{ asset( category.logo) }}" alt="{{ category.libelle}}" />
             </div>
-            <div class="col-md-11 list_title vertical_center">
+            <div class="col-xs-11 list_title vertical_center">
                 <h3>{{ category.libelle}}</h3>
             </div>
         </div>
 {#        <hr>#}
 
         {% for prod in category.producteur %}
-            <div class="row product_list_item">
+            <div class="row producteur_list_item">
                 <a href="{{ path('producteurs_show_slug', { 'slug': prod.slug }) }}">
-                    <div class="col-md-2 list_img2 vertical_center">
+              {#      <div class="col-md-2 list_img2 vertical_center">
                         <img class = "" src="http://media.accueil-paysan.com/photos/anja-miray-2416_None.JPG.100x100_q85_crop.jpg" alt="">
-                    </div>
-                    <div class="col-md-8 list_text">
+                    </div>#}
+                    <div class="col-xs-12 list_text">
                         <div class="row">
                             <h4>{{ prod.nom }}</h4>
                         </div>
@@ -40,9 +40,9 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="col-md-2 vertical_center">
+{#                    <div class="col-md-2 vertical_center">#}
                         {#                        <img class="navtab_img img-responsive" src="{{ asset( produit.category.logo) }}" alt="{{ produit.category.libelle}}" />#}
-                    </div>
+{#                    </div>#}
                 </a>
             </div>
         {% endfor %}

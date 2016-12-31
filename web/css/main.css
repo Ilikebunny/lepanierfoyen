@@ -123,16 +123,6 @@ span.fc-title {
     height: 500px; 
 }
 
-.product_list_item{
-    margin-bottom: 15px;
-    background-color: whitesmoke;
-    background-color: var(--color3);
-}
-
-.product_list_item a{
-    color: black;
-}
-
 .category_entete{
     height: 50px;
     margin-bottom: 5px;
@@ -169,7 +159,26 @@ span.fc-title {
 }
 
 .product_list_item{
+    margin-bottom: 15px;
+    background-color: whitesmoke;
+    background-color: var(--color3);
     height: 90px;
+}
+
+.product_list_item a{
+    color: black;
+}
+
+.producteur_list_item{
+    margin-bottom: 15px;
+    background-color: whitesmoke;
+    background-color: var(--color3);
+    height: 90px;
+    padding-left: 10px;
+}
+
+.producteur_list_item a{
+    color: black;
 }
 
 .panel-heading{
