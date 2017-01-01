@@ -7,8 +7,8 @@
     {% set linkRoute = 'producteurs_show_slug_produits' %}
     <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Produits</a></li>
 
-    {% set linkRoute = 'producteurs_show_slug_coordinateur' %}
-    <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Coordinateur</a></li>
+{#    {% set linkRoute = 'producteurs_show_slug_coordinateur' %}
+    <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Coordinateur</a></li>#}
 
     {% set linkRoute = 'producteurs_show_slug_photos' %}
     <li role="presentation" {{ (currentRoute == linkRoute) ? ' class="active"' }}><a href="{{ path(linkRoute, { 'slug': producteur.slug }) }}">Photos</a></li>
