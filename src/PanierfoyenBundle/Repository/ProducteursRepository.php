@@ -14,7 +14,6 @@ class ProducteursRepository extends EntityRepository {
 //        $listProduits = $repository->findByProducteur($producteur->getId());
 //        $listProduits = $repository->findBy(array('producteur' => $producteur->getId()));
 //        return $listProduits;
-
 //        $queryBuilder = $this->_em->createQueryBuilder()
 //                ->select(array('p1', 'p2'))
 //                ->from('Produits', 'p1')
@@ -28,14 +27,24 @@ class ProducteursRepository extends EntityRepository {
 //
 //        ;
     }
-    
-    public function getAllOrderedByCategoryAndName(){
+
+    public function getAllOrderedByCategoryAndName() {
         $entity = $this->_em
                 ->getRepository('PanierfoyenBundle:Producteurs')
                 ->createQueryBuilder('e')
                 ->addSelect('r')
                 ->join('e.category', 'r')
                 ->orderBy('r.libelle', 'ASC')
+                ->orderBy('e.nom', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
+
+    public function getAllOrderedByName() {
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Producteurs')
+                ->createQueryBuilder('e')
                 ->orderBy('e.nom', 'ASC')
                 ->getQuery();
 //                ->getResult();
