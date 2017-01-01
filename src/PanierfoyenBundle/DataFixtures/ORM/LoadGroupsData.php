@@ -33,7 +33,7 @@ class LoadGroupData extends AbstractFixture implements OrderedFixtureInterface, 
         $group->addRole('ROLE_ADMIN');
         $groupManager->updateGroup($group);
         
-        $group = $groupManager->createGroup('Publicateurs');
+        $group = $groupManager->createGroup('Rédacteurs');
         $group->addRole('ROLE_PUBLISHER');
         $groupManager->updateGroup($group);
         
