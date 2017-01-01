@@ -231,3 +231,7 @@ span.fc-title {
     border-style: solid;
     border-width: 5px;
 }*/
+
+.action_column{
+    width: 140px;
+}
