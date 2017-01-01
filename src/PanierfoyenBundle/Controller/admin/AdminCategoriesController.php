@@ -25,7 +25,8 @@ class AdminCategoriesController extends Controller {
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->createQueryBuilder('e');
+//        $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->createQueryBuilder('e');
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->getAllOrderedByLibelle();
 
         //Pagination
         $paginator = $this->container->get('panierfoyen.paginator');

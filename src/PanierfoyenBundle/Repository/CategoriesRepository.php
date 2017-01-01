@@ -45,5 +45,15 @@ class CategoriesRepository extends EntityRepository {
 //                ->getResult();
         return $entity;
     }
+    
+    public function getAllOrderedByLibelle(){
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Categories')
+                ->createQueryBuilder('e')
+                ->orderBy('e.libelle', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
 
 }
