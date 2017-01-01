@@ -32,7 +32,7 @@
                             <td>{{ user.codepostal }}</td>
                             <td>{{ user.ville }}</td>
                             <td>{{ user.group }}</td>
-                            <td>    
+                            <td width = "200px">    
                                 <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('users_by_id_delete', { 'id': user.id}) }}">
                                     <i class="fa fa-trash-o"></i>
                                 </a>
