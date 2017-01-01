@@ -2872,12 +2872,12 @@
             "target-dir": "Triton/Bundle/CrudBundle",
             "source": {
                 "type": "git",
-                "url": "https://github.com/petkopara/TritonCrudBundle.git",
+                "url": "https://github.com/petkopara/PetkoparaCrudGeneratorBundle.git",
                 "reference": "78500144dc324bec34ca78a0093564d2e9d4caba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/petkopara/TritonCrudBundle/zipball/78500144dc324bec34ca78a0093564d2e9d4caba",
+                "url": "https://api.github.com/repos/petkopara/PetkoparaCrudGeneratorBundle/zipball/78500144dc324bec34ca78a0093564d2e9d4caba",
                 "reference": "78500144dc324bec34ca78a0093564d2e9d4caba",
                 "shasum": ""
             },
@@ -3027,16 +3027,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.24.1",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512"
+                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/3566d311a92aae4deec6e48682dc5a4528c4a512",
-                "reference": "3566d311a92aae4deec6e48682dc5a4528c4a512",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/c6ff71094fde15d12398eaba029434b013dc5e59",
+                "reference": "c6ff71094fde15d12398eaba029434b013dc5e59",
                 "shasum": ""
             },
             "require": {
@@ -3044,12 +3044,12 @@
             },
             "require-dev": {
                 "symfony/debug": "~2.7",
-                "symfony/phpunit-bridge": "~2.7"
+                "symfony/phpunit-bridge": "~3.2@dev"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.24-dev"
+                    "dev-master": "1.30-dev"
                 }
             },
             "autoload": {
@@ -3084,7 +3084,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2016-05-30 09:11:59"
+            "time": "2016-12-23 11:06:22"
         },
         {
             "name": "willdurand/geocoder",
