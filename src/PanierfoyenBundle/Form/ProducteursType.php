@@ -20,7 +20,7 @@ class ProducteursType extends AbstractType {
                 ->add('tel')
                 ->add('mobile')
                 ->add('siteInternet')
-                ->add('chequeOrdre')
+                ->add('chequeOrdre',null,array('label'=>"Chèque à l'ordre de"))
                 ->add('email')
                 ->add('coordinateur', null, array('attr' => array(
                         'class' => 'chosen-select'
