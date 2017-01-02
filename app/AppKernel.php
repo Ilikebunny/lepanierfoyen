@@ -25,6 +25,15 @@ class AppKernel extends Kernel {
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
             new Bazinga\Bundle\GeocoderBundle\BazingaGeocoderBundle(),
+            
+            // These are the other bundles the SonataAdminBundle relies on
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
+            // And finally, the storage and SonataAdminBundle
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

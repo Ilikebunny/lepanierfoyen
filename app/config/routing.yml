@@ -23,3 +23,7 @@ fos_js_routing:
     
 ancarebeca_fullcalendar:
     resource: "@FullCalendarBundle/Resources/config/routing.yml"
+    
+admin_area:
+    resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
+    prefix: /adminSonata
