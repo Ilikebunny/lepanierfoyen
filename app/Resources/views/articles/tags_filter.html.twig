@@ -2,7 +2,7 @@
 {% else %}
     {% set tagSelectedLibelle = "" %}
 {% endif %}
-<p>Filtrer par tag</p>
+<p class="aside_title">Filtrer par tag</p>
 {% for tag in tags %}
     <div class=" col-md-4">
         <a href="{{ path('articlesByTag', { 'tagLibelle': tag.title }) }}">
@@ -12,3 +12,5 @@
         </a>
     </div>
 {% endfor %}
+<br>
+<hr>
