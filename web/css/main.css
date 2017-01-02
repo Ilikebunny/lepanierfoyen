@@ -95,9 +95,10 @@ body{
     color: whitesmoke;
 }
 
-.article_lien > a{
+/*.article_lien > a{
     background-color: var(--color2);
-}
+    color: black;
+}*/
 
 .article_summary{
     background-color: whitesmoke;
@@ -234,4 +235,9 @@ span.fc-title {
 
 .action_column{
     width: 140px;
+}
+
+.aside_title{
+    font-weight: bold;
+    text-decoration: underline;
 }
