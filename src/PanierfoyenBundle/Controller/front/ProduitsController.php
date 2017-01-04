@@ -30,7 +30,7 @@ class ProduitsController extends Controller {
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->getAllOrderedByCategory();
 
         //TEST2
-        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProduits();
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProduitsAndVariations();
         $queryBuilder2 = $queryBuilder2->getResult();
         
 //        Pagination

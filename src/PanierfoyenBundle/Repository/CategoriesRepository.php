@@ -18,6 +18,22 @@ class CategoriesRepository extends EntityRepository {
 //                ->getResult();
         return $entity;
     }
+    
+    public function getAllWithProduitsAndVariations() {
+
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Categories')
+                ->createQueryBuilder('e')
+                ->addSelect('r')
+                ->addSelect('s')
+                ->join('e.produits', 'r')
+                ->join('r.les_conditionnements', 's')
+                ->orderBy('e.libelle', 'ASC')
+                ->addOrderBy('r.libelle', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
 
     public function getAllWithProducteurs() {
         $entity = $this->_em
