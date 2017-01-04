@@ -12,10 +12,10 @@
 
     {% for category in categories %}
         <div class="row category_entete">
-            <div class="col-md-1 list_img vertical_center">
+            <div class="col-xs-1 list_img vertical_center">
                 <img class="img-responsive" src="{{ asset( category.logo) }}" alt="{{ category.libelle}}" />
             </div>
-            <div class="col-md-11 list_title vertical_center">
+            <div class="col-xs-11 list_title vertical_center">
                 <h3>{{ category.libelle}}</h3>
             </div>
         </div>
@@ -38,8 +38,11 @@
                         <div class="row">
                             <p>Produit par {{ produit.producteur.nom }}</p>
                         </div>
-                        <div class="row">
-                            {{ produit.category.libelle}}
+                        <div class="row label_list">
+                           {# {{ produit.category.libelle}}#}
+                           {% for variante in produit.les_conditionnements%}
+                                <span class="label label-primary product_tag">{{ variante.libelle }} </span>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="col-md-2 vertical_center">
