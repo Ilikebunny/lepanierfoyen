@@ -7,6 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 class ProducteursType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
@@ -29,6 +31,7 @@ class ProducteursType extends AbstractType {
                         'class' => 'chosen-select'
             )))
                 ->add('presentation', CKEditorType::class)
+                ->add('contratFile',HiddenType::class)
         ;
     }
 

@@ -4,7 +4,6 @@ namespace PanierfoyenBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-
 use PanierfoyenBundle\Entity\AbstractAdresses;
 
 /**
@@ -13,7 +12,7 @@ use PanierfoyenBundle\Entity\AbstractAdresses;
  * @ORM\Table(name="producteurs", uniqueConstraints={@ORM\UniqueConstraint(name="id_UNIQUE", columns={"id"}), @ORM\UniqueConstraint(name="nom_UNIQUE", columns={"nom"})}, indexes={@ORM\Index(name="fk_producteurs_coordinateurs1_idx", columns={"coordinateur_id"})})
  * @ORM\Entity(repositoryClass="PanierfoyenBundle\Repository\ProducteursRepository")
  */
-class Producteurs extends AbstractAdresses{
+class Producteurs extends AbstractAdresses {
 
     /**
      * @var integer
@@ -110,11 +109,18 @@ class Producteurs extends AbstractAdresses{
      * @ORM\OneToMany(targetEntity="Gallery", mappedBy="producteur", fetch="EAGER")
      */
     protected $myGallery;
-    
-       /**
+
+    /**
      * @ORM\OneToMany(targetEntity="Produits", mappedBy="producteur")
      */
     protected $produits;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contratFile", type="string", length=250, nullable=true)
+     */
+    private $contratFile;
 
     /**
      * Get myGallery
@@ -130,7 +136,7 @@ class Producteurs extends AbstractAdresses{
      */
     public function __construct() {
         $this->category = new \Doctrine\Common\Collections\ArrayCollection();
-         $this->les_conditionnements = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->les_conditionnements = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -378,7 +384,6 @@ class Producteurs extends AbstractAdresses{
         return $this->category;
     }
 
-
     /**
      * Add myGallery
      *
@@ -386,8 +391,7 @@ class Producteurs extends AbstractAdresses{
      *
      * @return Producteurs
      */
-    public function addMyGallery(\PanierfoyenBundle\Entity\Gallery $myGallery)
-    {
+    public function addMyGallery(\PanierfoyenBundle\Entity\Gallery $myGallery) {
         $this->myGallery[] = $myGallery;
 
         return $this;
@@ -398,8 +402,7 @@ class Producteurs extends AbstractAdresses{
      *
      * @param \PanierfoyenBundle\Entity\Gallery $myGallery
      */
-    public function removeMyGallery(\PanierfoyenBundle\Entity\Gallery $myGallery)
-    {
+    public function removeMyGallery(\PanierfoyenBundle\Entity\Gallery $myGallery) {
         $this->myGallery->removeElement($myGallery);
     }
 
@@ -410,8 +413,7 @@ class Producteurs extends AbstractAdresses{
      *
      * @return Producteurs
      */
-    public function addProduit(\PanierfoyenBundle\Entity\Produits $produit)
-    {
+    public function addProduit(\PanierfoyenBundle\Entity\Produits $produit) {
         $this->produits[] = $produit;
 
         return $this;
@@ -422,8 +424,7 @@ class Producteurs extends AbstractAdresses{
      *
      * @param \PanierfoyenBundle\Entity\Produits $produit
      */
-    public function removeProduit(\PanierfoyenBundle\Entity\Produits $produit)
-    {
+    public function removeProduit(\PanierfoyenBundle\Entity\Produits $produit) {
         $this->produits->removeElement($produit);
     }
 
@@ -432,8 +433,32 @@ class Producteurs extends AbstractAdresses{
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProduits()
-    {
+    public function getProduits() {
         return $this->produits;
+    }
+
+
+    /**
+     * Set contratFile
+     *
+     * @param string $contratFile
+     *
+     * @return Producteurs
+     */
+    public function setContratFile($contratFile)
+    {
+        $this->contratFile = $contratFile;
+
+        return $this;
+    }
+
+    /**
+     * Get contratFile
+     *
+     * @return string
+     */
+    public function getContratFile()
+    {
+        return $this->contratFile;
     }
 }
