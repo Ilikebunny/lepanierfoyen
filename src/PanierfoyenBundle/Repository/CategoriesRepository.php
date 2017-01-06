@@ -18,7 +18,7 @@ class CategoriesRepository extends EntityRepository {
 //                ->getResult();
         return $entity;
     }
-    
+
     public function getAllWithProduitsAndVariations() {
 
         $entity = $this->_em
@@ -30,6 +30,24 @@ class CategoriesRepository extends EntityRepository {
                 ->join('r.les_conditionnements', 's')
                 ->orderBy('e.libelle', 'ASC')
                 ->addOrderBy('r.libelle', 'ASC')
+                ->getQuery();
+//                ->getResult();
+        return $entity;
+    }
+
+    public function getAllWithProduitsAndVariationsFiltered($categorieLibelle) {
+
+        $entity = $this->_em
+                ->getRepository('PanierfoyenBundle:Categories')
+                ->createQueryBuilder('e')
+                ->addSelect('r')
+                ->addSelect('s')
+                ->join('e.produits', 'r')
+                ->join('r.les_conditionnements', 's')
+                ->orderBy('e.libelle', 'ASC')
+                ->addOrderBy('r.libelle', 'ASC')
+                ->andWhere('e.libelle = ?1')
+                ->setParameter(1, $categorieLibelle)
                 ->getQuery();
 //                ->getResult();
         return $entity;
@@ -59,8 +77,8 @@ class CategoriesRepository extends EntityRepository {
 //                ->getResult();
         return $entity;
     }
-    
-     public function getAllWithProducteursAndProduitsFiltered($categorieLibelle) {
+
+    public function getAllWithProducteursAndProduitsFiltered($categorieLibelle) {
         $entity = $this->_em
                 ->getRepository('PanierfoyenBundle:Categories')
                 ->createQueryBuilder('e')
@@ -73,8 +91,8 @@ class CategoriesRepository extends EntityRepository {
 //                ->getResult();
         return $entity;
     }
-    
-    public function getAllOrderedByLibelle(){
+
+    public function getAllOrderedByLibelle() {
         $entity = $this->_em
                 ->getRepository('PanierfoyenBundle:Categories')
                 ->createQueryBuilder('e')
