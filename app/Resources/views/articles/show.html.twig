@@ -8,7 +8,35 @@
     {{ article.titre }}
 {% endblock %}
 
+{% block aside %}
+    <p class="aside_title">Partager</p>
+    <div id="share"></div>
+    <script src="jquery.js"></script>
+    <script src="jssocials.min.js"></script>
+    <script>
+        $("#share").jsSocials({
+            shares: ["email", "twitter", "facebook", "googleplus", "pinterest", "stumbleupon", "whatsapp"]
+        });
+    </script>
+    <hr>
+{% endblock %}
+
 {% block body %}
+
+    <div class ="row">
+        <div class="col-md-12">
+            <div id="share"></div>
+            <script src="jquery.js"></script>
+            <script src="jssocials.min.js"></script>
+            <script>
+            $("#share").jsSocials({
+                shares: ["email", "twitter", "facebook", "googleplus", "pinterest", "stumbleupon", "whatsapp"]
+            });
+            </script>
+            <hr>
+        </div>
+    </div>
+
     <div class="col-md-12">
         {% if article.publicationDate %}
             <span  class="label label-primary">

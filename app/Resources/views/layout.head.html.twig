@@ -10,7 +10,7 @@
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" /> #}
     <!-- Less files-->
     <link rel="stylesheet/less" type="text/css" href="{{ asset('css/main.less') }}">
-    <script type="text/javascript">less = { env: 'development' };</script>
+    <script type="text/javascript">less = {env: 'development'};</script>
     <script src="{{ asset('js/less.min.js') }}"></script>
     <!-- Triton Crud-->
     <link href="{{ asset('bundles/tritoncrud/css/font-awesome.min.css') }}" rel="stylesheet" />
@@ -19,6 +19,10 @@
     <!-- Font Awesome-->
     <link href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" /> 
     <!-- Font Awesome-->
+    <!-- Js Social -->
+    <link href="{{ asset('css/jssocial/jssocials.css') }}" rel="stylesheet" /> 
+    <link href="{{ asset('css/jssocial/jssocials-theme-flat.css') }}" rel="stylesheet" /> 
+    <!-- Js Social -->
     <!-- Form theme -->
     {% if form is defined %}
         {% form_theme form 'bootstrap_3_layout.html.twig' %}
@@ -34,4 +38,7 @@
     {% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <script src="{{ asset('js/jquery-3.1.0.min.js') }}"></script>
+    <!-- Jssocial -->
+    <script src="{{ asset('js/jssocials.min.js') }}"></script>
+    <!-- Jssocial -->
 </head>
