@@ -8,9 +8,13 @@
     Nos produits
 {% endblock %}
 
+{% block aside %}
+    {{ include('produits/categories_filter.html.twig') }} 
+{% endblock %}
+
 {% block body %}
 
-    {% for category in categories %}
+    {% for category in categories2 %}
         <div class="row category_entete">
             <div class="col-xs-1 list_img vertical_center">
                 <img class="img-responsive" src="{{ asset( category.logo) }}" alt="{{ category.libelle}}" />
