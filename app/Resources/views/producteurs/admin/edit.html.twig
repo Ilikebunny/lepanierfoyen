@@ -22,10 +22,20 @@
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
 
-    <div class=" col-md-6">Contrat actuel</div>
-    <div class=" col-md-6">Nouveau contrat</div>
-    <div class=" col-md-6">{{ producteur.contratFile }}</div>
-    <div class=" col-md-6"> {% include 'KCFinder_textbox_selector.html.twig' with {'elementId': 'panierfoyenbundle_producteurs_contratFile'} %}</div>
+    <div class="row">
+        <div class=" col-md-2">Contrat actuel</div>
+        <div class=" col-md-10"><a class="btn btn-default" href="{{ producteur.contratFile }}">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                PDF
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-2">Nouveau contrat</div>
+        <div class=" col-md-10">
+            {% include 'KCFinder_textbox_selector.html.twig' with {'elementId': 'panierfoyenbundle_producteurs_contratFile'} %}
+        </div>
+    </div>
 
     <p>
         <button type="submit" class="btn btn-success">
