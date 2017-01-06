@@ -28,25 +28,15 @@ class ProducteursController extends Controller {
      */
     public function indexAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->getAllOrderedByCategoryAndName();
 
-        $maxResults = 10;
-
-        //TEST
-        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteursAndProduits();
-
-        $paginator = $this->container->get('panierfoyen.paginator');
-        $routeName = 'producteurs';
-        list($producteurs, $pagerHtml) = $paginator->paginatorSimple($queryBuilder, $request, $maxResults, $routeName);
-
-        $queryBuilder2 = $queryBuilder2->getResult();
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')
+                ->getAllWithProducteursAndProduits()
+                ->getResult();
 
         $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
 
         return $this->render('producteurs/index.html.twig', array(
-                    'producteurs' => $producteurs,
                     'categories' => $categories,
-                    'pagerHtml' => $pagerHtml,
                     'categories2' => $queryBuilder2,
         ));
     }
@@ -57,38 +47,18 @@ class ProducteursController extends Controller {
      * @Route("/categories/{categorySelected}", name="producteursByCategories")
      * @Method("GET")
      */
-    public function indexCategorieAction(Request $request, $categorySelected) {
+    public function indexCategorieAction($categorySelected) {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
-        $categorySelectedObject = $em->getRepository('PanierfoyenBundle:Categories')->findOneByLibelle($categorySelected);
+        $categories = $em->getRepository('PanierfoyenBundle:Categories')
+                ->findAll();
 
-        //temp
-        $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('a')
-                ->select('a')
-                ->leftJoin('a.category', 'c')
-                ->addSelect('c');
-
-        $queryBuilder = $queryBuilder->add('where', $queryBuilder->expr()->in('c', ':c'))
-                ->setParameter('c', $categorySelectedObject->getId())
-        ;
-
-        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteursAndProduitsFiltered($categorySelected)->getResult();
-
-        //temp
-        $routeName = 'producteursByCategories';
-
-        $paginator = $this->container->get('panierfoyen.paginator');
-        list($producteurs, $pagerHtml) = $paginator->paginatorWithParameters($queryBuilder, $request, 8, $routeName, 'categorySelected', $categorySelected);
-
-//        list($producteurs, $pagerHtml) = $this->paginatorByCategory($queryBuilder, $request, 8, $routeName, 'categorySelected', $categorySelected);
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')
+                ->getAllWithProducteursAndProduitsFiltered($categorySelected)
+                ->getResult();
 
         return $this->render('producteurs/index.html.twig', array(
-                    'producteurs' => $producteurs,
                     'categories' => $categories,
-                    'categorySelected' => $categorySelected,
-                    'categorySelectedObject' => $categorySelectedObject,
-//                    'pagerHtml' => $pagerHtml,
                     'categories2' => $queryBuilder2,
         ));
     }
