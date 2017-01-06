@@ -108,5 +108,12 @@ class DefaultController extends Controller {
     public function showCarteAction() {
         return $this->render('amap/cartographie.html.twig');
     }
+    
+    /**
+     * @Route("/contact-success", name="contact_succes")
+     */
+    public function showContactSuccessAction() {
+        return $this->render('amap/contact-success.html.twig');
+    }
 
 }

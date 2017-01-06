@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block panel_head %}
+    Contactez-nous
+{% endblock %}
+
+{% block body %}
+
+{% include "KPhoenContactBundle:Contact:form.html.twig" with {'form': form} %}
+
+{% endblock %}
