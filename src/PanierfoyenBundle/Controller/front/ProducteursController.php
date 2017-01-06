@@ -30,18 +30,10 @@ class ProducteursController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->getAllOrderedByCategoryAndName();
 
-        // $_GET parameters
-        $pageNumber = $request->query->get('page');
-
-        //Variables
-        $maxResults = 100;
-        $offset = ($pageNumber - 1) * $maxResults;
-        if ($offset < 0)
-            $offset = 0;
+        $maxResults = 10;
 
         //TEST
-        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteursAndProduits($offset, $maxResults);
-
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteursAndProduits();
 
         $paginator = $this->container->get('panierfoyen.paginator');
         $routeName = 'producteurs';
@@ -49,19 +41,13 @@ class ProducteursController extends Controller {
 
         $queryBuilder2 = $queryBuilder2->getResult();
 
-//        list($producteurs, $pagerHtml) = $this->paginator($queryBuilder, $request);
-
         $categories = $em->getRepository('PanierfoyenBundle:Categories')->findAll();
-
-
 
         return $this->render('producteurs/index.html.twig', array(
                     'producteurs' => $producteurs,
                     'categories' => $categories,
                     'pagerHtml' => $pagerHtml,
                     'categories2' => $queryBuilder2,
-                    'pageNumber' => $pageNumber,
-                    'offset' => $offset,
         ));
     }
 
@@ -86,6 +72,9 @@ class ProducteursController extends Controller {
         $queryBuilder = $queryBuilder->add('where', $queryBuilder->expr()->in('c', ':c'))
                 ->setParameter('c', $categorySelectedObject->getId())
         ;
+
+        $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')->getAllWithProducteursAndProduitsFiltered($categorySelected)->getResult();
+
         //temp
         $routeName = 'producteursByCategories';
 
@@ -99,7 +88,8 @@ class ProducteursController extends Controller {
                     'categories' => $categories,
                     'categorySelected' => $categorySelected,
                     'categorySelectedObject' => $categorySelectedObject,
-                    'pagerHtml' => $pagerHtml,
+//                    'pagerHtml' => $pagerHtml,
+                    'categories2' => $queryBuilder2,
         ));
     }
 
