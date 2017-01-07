@@ -25,3 +25,9 @@ services:
     panierfoyen.paginator:
         class: PanierfoyenBundle\Helper\paginator
         arguments: ["@service_container", "@router"]
+        
+    adresses_listener:
+        class: PanierfoyenBundle\Listener\DoctrineListener
+        arguments: ["@service_container"]
+        tags:            
+            - { name: doctrine.event_listener, event: prePersist }
