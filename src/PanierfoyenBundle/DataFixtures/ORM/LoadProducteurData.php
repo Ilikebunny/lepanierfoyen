@@ -62,6 +62,8 @@ class LoadProducteurData extends AbstractFixture implements OrderedFixtureInterf
                     $entity->setPresentation($txtContent);
                 }
 
+                $entity->setContratFile($row[14]);
+                
                 $manager->persist($entity);
                 $manager->flush();
 
