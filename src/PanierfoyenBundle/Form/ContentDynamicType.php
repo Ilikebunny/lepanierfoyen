@@ -14,7 +14,7 @@ class ContentDynamicType extends AbstractType {
                 ->add('titre')
                 ->add('contenue', CKEditorType::class)
 //            ->add('summary')
-                ->add('order')
+                ->add('order',null,array('label'=>"Ordre"))
 //            ->add('published')
 //            ->add('publicationDate')
 //            ->add('modified')
