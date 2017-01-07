@@ -5,6 +5,8 @@
         <h1>Le Panier Foyen</h1>
         <p>Association de producteurs et de consommateurs pour le maintien d’une agriculture de proximité, raisonnable, et paysanne.</p>
     </div>
+    
+    {{ dump() }}
 
     <div id="map" style="height:500px;width:100%"></div>
 
@@ -31,9 +33,11 @@
                         '<p> ' +
                         '{{ marker.content2}} ' +
                         '</p>' +
+                        {% if marker.link %}
                         '<p><a href="{{ marker.link}}">' +
                         'Voir la page</a> ' +
                         '</p>' +
+                        {% endif %}
                         '</div>' +
                         '</div>';
                 var infowindow{{ indice}} = new google.maps.InfoWindow({

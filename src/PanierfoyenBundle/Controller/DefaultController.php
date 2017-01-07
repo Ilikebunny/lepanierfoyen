@@ -16,14 +16,18 @@ class DefaultController extends Controller {
 
         $myMap = $this->generateMapInfo();
 
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('PanierfoyenBundle:Lieus')->createQueryBuilder('e');
+        $lieus = $queryBuilder->getQuery()->getResult();
+
         return $this->render('PanierfoyenBundle:Default:index.html.twig', array(
                     'myMap' => $myMap,
+                    'lieus' => $lieus,
         ));
     }
 
     private function generateMapInfo() {
-        $geocoder = $result = $this->container->get('bazinga_geocoder.geocoder');
-
+        
         $em = $this->getDoctrine()->getManager();
 
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Lieus')->createQueryBuilder('e');
@@ -34,12 +38,8 @@ class DefaultController extends Controller {
 
         //Get center
         if (!empty($lieus)) {
-            $temp = $geocoder->geocode($lieus[0]->getAdressComplete());
-            if ($temp->count() > 0) {
-                $address = $temp->first();
-                $myMap['center_lat'] = $address->getLatitude();
-                $myMap['center_long'] = $address->getLongitude();
-            }
+            $myMap['center_lat'] = $lieus[0]->getLatitude();
+            $myMap['center_long'] = $lieus[0]->getLongitude();
         } else {
             $temp = $geocoder->geocode('24700 Montpon Menesterol');
             $address = $temp->first();
@@ -49,40 +49,35 @@ class DefaultController extends Controller {
 
         //Add markers (lieus)
         foreach ($lieus as $lieu) {
-            $temp = $geocoder->geocode($lieu->getAdressComplete());
-            if ($temp->count() > 0) {
-                $address = $temp->first();
-                $myMarker = array();
-                $myMarker['latitude'] = $address->getLatitude();
-                $myMarker['longitude'] = $address->getLongitude();
-                $myMarker['title'] = $lieu->getLibelle();
-                $myMarker['content'] = $lieu->getAdressComplete();
-                $myMarker['content2'] = "";
-                $myMarker['link'] = $lieu->getAdressComplete();
-                $myMap['markers'][] = $myMarker;
-            }
+            $myMarker = array();
+            $myMarker['latitude'] = $lieu->getLatitude();
+            $myMarker['longitude'] = $lieu->getLongitude();
+            $myMarker['title'] = $lieu->getLibelle();
+            $myMarker['content'] = $lieu->getAdressComplete();
+            $myMarker['content2'] = "";
+            $myMarker['link'] = "";
+            $myMap['markers'][] = $myMarker;
+
         }
 
         //Add markers (producteurs)
         foreach ($producteurs as $producteur) {
-            $temp = $geocoder->geocode($producteur->getAdressComplete());
-            if ($temp->count() > 0) {
-                $address = $temp->first();
-                $myMarker = array();
-                $myMarker['latitude'] = $address->getLatitude();
-                $myMarker['longitude'] = $address->getLongitude();
-                $myMarker['title'] = $producteur->getNom();
-                $myMarker['content'] = $producteur->getAdressComplete();
-                $myMarker['content2'] = "";
-                foreach ($producteur->getCategory() as $category) {
-                    $myMarker['content2'] .= $category->getLibelle() . " ";
-                }
-                $url = $this->generateUrl(
-                        'producteurs_show_slug', array('slug' => $producteur->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL);
-                $myMarker['link'] = $url;
-                //adding content to make info panel
-                $myMap['markers'][] = $myMarker;
+
+            $myMarker = array();
+            $myMarker['latitude'] = $producteur->getLatitude();
+            $myMarker['longitude'] = $producteur->getLongitude();
+            $myMarker['title'] = $producteur->getNom();
+            $myMarker['content'] = $producteur->getAdressComplete();
+            $myMarker['content2'] = "";
+            foreach ($producteur->getCategory() as $category) {
+                $myMarker['content2'] .= $category->getLibelle() . " ";
             }
+            $url = $this->generateUrl(
+                    'producteurs_show_slug', array('slug' => $producteur->getSlug()), UrlGeneratorInterface::ABSOLUTE_URL);
+            $myMarker['link'] = $url;
+            //adding content to make info panel
+            $myMap['markers'][] = $myMarker;
+
         }
 
         return $myMap;
@@ -108,7 +103,7 @@ class DefaultController extends Controller {
     public function showCarteAction() {
         return $this->render('amap/cartographie.html.twig');
     }
-    
+
     /**
      * @Route("/contact-success", name="contact_succes")
      */
