@@ -86,7 +86,7 @@ abstract class AbstractAdresses {
     public function generateAdressComplete() {
 
         $temp = $this->adr1 . ' ' . $this->adr2 . ' ' . $this->adr3 . ' ' . $this->codepostal . ' ' . $this->ville;
-        $temp = $this->codepostal . ' ' . $this->ville;
+//        $temp = $this->codepostal . ' ' . $this->ville;
         $this->setAdressComplete($temp);
 
         return $this;
