@@ -11,8 +11,7 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-12">
 
             {% for article in articles %}
                 {% if article.publicationDate %}
@@ -27,18 +26,21 @@
                             </span>
                         </div>
                     </div>
-                    <h4 class="article_header row">
-                        {#                        Article publié le {{ article.publicationDate|date('Y-m-d') }} par  {{ article.user.username }} #}
-                        {#                        Article publié le <span>{{ article.publicationDate|date('l d F Y') }}</span> par  <span>{{ article.user.username }}</span> #}
-                        Article publié le <span>{{ article.publicationDate|localizeddate('medium', 'none', 'fr') }}</span> par  <span>{{ article.user.username }}</span> 
-                    </h4>
-                    <p class="article_summary row">{{ article.summary | raw }}</p>
-                    <hr>
+                    <div class="row">
+                        <h4 class="article_header col-sm-12">
+                            Article publié le <span>{{ article.publicationDate|localizeddate('medium', 'none', 'fr') }}</span> par  <span>{{ article.user.username }}</span> 
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class ="col-sm-12">
+                            <p class="article_summary">{{ article.summary | raw }}</p>
+                            <hr>
+                        </div>
+                    </div>
                 {% endif %}
             {% endfor %}
 
         </div>
-        <div class="col-sm-1"></div>
     </div>
 
 {% endblock %}

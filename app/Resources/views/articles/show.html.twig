@@ -29,25 +29,34 @@
             <script src="jquery.js"></script>
             <script src="jssocials.min.js"></script>
             <script>
-            $("#share").jsSocials({
-                shares: ["email", "twitter", "facebook", "googleplus", "pinterest", "stumbleupon", "whatsapp"]
-            });
+        $("#share").jsSocials({
+            shares: ["email", "twitter", "facebook", "googleplus", "pinterest", "stumbleupon", "whatsapp"]
+        });
             </script>
             <hr>
         </div>
     </div>
 
-    <div class="col-md-12">
-        {% if article.publicationDate %}
+    <div class ="row vertical-align">
+        <div class="article_tag col-md-2 text-center">
             <span  class="label label-primary">
                 {{ article.tag[0].title }}
             </span>
-            <h3>
-                Article publié le {{ article.publicationDate|date('Y-m-d H:i:s') }} par  {{ article.user.username }} 
-            </h3>
-        {% endif %}
-        <hr>
-        {{ article.contenue | raw }}
+        </div>
+        <div class="article_titre col-md-10">
+            {% if article.publicationDate %}
+                <h4 class="article_header">
+                    Article publié le <span>{{ article.publicationDate|date('Y-m-d H:i:s') }}</span> par  <span>{{ article.user.username }}</span> 
+                </h4>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class ="row">
+        <div class="col-md-12">
+            <hr>
+            {{ article.contenue | raw }}
+        </div>
     </div>
     <hr>
 

@@ -10,14 +10,14 @@
 
 {% block body %}
 
+    {{ contentDynamic.contenue | raw }}
+
     {% if contentDynamic.modified %}
+        <hr>
         <h4 class="article_header">
             Dernière modification le <span>{{ contentDynamic.modified|localizeddate('medium', 'none', 'fr') }}</span>
         </h4>
-        <hr>
     {% endif %}
-
-    {{ contentDynamic.contenue | raw }}
 
 {% endblock %}
 
