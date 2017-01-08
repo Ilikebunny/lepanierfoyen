@@ -16,6 +16,13 @@ use PanierfoyenBundle\Entity\Produits;
  */
 class ProduitsController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Nos produits", "produits");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Produits entities.
      *
@@ -23,7 +30,8 @@ class ProduitsController extends Controller {
      * @Method("GET")
      */
     public function indexAction() {
-        
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
 
         $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')
@@ -46,6 +54,8 @@ class ProduitsController extends Controller {
      * @Method("GET")
      */
     public function indexCategorieAction($categorySelected) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($categorySelected);
 
         $em = $this->getDoctrine()->getManager();
 

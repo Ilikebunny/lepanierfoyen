@@ -20,6 +20,13 @@ use PanierfoyenBundle\Form\ArticlesType;
  */
 class ArticlesController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Les publications", "articles");
+        return $breadcrumbs;
+    }
+    
     /**
      * Lists all Articles entities.
      *
@@ -27,6 +34,8 @@ class ArticlesController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
 
@@ -70,6 +79,8 @@ class ArticlesController extends Controller {
      * @Method("GET")
      */
     public function indexTagAction(Request $request, $tagLibelle) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($tagLibelle);
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository('PanierfoyenBundle:Tags')->findAll();
         $tagSelected = $em->getRepository('PanierfoyenBundle:Tags')->findOneByTitle($tagLibelle);
@@ -116,6 +127,8 @@ class ArticlesController extends Controller {
      * @Method("GET")
      */
     public function showAction(Articles $article) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($article->getSlug());
         return $this->render('articles/show.html.twig', array(
                     'article' => $article,
         ));

@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use PanierfoyenBundle\Entity\Articles;
 use PanierfoyenBundle\Form\ArticlesType;
 
@@ -18,6 +17,14 @@ use PanierfoyenBundle\Form\ArticlesType;
  */
 class AdminArticlesController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Articles", "admin_articles");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Articles entities.
      *
@@ -25,6 +32,8 @@ class AdminArticlesController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Articles')->createQueryBuilder('e')
                 ->orderBy('e.created', 'DESC');
@@ -46,6 +55,8 @@ class AdminArticlesController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
 
         $article = new Articles();
         $form = $this->createForm('PanierfoyenBundle\Form\ArticlesType', $article);
@@ -71,6 +82,9 @@ class AdminArticlesController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Articles $article) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($article->getTitre() . " - Modifier");
+
         $deleteForm = $this->createDeleteForm($article);
         $editForm = $this->createForm('PanierfoyenBundle\Form\ArticlesType', $article);
         $editForm->handleRequest($request);
@@ -190,6 +204,9 @@ class AdminArticlesController extends Controller {
      * @Method("GET")
      */
     public function showAction(Articles $article) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($article->getTitre() . " - Prévisualiser");
+
         return $this->render('articles/show.html.twig', array(
                     'article' => $article,
         ));
