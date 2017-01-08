@@ -20,6 +20,13 @@ use PanierfoyenBundle\Form\ProducteursType;
  */
 class ProducteursController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Nos producteurs", "producteurs");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Producteurs entities.
      *
@@ -27,6 +34,8 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
 
         $queryBuilder2 = $em->getRepository('PanierfoyenBundle:Categories')
@@ -48,6 +57,9 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function indexCategorieAction($categorySelected) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($categorySelected);
+
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em->getRepository('PanierfoyenBundle:Categories')
@@ -70,6 +82,11 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showAction(Producteurs $producteur) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addRouteItem($producteur->getNom(), "producteurs_show_slug", [
+            'slug' => $producteur->getSlug(),
+        ]);
+        $breadcrumbs->addItem("Présentation");
         return $this->render('producteurs/show.html.twig', array(
                     'producteur' => $producteur
         ));
@@ -82,6 +99,14 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlug(Producteurs $producteur) {
+
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addRouteItem($producteur->getNom(), "producteurs_show_slug", [
+            'slug' => $producteur->getSlug(),
+        ]);
+        $breadcrumbs->addItem("Présentation");
+
+
         return $this->render('producteurs/show.html.twig', array(
                     'producteur' => $producteur
         ));
@@ -93,11 +118,11 @@ class ProducteursController extends Controller {
      * @Route("/{slug}/coordinateur", name="producteurs_show_slug_coordinateur", requirements={"slug": "[^/]++"}) 
      * @Method("GET")
      */
-    public function showActionSlugCoordinateur(Producteurs $producteur) {
-        return $this->render('producteurs/show.coordinateur.html.twig', array(
-                    'producteur' => $producteur
-        ));
-    }
+//    public function showActionSlugCoordinateur(Producteurs $producteur) {
+//        return $this->render('producteurs/show.coordinateur.html.twig', array(
+//                    'producteur' => $producteur
+//        ));
+//    }
 
     /**
      * Finds and displays a Producteurs entity.
@@ -106,6 +131,13 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlugProduits(Producteurs $producteur) {
+
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addRouteItem($producteur->getNom(), "producteurs_show_slug", [
+            'slug' => $producteur->getSlug(),
+        ]);
+        $breadcrumbs->addItem("Produits");
+
         $repository = $this->getDoctrine()->getManager()
                 ->getRepository('PanierfoyenBundle:Produits');
 
@@ -124,6 +156,11 @@ class ProducteursController extends Controller {
      * @Method("GET")
      */
     public function showActionSlugPhotos(Producteurs $producteur) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addRouteItem($producteur->getNom(), "producteurs_show_slug", [
+            'slug' => $producteur->getSlug(),
+        ]);
+        $breadcrumbs->addItem("Photos");
         return $this->render('producteurs/show.photos.html.twig', array(
                     'producteur' => $producteur
         ));
