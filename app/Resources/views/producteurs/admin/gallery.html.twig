@@ -1,0 +1,60 @@
+{% extends 'layout.admin.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Modifier images producteur
+{% endblock %}
+
+{% block panel_head %}
+    Modifier images producteur
+{% endblock %}
+
+{% block aside %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th width = "100px">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for gallery_item in gallery %}
+                        <tr>
+                            <td><img class="admin_gallery_preview" src="{{ gallery_item.image }}"></td>
+
+                            <td>    
+                                <a  onclick="return confirm('Sure ?');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('gallery_by_id_delete', { 'id': gallery_item.id}) }}">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3>Ajouter une image</h3>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <div class=" col-md-12"> 
+            {% include 'KCFinder_image_selector.html.twig' with {'elementId': 'panierfoyenbundle_Gallery_image'} %}
+        </div>
+
+        <div class ="col-md-12">
+            <button type="submit" class="btn btn-success"> 
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i> Valider
+            </button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

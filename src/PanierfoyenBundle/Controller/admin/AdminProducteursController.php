@@ -7,9 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use PanierfoyenBundle\Entity\Producteurs;
 use PanierfoyenBundle\Form\ProducteursType;
+use PanierfoyenBundle\Entity\Gallery;
 
 /**
  * AdminProducteurs controller.
@@ -167,6 +167,75 @@ class AdminProducteursController extends Controller {
         }
 
         return $this->redirectToRoute('admin_producteurs');
+    }
+
+    /**
+     * Displays a form to edit an existing Produits entity.
+     *
+     * @Route("/gallery/edit/{id}", name="admin_producteur_gallery")
+     * @Method({"GET", "POST"})
+     */
+    public function editGalleryAction(Request $request, Producteurs $producteur) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $gallery = $producteur->getMyGallery();
+
+        $gallery_item = new Gallery();
+        $gallery_item->setProducteur($producteur);
+
+        $form = $this->createForm('PanierfoyenBundle\Form\GalleryType', $gallery_item);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($gallery_item);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_producteur_gallery', array(
+//                        'conditionnements' => $conditionnements,
+//                        'produit' => $produit,
+//                        'form' => $form->createView(),
+                        'id' => $producteur->getId(),
+            ));
+        }
+
+        return $this->render('producteurs/admin/gallery.html.twig', array(
+                    'gallery' => $gallery,
+                    'producteur' => $producteur,
+                    'form' => $form->createView(),
+        ));
+    }
+
+    /**
+     * Delete Gallery by id
+     *
+     * @param mixed $id The entity id
+     * @Route("/delete/gallery/{id}", name="gallery_by_id_delete")
+     * @Method("GET")
+     */
+    public function deleteGalleryById($id) {
+
+        $em = $this->getDoctrine()->getManager();
+        $gallery = $em->getRepository('PanierfoyenBundle:Gallery')->find($id);
+        $producteur = $gallery->getProducteur();
+
+        if (!$gallery) {
+            throw $this->createNotFoundException('Unable to find Producteurs entity.');
+        }
+
+        try {
+            $em->remove($gallery);
+            $em->flush();
+            $this->get('session')->getFlashBag()->add('success', 'flash.delete.success');
+        } catch (Exception $ex) {
+            $this->get('session')->getFlashBag()->add('error', 'flash.delete.error');
+        }
+
+        return $this->redirectToRoute('admin_producteur_gallery', array(
+                    'id' => $producteur->getId(),
+        ));
     }
 
 }
