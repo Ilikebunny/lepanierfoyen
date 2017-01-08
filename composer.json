@@ -36,7 +36,8 @@
         "willdurand/geocoder-bundle": "^4.1",
         "sonata-project/admin-bundle": "^3.10",
         "sonata-project/doctrine-orm-admin-bundle": "^3.1",
-        "kphoen/contact-bundle": "^3.0"
+        "kphoen/contact-bundle": "^3.0",
+        "whiteoctober/breadcrumbs-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

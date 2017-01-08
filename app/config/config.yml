@@ -179,3 +179,5 @@ k_phoen_contact:
     redirect_url:       contact_succes
     sender:             { address: 'no-reply@foo.org' }
     receiver:           { address: '%mailer_user%' }
+    
+white_october_breadcrumbs: ~

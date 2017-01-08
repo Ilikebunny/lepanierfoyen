@@ -36,6 +36,8 @@ class AppKernel extends Kernel {
             new Sonata\AdminBundle\SonataAdminBundle(),
             
             new KPhoen\ContactBundle\KPhoenContactBundle(),
+            
+            new WhiteOctober\BreadcrumbsBundle\WhiteOctoberBreadcrumbsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
