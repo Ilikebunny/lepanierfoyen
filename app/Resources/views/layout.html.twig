@@ -6,6 +6,9 @@
         {{ include('layout.header.html.twig') }}
         {#        </div>#}
         <div id="main" class="container">
+            <div id="bradcrumbs" class="row">
+                {{ wo_render_breadcrumbs() }}
+            </div>
             {% block menu_haut %}
             {% endblock %}
             <section class="panel row">
@@ -27,7 +30,7 @@
                     {% endblock %}
                     {{ include('layout.aside.html.twig') }} 
                     {% if app.debug == true %}
-{#                        {{ dump() }}#}
+                        {#                        {{ dump() }}#}
                     {% endif %}
                 </div>
             </section>
@@ -58,6 +61,6 @@
         {% block javascripts %}
             {#                {{ include('chosen_init.html.twig') }}#}
         {% endblock %}
-</body>
+    </body>
 </html>
 
