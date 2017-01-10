@@ -7,7 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
 use PanierfoyenBundle\Entity\ContentDynamic;
 use PanierfoyenBundle\Form\ContentDynamicType;
 
@@ -18,6 +17,14 @@ use PanierfoyenBundle\Form\ContentDynamicType;
  */
 class AdminContentDynamicController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Contenu dynamique", "admin_contentdynamic");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all ContentDynamic entities.
      *
@@ -25,6 +32,8 @@ class AdminContentDynamicController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:ContentDynamic')->createQueryBuilder('e');
 
@@ -45,6 +54,8 @@ class AdminContentDynamicController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
 
         $contentDynamic = new ContentDynamic();
         $form = $this->createForm('PanierfoyenBundle\Form\ContentDynamicType', $contentDynamic);
@@ -62,7 +73,7 @@ class AdminContentDynamicController extends Controller {
                     'form' => $form->createView(),
         ));
     }
-   
+
     /**
      * Finds and displays a ContentDynamic entity.
      *
@@ -70,6 +81,8 @@ class AdminContentDynamicController extends Controller {
      * @Method("GET")
      */
     public function previewAction(ContentDynamic $contentDynamic) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Prévisualiser");
         return $this->render('contentdynamic/show.html.twig', array(
                     'contentDynamic' => $contentDynamic,
         ));
@@ -82,6 +95,9 @@ class AdminContentDynamicController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, ContentDynamic $contentDynamic) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Modifier");
+
         $deleteForm = $this->createDeleteForm($contentDynamic);
         $editForm = $this->createForm('PanierfoyenBundle\Form\ContentDynamicType', $contentDynamic);
         $editForm->handleRequest($request);

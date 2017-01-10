@@ -17,6 +17,14 @@ use PanierfoyenBundle\Form\TagsType;
  */
 class AdminTagsController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Tags", "tags");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Tags entities.
      *
@@ -24,6 +32,8 @@ class AdminTagsController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Tags')->createQueryBuilder('e');
 
@@ -44,6 +54,8 @@ class AdminTagsController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
 
         $tag = new Tags();
         $form = $this->createForm('PanierfoyenBundle\Form\TagsType', $tag);
@@ -83,6 +95,9 @@ class AdminTagsController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Tags $tag) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Modifier");
+
         $deleteForm = $this->createDeleteForm($tag);
         $editForm = $this->createForm('PanierfoyenBundle\Form\TagsType', $tag);
         $editForm->handleRequest($request);

@@ -18,6 +18,14 @@ use PanierfoyenBundle\Form\ConditionnementsType;
  */
 class AdminProduitsController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Produits", "admin_produits");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Produits entities.
      *
@@ -25,6 +33,8 @@ class AdminProduitsController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Produits')->createQueryBuilder('e');
 
@@ -44,6 +54,8 @@ class AdminProduitsController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
 
         $produit = new Produits();
         $form = $this->createForm('PanierfoyenBundle\Form\ProduitsType', $produit);
@@ -69,6 +81,9 @@ class AdminProduitsController extends Controller {
      * @Method("GET")
      */
     public function showAction(Produits $produit) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Prévisualiser");
+
         $deleteForm = $this->createDeleteForm($produit);
         return $this->render('produits/admin/show.html.twig', array(
                     'produit' => $produit,
@@ -109,6 +124,8 @@ class AdminProduitsController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editConditionnementsAction(Request $request, Produits $produit) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Gérer les conditionnements");
 
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Conditionnements')->createQueryBuilder('e');

@@ -17,6 +17,14 @@ use PanierfoyenBundle\Form\CategoriesType;
  */
 class AdminCategoriesController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Catégories", "admin_categories");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Categories entities.
      *
@@ -24,6 +32,8 @@ class AdminCategoriesController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+
         $em = $this->getDoctrine()->getManager();
 //        $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->createQueryBuilder('e');
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Categories')->getAllOrderedByLibelle();
@@ -45,6 +55,8 @@ class AdminCategoriesController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
 
         $category = new Categories();
         $form = $this->createForm('PanierfoyenBundle\Form\CategoriesType', $category);
@@ -70,6 +82,9 @@ class AdminCategoriesController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Categories $category) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem($category->getLibelle() . " - Modifier");
+
         $deleteForm = $this->createDeleteForm($category);
         $editForm = $this->createForm('PanierfoyenBundle\Form\CategoriesType', $category);
         $editForm->handleRequest($request);

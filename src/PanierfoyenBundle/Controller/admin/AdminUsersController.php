@@ -18,6 +18,14 @@ use PanierfoyenBundle\Form\UsersRightsType;
  */
 class AdminUsersController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Utilisateurs", "admin_users");
+        return $breadcrumbs;
+    }
+
     /**
      * Lists all Users entities.
      *
@@ -25,6 +33,8 @@ class AdminUsersController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Users')->createQueryBuilder('e');
 
@@ -45,7 +55,9 @@ class AdminUsersController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function manageRightsAction(Request $request, Users $user) {
-
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Gestion des droits");
+        
         $form = $this->createForm('PanierfoyenBundle\Form\UsersRightsType', $user);
         $form->handleRequest($request);
 
@@ -70,6 +82,9 @@ class AdminUsersController extends Controller {
      * @Method("GET")
      */
     public function showAction(Users $user) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Prévisualisation");
+        
         $deleteForm = $this->createDeleteForm($user);
         return $this->render('users/admin/show.html.twig', array(
                     'user' => $user,

@@ -18,6 +18,14 @@ use PanierfoyenBundle\Entity\Gallery;
  */
 class AdminProducteursController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Contenu dynamique", "admin_contentdynamic");
+        return $breadcrumbs;
+    }
+    
     /**
      * Lists all Producteurs entities.
      *
@@ -25,6 +33,8 @@ class AdminProducteursController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->createQueryBuilder('e');
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Producteurs')->getAllOrderedByName();
@@ -46,7 +56,9 @@ class AdminProducteursController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
+        
         $producteur = new Producteurs();
         $form = $this->createForm('PanierfoyenBundle\Form\ProducteursType', $producteur);
         $form->handleRequest($request);
@@ -71,6 +83,9 @@ class AdminProducteursController extends Controller {
      * @Method("GET")
      */
     public function showAction(Producteurs $producteur) {
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Prévisualiser");
+        
         $deleteForm = $this->createDeleteForm($producteur);
         return $this->render('producteurs/show.html.twig', array(
                     'producteur' => $producteur,
@@ -150,7 +165,7 @@ class AdminProducteursController extends Controller {
      * @Method("GET")
      */
     public function deleteById($id) {
-
+        
         $em = $this->getDoctrine()->getManager();
         $producteur = $em->getRepository('PanierfoyenBundle:Producteurs')->find($id);
 
@@ -176,7 +191,9 @@ class AdminProducteursController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editGalleryAction(Request $request, Producteurs $producteur) {
-
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addRouteItem("Gérer gallerie", "admin_producteur_gallery");
+        
         $em = $this->getDoctrine()->getManager();
 
         $gallery = $producteur->getMyGallery();

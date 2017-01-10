@@ -18,6 +18,14 @@ use PanierfoyenBundle\Form\CoordinateursType;
  */
 class AdminCoordinateursController extends Controller {
 
+    private function initBreadcrumbs() {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        $breadcrumbs->prependRouteItem("Accueil", "_welcome");
+        $breadcrumbs->addRouteItem("Administration", "admin_dashboard");
+        $breadcrumbs->addRouteItem("Coordinateurs", "admin_categories");
+        return $breadcrumbs;
+    }
+    
     /**
      * Lists all Coordinateurs entities.
      *
@@ -25,6 +33,8 @@ class AdminCoordinateursController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+        $breadcrumbs = $this->get("white_october_breadcrumbs");
+        
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('PanierfoyenBundle:Coordinateurs')->createQueryBuilder('e');
 
@@ -45,7 +55,9 @@ class AdminCoordinateursController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request) {
-
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Ajouter");
+        
         $coordinateur = new Coordinateurs();
         $form = $this->createForm('PanierfoyenBundle\Form\CoordinateursType', $coordinateur);
         $form->handleRequest($request);
@@ -70,6 +82,10 @@ class AdminCoordinateursController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Coordinateurs $coordinateur) {
+        
+        $breadcrumbs = $this->initBreadcrumbs();
+        $breadcrumbs->addItem("Modifier");
+        
         $editForm = $this->createForm('PanierfoyenBundle\Form\CoordinateursType', $coordinateur);
         $editForm->handleRequest($request);
 
