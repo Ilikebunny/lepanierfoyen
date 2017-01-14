@@ -31,7 +31,7 @@ class ImportCSV {
         $csvDirectory = $this->getDirectoryCSV();
         $csvContent = array();
         if (($handle = fopen($csvDirectory . $filename, "r")) !== FALSE) {
-            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+            while (($data = fgetcsv($handle, 0, ";")) !== FALSE) {
                 $csvContent[$row] = $data;
                 $row++;
             }
